@@ -1,0 +1,12 @@
+include ../shared/sidenav/sidenav.jade
+
+section(layout='row', flex)
+	h1
+		| This is the test view.
+	ul
+		li
+			a(ui-sref='.icons')
+				| list all
+
+section(layout='row', flex)
+	div(ui-view='')
