@@ -9,7 +9,7 @@ angular.module('projekt2App', [
 	'shared.sidenav',
 	'shared.constants'
 ])
-.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+.config(function($stateProvider, $urlRouterProvider, $locationProvider, $logProvider) {
 	$urlRouterProvider.otherwise('/'); // default route
 /*
 	$stateProvider.state('home', {

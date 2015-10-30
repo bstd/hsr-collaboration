@@ -8,13 +8,11 @@ angular.module('projekt2App')
 		templateUrl: 'app/home/home.html',
 		controller: 'HomeCtrl',
 		controllerAs: 'home',
-		onEnter: function() {
-			// debug only
-			console.log('enter home');
+		onEnter: function($log) {
+			$log.debug('enter home');
 		},
-		onExit: function() {
-			// debug only
-			console.log('exit home');
+		onExit: function($log) {
+			$log.debug('exit home');
 		}
 	});
 });

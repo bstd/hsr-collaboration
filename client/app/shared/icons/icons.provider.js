@@ -3,7 +3,6 @@
 // icon set configuration
 angular.module('projekt2App')
 .config(function($mdIconProvider, CONSTANTS) {
-	//console.log(CONSTANTS);
 	$mdIconProvider
 		.icon('add_shopping_cart', CONSTANTS.icons.add_shopping_cart)
 		.icon('arrow_back', CONSTANTS.icons.arrow_back)

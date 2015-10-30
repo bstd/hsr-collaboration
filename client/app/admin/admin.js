@@ -8,13 +8,11 @@ angular.module('projekt2App')
 		templateUrl: 'app/admin/admin.html',
 		controller: 'AdminCtrl',
 		controllerAs: 'admin',
-		onEnter: function() {
-			// debug only
-			console.log('enter admin');
+		onEnter: function($log) {
+			$log.debug('enter admin');
 		},
-		onExit: function() {
-			// debug only
-			console.log('exit admin');
+		onExit: function($log) {
+			$log.debug('exit admin');
 		}
 	})
 	.state('admin.product-list', {
@@ -22,13 +20,11 @@ angular.module('projekt2App')
 		templateUrl: 'app/admin/product/list.html',
 		controller: 'AdminProductListCtrl',
 		controllerAs: 'admin.product.list',
-		onEnter: function() {
-			// debug only
-			console.log('enter admin.product-list');
+		onEnter: function($log) {
+			$log.debug('enter admin.product-list');
 		},
-		onExit: function() {
-			// debug only
-			console.log('exit admin.product-list');
+		onExit: function($log) {
+			$log.debug('exit admin.product-list');
 		}
 	});
 });
