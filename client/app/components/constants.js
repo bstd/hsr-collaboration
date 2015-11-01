@@ -1,7 +1,7 @@
 'use strict';
 
 // CONSTANTS
-angular.module('shared.constants', [])
+angular.module('components.constants', [])
 .constant('CONSTANTS', {
 	icons: {
 		add_shopping_cart: '/assets/svg/ic_add_shopping_cart_24px.svg',

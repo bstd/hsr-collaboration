@@ -1,0 +1,27 @@
+navigation(ng-controller='SidenavCtrl', layout='row', flex)
+	md-sidenav(class='md-sidenav-right md-whiteframe-z2', md-component-id='right')
+		md-toolbar(class='md-theme-indigo')
+			p(class='md-toolbar-tools')
+				| Menü
+		md-content(layout-padding)
+			md-button(ng-click="toggleSidenav('right')", class='md-primary', aria-label='Menü schliessen')
+				md-icon(md-svg-icon='arrow_forward')
+			ul
+				li
+					a(href='admin')
+						| Adminbereich
+				li
+					a(href='products')
+						| Produkte
+				li
+					a(href='test')
+						| Testseiten
+
+	md-content
+		div(layout='column', layout-fill, layout-align='top center')
+			div
+				md-button(ng-click="toggleSidenav('right')", class='md-primary', aria-label='Menü')
+					md-icon(md-svg-icon='menu')
+				p(hide-sm, hide-md)
+					| Menü
+		div(flex)

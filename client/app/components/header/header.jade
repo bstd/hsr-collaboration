@@ -1,0 +1,21 @@
+div(layout='row')
+	// logo
+	div(layout='row', flex, class='header__logo')
+		a(href='/', title='Startseite')
+			img(src='/assets/images/logo.png')
+		p(hide-sm, hide-md)
+			| Craft beer shop
+
+	// search
+	div(flex, class='header__search')
+		include ../search/search.jade
+
+	// nav
+	div(layout='row', flex, class='header__nav')
+		a(href='#', title='Warenkorb')
+			md-icon(md-svg-icon='shopping_cart')
+		a(href='#', title='MyAccount')
+			md-icon(md-svg-icon='person')
+
+		// sidenav
+		include ../sidenav/sidenav.jade

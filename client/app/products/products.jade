@@ -1,12 +1,13 @@
-include ../shared/sidenav/sidenav.jade
+include ../partials/header.jade
 
 section(layout='row', flex)
 	h1
 		| This is the products view.
-section(layout='column', flex)
-	ul(ng-repeat='product in products')
-		li
-			a(href='#')
-				| {{product.title}}
-			p
-				| {{product.text}}
+section
+	md-content(layout='row', layout-wrap, class='md-padding')
+		md-card(ng-repeat='product in products', flex='25', flex-md='33', flex-sm='100')
+			md-card-content
+				a(href='#')
+					| {{product.title}}
+				p
+					| {{product.text}}

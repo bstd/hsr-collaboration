@@ -1,4 +1,4 @@
-include ../shared/sidenav/sidenav.jade
+include ../partials/header.jade
 
 section(layout='row', flex)
 	h1
@@ -6,7 +6,7 @@ section(layout='row', flex)
 	ul
 		li
 			a(ui-sref='.icons')
-				| list all
+				| list icons
 
 section(layout='row', flex)
 	div(ui-view='')

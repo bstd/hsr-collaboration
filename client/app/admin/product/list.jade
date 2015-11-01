@@ -1,11 +1,13 @@
 h2
 	| list all products for admin
-section(layout='column', flex)
-	ul(ng-repeat='product in products')
-		li
-			a(href='#')
-				| {{product.title}}
-			p
-				| {{product.text}}
-			button
-				| action todo
+section
+	md-content(layout='row', layout-wrap, class='md-padding')
+		md-card(ng-repeat='product in products', flex='25', flex-md='33', flex-sm='100')
+			md-card-content
+				a(href='#')
+					| {{product.title}}
+				p
+					| {{product.text}}
+			div(layout='row', layout-align='end center', class='md-actions')
+				md-button
+					| action todo

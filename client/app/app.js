@@ -6,8 +6,8 @@ angular.module('projekt2App', [
 	'ngSanitize',*/
 	'ngMaterial',
 	'ui.router',
-	'shared.sidenav',
-	'shared.constants'
+	'components.sidenav',
+	'components.constants'
 ])
 .config(function($stateProvider, $urlRouterProvider, $locationProvider, $logProvider) {
 	$urlRouterProvider.otherwise('/'); // default route
