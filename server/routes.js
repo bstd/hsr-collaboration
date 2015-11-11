@@ -8,8 +8,14 @@ var errors = require('./components/errors');
 var path = require('path');
 
 module.exports = function(app) {
-	// Insert routes below
+	// api
 	app.use('/api/products', require('./api/product'));
+	app.use('/api/users', require('./api/user'));
+	app.use('/api/checkUnique', require('./api/helper'));
+
+	// auth (passport)
+	app.use('/auth', require('./components/auth'));
+
 
 	// All undefined asset or api routes should return a 404
 	app.route('/:url(api|auth|components|app|bower_components|assets)/*')

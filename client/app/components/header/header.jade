@@ -1,10 +1,10 @@
 div(layout='row')
 	// logo
 	div(layout='row', flex, class='header__logo')
-		a(href='/', title='Startseite')
+		a(href='/home', title='Startseite')
 			img(src='/assets/images/logo.png')
 		p(hide-sm, hide-md)
-			| Craft beer shop
+			| shop title
 
 	// search
 	div(flex, class='header__search')
@@ -12,9 +12,9 @@ div(layout='row')
 
 	// nav
 	div(layout='row', flex, class='header__nav')
-		a(href='#', title='Warenkorb')
+		a(href='#', title='Warenkorb', ng-show='isLoggedIn()', ng-class="{active: isActive('/basket')}")
 			md-icon(md-svg-icon='shopping_cart')
-		a(href='#', title='MyAccount')
+		a(href='settings', title='MyAccount', ng-class="{active: isActive('/settings')}")
 			md-icon(md-svg-icon='person')
 
 		// sidenav

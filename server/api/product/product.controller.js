@@ -1,3 +1,4 @@
+'use strict';
 /**
  * GET     /products              ->  index
  * POST    /products              ->  create
@@ -6,7 +7,7 @@
  * DELETE  /products/:id          ->  destroy
  */
 
-'use strict';
+// TODO sanitize!!
 
 var _ = require('lodash'),
 	Product = require('../../services/products');
@@ -51,7 +52,7 @@ exports.update = function(req, res) {
 		if (!product) { return res.status(404).send('Not Found'); }
 
 		var updated = _.merge(product, req.body);
-		Product.update(req.params.id, req.body, function (err) {
+		Product.update(req.params.id, updated, function(err) {
 			if (err) { return handleError(res, err); }
 
 			return res.status(200).json(product);
@@ -75,5 +76,5 @@ exports.destroy = function(req, res) {
 };
 
 function handleError(res, err) {
-	return res.send(500, err);
+	return res.status(500).send(err);
 }

@@ -1,16 +1,27 @@
 include ../partials/header.jade
 
-section(layout='row', flex)
-	h1
+section
+	h1.debug-restricted
 		| This is the admin view.
 	ul
 		li
-			a(ui-sref='.product-list')
-				| list all
+			| products
+			ul
+				li
+					a(ui-sref='.product-list')
+						| list all products (with actions)
+				li
+					a(ui-sref='.product-add')
+						| add new product
 		li
-			a(ui-sref='.product-add')
-				| add new
+			| users
+			ul
+				li
+					a(ui-sref='.user-list')
+						| list all users (with actions)
+				li
+					a(ui-sref='.user-create')
+						| add new user
 
-section(layout='row', flex)
+section
 	div(ui-view='')
-

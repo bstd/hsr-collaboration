@@ -4,6 +4,11 @@
  * App-wide Styles
  */
 
+.debug-restricted {
+	color: red;
+	font-weight: bold;
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -20,7 +25,9 @@
 
 // injector
 @import 'admin/admin.less';
+@import 'components/header/header.less';
 @import 'components/search/search.less';
+@import 'components/sidenav/sidenav.less';
 @import 'home/home.less';
 @import 'products/products.less';
 @import 'test/icons/icons.less';

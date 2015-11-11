@@ -1,0 +1,33 @@
+include ../../partials/header.jade
+
+section
+	h1.debug-restricted
+		| This is the account/settings view.
+
+	p
+		email: {{user.email}}
+	p
+		role: {{user.role}}
+
+	//form(class='form', name='form', ng-submit='changePassword(form)', novalidate)
+		div(class='form-group')
+			label
+				| Current Password
+			input(type='password', name='password', class='form-control', ng-model='user.oldPassword')
+
+			p(class='help-block', ng-show='form.password.$error.mongoose')
+				| {{ errors.other }}
+
+		div(class='form-group')
+			label
+				| New Password
+
+			input(type='password', name='newPassword', class='form-control', ng-model='user.newPassword', ng-minlength='3', required)
+			p(class='help-block', ng-show='(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)')
+				| Password must be at least 3 characters.
+
+		p(class='help-block')
+			| {{ message }}
+
+		button(class='btn btn-lg btn-primary', type='submit')
+			| Save changes

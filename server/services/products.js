@@ -54,7 +54,3 @@ exports.remove = function(id, callback) {
 		}
 	});
 };
-
-
-
-

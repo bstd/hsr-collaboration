@@ -8,6 +8,15 @@ angular.module('projekt2App')
 		templateUrl: 'app/home/home.html',
 		controller: 'HomeCtrl',
 		controllerAs: 'home',
+		/*data: {
+			access: 'access-dummy'
+		},
+		params: {
+			test: 'params-dummy'
+		},
+		ownParams: {
+			test: 'ownParams-dummy'
+		},*/
 		onEnter: function($log) {
 			$log.debug('enter home');
 		},

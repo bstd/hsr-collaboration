@@ -1,113 +1,64 @@
 'use strict';
 
 angular.module('projekt2App', [
-	/*'ngCookies',
+	'ngCookies',
 	'ngResource',
-	'ngSanitize',*/
+	'ngSanitize',
 	'ngMaterial',
 	'ui.router',
-	'components.sidenav',
 	'components.constants'
 ])
-.config(function($stateProvider, $urlRouterProvider, $locationProvider, $logProvider) {
-	$urlRouterProvider.otherwise('/'); // default route
-/*
-	$stateProvider.state('home', {
-		url: '/home',
-		templateUrl: 'home.tpl.html',
-		controller: 'HomeCtrl',
-		controllerAs: 'home'
-	})
-	.state('terms', {// vorkasse only
-		url: '/terms',
-		templateUrl: 'terms.tpl.html',
-		controller: 'TermsCtrl',
-		controllerAs: 'terms'
-	})
-	.state('search', {
-		url: '/search',
-		templateUrl: 'search.tpl.html',
-		controller: 'SearchCtrl',
-		controllerAs: 'search'
-	})
-	.state('products', {
-		url: '/products',
-		templateUrl: 'products.tpl.html',
-		controller: 'ProductsCtrl',
-		controllerAs: 'products'
-	})
-	.state('product.detail', {
-		url: '/product/detail',
-		templateUrl: 'product.detail.tpl.html',
-		controller: 'ProductDetailCtrl',
-		controllerAs: 'productdetail'
-	})
-	.state('login', {// logout redirect to home?
-		url: '/login',
-		templateUrl: 'login.tpl.html',
-		controller: 'LoginCtrl',
-		controllerAs: 'login'
-	})
-	.state('signup', {
-		url: '/signup',
-		templateUrl: 'signup.tpl.html',
-		controller: 'SignupCtrl',
-		controllerAs: 'signup'
-	})
-	.state('account',{// list, edit
-		url: '/account',
-		templateUrl: 'account.tpl.html',
-		controller: 'AccountCtrl',
-		controllerAs: 'account'
-	}).
-	state('ratings', {// list, edit, delete
-		url: '/ratings',
-		templateUrl: 'ratings.tpl.html',
-		controller: 'RatingsCtrl',
-		controllerAs: 'ratings'
-	}).
-	state('basket', {
-		url: '/basket',
-		templateUrl: 'basket.tpl.html',
-		controller: 'BasketCtrl',
-		controllerAs: 'basket'
-	}).
-	state('checkout', {
-		url: '/checkout',
-		templateUrl: 'checkout.tpl.html',
-		controller: 'CheckoutCtrl',
-		controllerAs: 'checkout'
-	}).
-	state('confirmation', {
-		url: '/home',
-		templateUrl: 'admin.tpl.html',
-		controller: 'AdminCtrl',
-		controllerAs: 'admin'
-	}).
-	state('admin.dashboard', {
-		url: '/admin',
-		templateUrl: 'home.tpl.html',
-		controller: 'HomeCtrl',
-		controllerAs: 'home'
-	}).
-	state('admin.users', {// list, edit, delete
-		url: '/admin/users',
-		templateUrl: 'admin.users.tpl.html',
-		controller: 'AdminUsersCtrl',
-		controllerAs: 'home'
-	}).
-	state('admin.orders', {// list, edit, delete
-		url: '/admin/orders',
-		templateUrl: 'admin.orders.tpl.html',
-		controller: 'AdminOrdersCtrl',
-		controllerAs: 'adminorders'
-	}).
-	state('admin.products', {// list, edit, delete
-		url: '/admin/products',
-		templateUrl: 'admin.products.tpl.html',
-		controller: 'AdminProductsCtrl',
-		controllerAs: 'adminproducts'
-	});
-*/
+.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $logProvider) {
+	$urlRouterProvider.otherwise('/');
 	$locationProvider.html5Mode(true);
-});
+	$httpProvider.interceptors.push('authInterceptor');// using passport example implementation
+})
+.factory('authInterceptor', function($rootScope, $q, $cookieStore, $location) {
+	return {
+		// Add authorization token to headers
+		request: function(config) {
+			config.headers = config.headers || {};
+
+			if ($cookieStore.get('token')) {
+				config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+			}
+
+			return config;
+		},
+
+		// Intercept 401s and redirect you to login
+		responseError: function(response) {
+//console.log('client app - authinterceptor, responseerror:',response);
+			if (response.status === 401) {
+				$location.path('/login');
+
+				// remove any stale tokens
+				$cookieStore.remove('token');
+
+				return $q.reject(response);
+			}
+			else {
+				return $q.reject(response);
+			}
+		}
+	};
+})
+.run(['$rootScope', '$location', 'Auth', function($rootScope, $location, Auth) {
+	// Redirect to login if route requires auth and you're not logged in
+	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+		/*console.log('event:', event);
+		console.log('toState:', toState);
+		console.log('toParams:', toParams);
+		console.log('fromState:', fromState);
+		console.log('fromParams:',fromParams);*/
+
+		Auth.isLoggedInAsync(function(loggedIn) {
+//console.log('isloggedinasync:',loggedIn);
+//console.log('toState.authenticate=', toState.authenticate);
+//console.log('loggedIn=', loggedIn);
+			if (toState.authenticate && !loggedIn) {
+				$location.path('/login');
+			}
+		});
+	});
+}]);
