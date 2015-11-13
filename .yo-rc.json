@@ -12,10 +12,12 @@
       "babel": false,
       "js": true,
       "jade": true,
-      "less": true,
+      "sass": true,
       "uirouter": true,
       "bootstrap": false,
-      "uibootstrap": false
+      "uibootstrap": false,
+      "mongoose": true,
+      "auth": true
     }
   },
   "generator-ng-component": {
@@ -31,7 +33,7 @@
     "extensions": [
       "js",
       "jade",
-      "less"
+      "scss"
     ],
     "directiveSimpleTemplates": "",
     "directiveComplexTemplates": "",

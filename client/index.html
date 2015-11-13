@@ -22,13 +22,13 @@
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
-  <body ng-app="projekt2App">
+  <body ng-app="beershopApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <section ui-view=""></section>
+    <div ui-view=""></div>
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -40,11 +40,11 @@
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-animate/angular-animate.js"></script>
       <script src="bower_components/angular-aria/angular-aria.js"></script>
       <script src="bower_components/angular-material/angular-material.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
@@ -55,40 +55,16 @@
           <!-- injector:js -->
           <script src="app/account/account.js"></script>
           <script src="app/account/login/login.controller.js"></script>
-          <script src="app/account/registration/registration.controller.js"></script>
           <script src="app/account/settings/settings.controller.js"></script>
+          <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
-          <script src="app/admin/product/add.controller.js"></script>
-          <script src="app/admin/product/add.js"></script>
-          <script src="app/admin/product/list.controller.js"></script>
-          <script src="app/admin/product/list.js"></script>
-          <script src="app/admin/user/checkUnique.service.js"></script>
-          <script src="app/admin/user/create.controller.js"></script>
-          <script src="app/admin/user/destroy.controller.js"></script>
-          <script src="app/admin/user/list.controller.js"></script>
-          <script src="app/admin/user/update.controller.js"></script>
-          <script src="app/admin/user/user.service.js"></script>
-          <script src="app/components/auth/auth.service.js"></script>
-          <script src="app/components/auth/user.auth.service.js"></script>
-          <script src="app/components/constants.js"></script>
-          <script src="app/components/form/unique.directive.js"></script>
-          <script src="app/components/header/header.controller.js"></script>
-          <script src="app/components/header/header.directive.js"></script>
-          <script src="app/components/header/header.js"></script>
-          <script src="app/components/icons/icons.provider.js"></script>
-          <script src="app/components/search/search.directive.js"></script>
-          <script src="app/components/sidenav/sidenav.controller.js"></script>
-          <script src="app/components/sidenav/sidenav.js"></script>
-          <script src="app/components/theme/theme.provider.js"></script>
-          <script src="app/home/home.controller.js"></script>
-          <script src="app/home/home.js"></script>
-          <script src="app/products/products.controller.js"></script>
-          <script src="app/products/products.js"></script>
-          <script src="app/test/icons/icons.controller.js"></script>
-          <script src="app/test/icons/icons.js"></script>
-          <script src="app/test/test.controller.js"></script>
-          <script src="app/test/test.js"></script>
+          <script src="app/main/main.controller.js"></script>
+          <script src="app/main/main.js"></script>
+          <script src="components/auth/auth.service.js"></script>
+          <script src="components/auth/user.service.js"></script>
+          <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+          <script src="components/navbar/navbar.controller.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
 </body>

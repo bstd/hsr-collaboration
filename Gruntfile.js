@@ -1,4 +1,4 @@
-// Generated on 2015-10-08 using generator-angular-fullstack 2.1.1
+// Generated on 2015-11-10 using generator-angular-fullstack 2.1.1
 'use strict';
 
 module.exports = function (grunt) {
@@ -14,7 +14,7 @@ module.exports = function (grunt) {
     express: 'grunt-express-server',
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
-    //cdnify: 'grunt-google-cdn',
+    cdnify: 'grunt-google-cdn',
     protractor: 'grunt-protractor-runner',
     buildcontrol: 'grunt-build-control'
   });
@@ -79,15 +79,15 @@ module.exports = function (grunt) {
         ],
         tasks: ['newer:jshint:all', 'karma']
       },
-      injectLess: {
+      injectSass: {
         files: [
-          '<%= yeoman.client %>/{app,components}/**/*.less'],
-        tasks: ['injector:less']
+          '<%= yeoman.client %>/{app,components}/**/*.{scss,sass}'],
+        tasks: ['injector:sass']
       },
-      less: {
+      sass: {
         files: [
-          '<%= yeoman.client %>/{app,components}/**/*.less'],
-        tasks: ['less', 'autoprefixer']
+          '<%= yeoman.client %>/{app,components}/**/*.{scss,sass}'],
+        tasks: ['sass', 'autoprefixer']
       },
       jade: {
         files: [
@@ -280,12 +280,12 @@ module.exports = function (grunt) {
     // The following *-min tasks produce minified files in the dist folder
     imagemin: {
       dist: {
-		files: [{
-			expand: true,
-			cwd: '<%= yeoman.client %>/assets/images',
-			src: '{,*/}*.{png,jpg,jpeg,gif}',
-			dest: '<%= yeoman.dist %>/public/assets/images'
-		}],
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.client %>/assets/images',
+          src: '{,*/}*.{png,jpg,jpeg,gif}',
+          dest: '<%= yeoman.dist %>/public/assets/images'
+        }],
 		options: {
 			cache: false
 		}
@@ -295,10 +295,10 @@ module.exports = function (grunt) {
     svgmin: {
       dist: {
         files: [{
-			expand: true,
-			cwd: '<%= yeoman.client %>/assets/svg',
-			src: '{,*/}*.svg',
-			dest: '<%= yeoman.dist %>/public/assets/svg'
+          expand: true,
+          cwd: '<%= yeoman.client %>/assets/svg',
+          src: '{,*/}*.svg',
+          dest: '<%= yeoman.dist %>/public/assets/svg'
         }]
       }
     },
@@ -320,7 +320,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       options: {
         // This should be the name of your apps angular module
-        module: 'projekt2App',
+        module: 'beershopApp',
         htmlmin: {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,
@@ -345,11 +345,11 @@ module.exports = function (grunt) {
     },
 
     // Replace Google CDN references
-    /*cdnify: {
+    cdnify: {
       dist: {
         html: ['<%= yeoman.dist %>/public/*.html']
       }
-    },*/
+    },
 
     // Copies remaining files to places other tasks can use
     copy: {
@@ -415,11 +415,11 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'jade',
-        'less',
+        'sass',
       ],
       test: [
         'jade',
-        'less',
+        'sass',
       ],
       debug: {
         tasks: [
@@ -432,7 +432,7 @@ module.exports = function (grunt) {
       },
       dist: [
         'jade',
-        'less',
+        'sass',
         'imagemin',
         'svgmin'
       ]
@@ -496,20 +496,21 @@ module.exports = function (grunt) {
       }
     },
 
-    // Compiles Less to CSS
-    less: {
-      options: {
-        paths: [
-          '<%= yeoman.client %>/bower_components',
-          '<%= yeoman.client %>/app',
-          '<%= yeoman.client %>/components'
-        ]
-      },
+    // Compiles Sass to CSS
+    sass: {
       server: {
+        options: {
+          loadPath: [
+            '<%= yeoman.client %>/bower_components',
+            '<%= yeoman.client %>/app',
+            '<%= yeoman.client %>/components'
+          ],
+          compass: false
+        },
         files: {
-          '.tmp/app/app.css' : '<%= yeoman.client %>/app/app.less'
+          '.tmp/app/app.css' : '<%= yeoman.client %>/app/app.scss'
         }
-      },
+      }
     },
 
     injector: {
@@ -541,8 +542,8 @@ module.exports = function (grunt) {
         }
       },
 
-      // Inject component less into app.less
-      less: {
+      // Inject component scss into app.scss
+      sass: {
         options: {
           transform: function(filePath) {
             filePath = filePath.replace('/client/app/', '');
@@ -553,9 +554,9 @@ module.exports = function (grunt) {
           endtag: '// endinjector'
         },
         files: {
-          '<%= yeoman.client %>/app/app.less': [
-            '<%= yeoman.client %>/{app,components}/**/*.less',
-            '!<%= yeoman.client %>/app/app.less'
+          '<%= yeoman.client %>/app/app.scss': [
+            '<%= yeoman.client %>/{app,components}/**/*.{scss,sass}',
+            '!<%= yeoman.client %>/app/app.{scss,sass}'
           ]
         }
       },
@@ -605,7 +606,7 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'clean:server',
         'env:all',
-        'injector:less', 
+        'injector:sass', 
         'concurrent:server',
         'injector',
         'wiredep',
@@ -617,7 +618,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'env:all',
-      'injector:less', 
+      'injector:sass', 
       'concurrent:server',
       'injector',
       'wiredep',
@@ -647,7 +648,7 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'clean:server',
         'env:all',
-        'injector:less', 
+        'injector:sass', 
         'concurrent:test',
         'injector',
         'autoprefixer',
@@ -660,7 +661,7 @@ module.exports = function (grunt) {
         'clean:server',
         'env:all',
         'env:test',
-        'injector:less', 
+        'injector:sass', 
         'concurrent:test',
         'injector',
         'wiredep',
@@ -678,7 +679,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'injector:less', 
+    'injector:sass', 
     'concurrent:dist',
     'injector',
     'wiredep',
@@ -688,7 +689,7 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
-    //'cdnify',
+    'cdnify',
     'cssmin',
     'uglify',
     'rev',

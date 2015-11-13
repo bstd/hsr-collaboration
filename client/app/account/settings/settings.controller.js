@@ -1,12 +1,21 @@
 'use strict';
 
-angular.module('projekt2App')
-.controller('SettingsCtrl', ['$scope', 'UserAuthService', function($scope, UserAuthService) {
-	$scope.user = {};
-	$scope.errors = {};
+angular.module('beershopApp')
+  .controller('SettingsCtrl', function ($scope, User, Auth) {
+    $scope.errors = {};
 
-	// prefill
-	UserAuthService.get().$promise.then(function(data) {
-		$scope.user = data;
-	});
-}]);
+    $scope.changePassword = function(form) {
+      $scope.submitted = true;
+      if(form.$valid) {
+        Auth.changePassword( $scope.user.oldPassword, $scope.user.newPassword )
+        .then( function() {
+          $scope.message = 'Password successfully changed.';
+        })
+        .catch( function() {
+          form.password.$setValidity('mongoose', false);
+          $scope.errors.other = 'Incorrect password';
+          $scope.message = '';
+        });
+      }
+		};
+  });

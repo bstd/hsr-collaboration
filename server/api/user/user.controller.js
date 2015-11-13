@@ -1,91 +1,101 @@
 'use strict';
 
+var User = require('./user.model');
+var passport = require('passport');
+var config = require('../../config/environment');
+var jwt = require('jsonwebtoken');
+
+var validationError = function(res, err) {
+  return res.status(422).json(err);
+};
+
 /**
- * GET     /users              ->  index
- * POST    /users              ->  create
- * GET     /users/me           ->  me (special route for local auth (passport)
- * GET     /users/:id          ->  show
- * PUT     /users/:id          ->  update
- * DELETE  /users/:id          ->  destroy
+ * Get list of users
+ * restriction: 'admin'
  */
-
-// TODO sanitize!!
-
-var _ = require('lodash'),
-	User = require('../../services/users');
-
-
-// Get list of users
 exports.index = function(req, res) {
-	User.find(function(err, users) {
-		if (err) { return handleError(res, err); }
-
-		return res.status(200).json(users);
-	});
+  User.find({}, '-salt -hashedPassword', function (err, users) {
+    if(err) return res.status(500).send(err);
+    res.status(200).json(users);
+  });
 };
 
-// Get my info
-exports.me = function(req, res, next) {
-	User.findById(req.user._id, function(err, user) {// security issue: pw leaked here
-		if (err) { return next(err); }
-		if (!user) { return res.json(401); }
-		res.json(user);
-	});
+/**
+ * Creates a new user
+ */
+exports.create = function (req, res, next) {
+  var newUser = new User(req.body);
+  newUser.provider = 'local';
+  newUser.role = 'user';
+  newUser.save(function(err, user) {
+    if (err) return validationError(res, err);
+    var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
+    res.json({ token: token });
+  });
 };
 
-// Get a single user
-exports.show = function(req, res) {
-	User.findById(req.params.id, function(err, user) {
-		if (err) { return handleError(res, err); }
+/**
+ * Get a single user
+ */
+exports.show = function (req, res, next) {
+  var userId = req.params.id;
 
-		if (!user) { return res.status(404).send('Not Found'); }
-
-		return res.json(user);
-	});
+  User.findById(userId, function (err, user) {
+    if (err) return next(err);
+    if (!user) return res.status(401).send('Unauthorized');
+    res.json(user.profile);
+  });
 };
 
-// Creates a new user in the DB.
-exports.create = function(req, res) {
-	User.create(req.body, function(err, user) {
-		if (err) { return handleError(res, err); }
-
-		return res.status(201).json(user);
-	});
-};
-
-// Updates an existing user in the DB.
-exports.update = function(req, res) {
-	if (req.body._id) { delete req.body._id; }
-
-	User.findById(req.params.id, function(err, user) {
-		if (err) { return handleError(res, err); }
-
-		if (!user) { return res.status(404).send('Not Found'); }
-
-		var updated = _.merge(user, req.body);
-		User.update(req.params.id, updated, function(err) {
-			if (err) { return handleError(res, err); }
-
-			return res.status(200).json(user);
-		});
-	});
-};
-
-// Deletes a user from the DB.
+/**
+ * Deletes a user
+ * restriction: 'admin'
+ */
 exports.destroy = function(req, res) {
-	User.findById(req.params.id, function(err, user) {
-		if (err) { return handleError(res, err); }
-
-		if (!user) { return res.status(404).send('Not Found'); }
-
-		User.remove(req.params.id, function(err) {
-			if(err) { return handleError(res, err); }
-
-			return res.status(204).send('No Content');
-		});
-	});
+  User.findByIdAndRemove(req.params.id, function(err, user) {
+    if(err) return res.status(500).send(err);
+    return res.status(204).send('No Content');
+  });
 };
 
-function handleError(res, err) {
-	return res.status(500).send(err);
-}
+/**
+ * Change a users password
+ */
+exports.changePassword = function(req, res, next) {
+  var userId = req.user._id;
+  var oldPass = String(req.body.oldPassword);
+  var newPass = String(req.body.newPassword);
+
+  User.findById(userId, function (err, user) {
+    if(user.authenticate(oldPass)) {
+      user.password = newPass;
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.status(200).send('OK');
+      });
+    } else {
+      res.status(403).send('Forbidden');
+    }
+  });
+};
+
+/**
+ * Get my info
+ */
+exports.me = function(req, res, next) {
+  var userId = req.user._id;
+  User.findOne({
+    _id: userId
+  }, '-salt -hashedPassword', function(err, user) { // don't ever give out the password or salt
+    if (err) return next(err);
+    if (!user) return res.status(401).send('Unauthorized');
+    res.json(user);
+  });
+};
+
+/**
+ * Authentication callback
+ */
+exports.authCallback = function(req, res, next) {
+  res.redirect('/');
+};

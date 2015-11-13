@@ -1,6 +1,17 @@
 'use strict';
 
-angular.module('projekt2App')
-.controller('AdminCtrl', ['$scope', '$http', function($scope, $http) {
+angular.module('beershopApp')
+  .controller('AdminCtrl', function ($scope, $http, Auth, User) {
 
-}]);
+    // Use the User $resource to fetch all users
+    $scope.users = User.query();
+
+    $scope.delete = function(user) {
+      User.remove({ id: user._id });
+      angular.forEach($scope.users, function(u, i) {
+        if (u === user) {
+          $scope.users.splice(i, 1);
+        }
+      });
+    };
+  });
