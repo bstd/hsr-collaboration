@@ -7,6 +7,8 @@ var auth = require('../../auth/auth.service');
 
 var router = express.Router();
 
+// route restrictions based on passport auth and user role!
+// TODO finalize
 router.get('/', auth.hasRole('admin'), controller.index);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 router.get('/me', auth.isAuthenticated(), controller.me);

@@ -14,28 +14,28 @@ var validateJwt = expressJwt({ secret: config.secrets.session });
  * Otherwise returns 403
  */
 function isAuthenticated() {
-  return compose()
-    // Validate jwt
-    .use(function(req, res, next) {
+	return compose()
+	// Validate jwt
+	.use(function(req, res, next) {
 console.log('server auth auth.service - isAuthenticated');
-      // allow access_token to be passed through query parameter as well
-      if(req.query && req.query.hasOwnProperty('access_token')) {
-        req.headers.authorization = 'Bearer ' + req.query.access_token;
-      }
-      validateJwt(req, res, next);
-    })
-    // Attach user to request
-    .use(function(req, res, next) {
+		// allow access_token to be passed through query parameter as well
+		if (req.query && req.query.hasOwnProperty('access_token')) {
+			req.headers.authorization = 'Bearer ' + req.query.access_token;
+		}
+		validateJwt(req, res, next);
+	})
+	// Attach user to request
+	.use(function(req, res, next) {
 console.log('server auth auth.service - isAuthenticated, use user:',req.user);
-      User.findById(req.user._id, function (err, user) {
+		User.findById(req.user._id, function(err, user) {
 console.log('server auth auth.service - isAuthenticated, find:',user);
-        if (err) return next(err);
-        if (!user) return res.status(401).send('Unauthorized');
+			if (err) return next(err);
+			if (!user) return res.status(401).send('Unauthorized');
 
-        req.user = user;
-        next();
-      });
-    });
+			req.user = user;
+			next();
+		});
+	});
 }
 
 /**
@@ -43,18 +43,18 @@ console.log('server auth auth.service - isAuthenticated, find:',user);
  */
 function hasRole(roleRequired) {
 console.log('server auth auth.service - hasRole required:',roleRequired);
-  if (!roleRequired) throw new Error('Required role needs to be set');
+	if (!roleRequired) throw new Error('Required role needs to be set');
 
-  return compose()
-    .use(isAuthenticated())
-    .use(function meetsRequirements(req, res, next) {
-      if (config.userRoles.indexOf(req.user.role) >= config.userRoles.indexOf(roleRequired)) {
-        next();
-      }
-      else {
-        res.status(403).send('Forbidden');
-      }
-    });
+	return compose()
+	.use(isAuthenticated())
+	.use(function meetsRequirements(req, res, next) {
+		if (config.userRoles.indexOf(req.user.role) >= config.userRoles.indexOf(roleRequired)) {
+			next();
+		}
+		else {
+			res.status(403).send('Forbidden');
+		}
+	});
 }
 
 /**
@@ -62,7 +62,7 @@ console.log('server auth auth.service - hasRole required:',roleRequired);
  */
 function signToken(id) {
 console.log('server auth - sign token:',id);
-  return jwt.sign({ _id: id }, config.secrets.session, { expiresInMinutes: 60*5 });
+	return jwt.sign({ _id: id }, config.secrets.session, { expiresIn: 300 });// in seconds
 }
 
 /**
@@ -70,10 +70,10 @@ console.log('server auth - sign token:',id);
  */
 function setTokenCookie(req, res) {
 console.log('server auth - set token cookie');
-  if (!req.user) return res.status(404).json({ message: 'Something went wrong, please try again.'});
-  var token = signToken(req.user._id, req.user.role);
-  res.cookie('token', JSON.stringify(token));
-  res.redirect('/');
+	if (!req.user) return res.status(404).json({ message: 'Something went wrong, please try again.'});
+	var token = signToken(req.user._id, req.user.role);
+	res.cookie('token', JSON.stringify(token));
+	res.redirect('/');
 }
 
 exports.isAuthenticated = isAuthenticated;

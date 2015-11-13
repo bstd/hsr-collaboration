@@ -2,21 +2,21 @@
 
 angular.module('beershopApp')
   .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+    $scope.awesomeProducts = [];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
+    $http.get('/api/products').success(function(awesomeProducts) {
+      $scope.awesomeProducts = awesomeProducts;
     });
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
+    $scope.addProduct = function() {
+      if($scope.newProduct === '') {
         return;
       }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
+      $http.post('/api/products', { name: $scope.newProduct });
+      $scope.newProduct = '';
     };
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
+    $scope.deleteProduct = function(product) {
+      $http.delete('/api/products/' + product._id);
     };
   });
