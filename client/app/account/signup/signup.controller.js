@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('beershopApp')
+angular.module('brewApp')
   .controller('SignupCtrl', function ($scope, Auth, $location) {
     $scope.user = {};
     $scope.errors = {};

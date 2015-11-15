@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('beershopApp')
+angular.module('brewApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
       'title': 'Home',

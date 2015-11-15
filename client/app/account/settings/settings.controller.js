@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('beershopApp')
+angular.module('brewApp')
   .controller('SettingsCtrl', function ($scope, User, Auth) {
     $scope.errors = {};
 

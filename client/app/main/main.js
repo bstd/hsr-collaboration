@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('beershopApp')
+angular.module('brewApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {

@@ -3,7 +3,7 @@
 /**
  * Removes server error when user updates input
  */
-angular.module('beershopApp')
+angular.module('brewApp')
   .directive('mongooseError', function () {
     return {
       restrict: 'A',

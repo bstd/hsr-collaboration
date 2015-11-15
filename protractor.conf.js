@@ -14,7 +14,8 @@ exports.config = {
 
   // If true, only chromedriver will be started, not a standalone selenium.
   // Tests for browsers other than chrome will not run.
-  chromeOnly: true,
+  directConnect: true,
+  debug: true,
 
   // list of files / patterns to load in the browser
   specs: [
@@ -45,6 +46,6 @@ exports.config = {
   //
   // See the full list at https://github.com/juliemr/minijasminenode
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000
+    defaultTimeoutInterval: 10000
   }
 };
