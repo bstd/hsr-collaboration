@@ -1,0 +1,50 @@
+h2.debug-restricted
+  | Neuen Benutzer erfassen
+section
+  md-content(layout='row', layout-wrap, class='md-padding')
+    form(ng-submit='create(form)', name='form', class='form', novalidate)
+      div(class='form-group', ng-class='{ "has-success": form.name.$valid && submitted, "has-error": form.name.$invalid && submitted }')
+        label
+          | Name
+        input(type='text', name='name', class='form-control', ng-model='user.name', required)
+
+        p(class='help-block', ng-show='form.name.$error.required && submitted')
+          | Bitte geben Sie einen Namen ein
+
+      div(class='form-group', ng-class='{ "has-success": form.email.$valid && submitted, "has-error": form.email.$invalid && submitted }')
+        label
+          | E-Mail Adresse
+        input(type='email', name='email', class='form-control', ng-model='user.email', required, mongoose-error)
+
+        p(class='help-block', ng-show='form.email.$error.email && submitted')
+          | Bitte geben Sie eine gültige E-Mail Adresse ein
+
+        p(class='help-block', ng-show='form.email.$error.required && submitted')
+          | Bitte geben Sie eine E-Mail Adresse ein
+
+        p(class='help-block', ng-show='form.email.$error.mongoose')
+          | {{ errors.email }}
+
+      div(class='form-group', ng-class='{ "has-success": form.password.$valid && submitted, "has-error": form.password.$invalid && submitted }')
+        label
+          | Passwort
+        input(type='password', name='password', class='form-control', ng-model='user.password',	ng-minlength='3', required, mongoose-error)
+
+        p(class='help-block', ng-show='(form.password.$error.minlength || form.password.$error.required) && submitted')
+          | Passwort muss mindestens 3 Zeichen lang sein
+
+        p(class='help-block', ng-show='form.password.$error.mongoose')
+          | {{ errors.password }}
+
+
+      //div(class='form-group')
+        label
+          | Rolle
+        input(type='text', name='role', class='form-control', ng-model='user.role')
+
+
+      md-button(type='submit', class='btn btn-inverse btn-lg btn-login')
+        | Speichern
+
+      md-button(ui-sref='admin.user-list')
+        | Abbrechen

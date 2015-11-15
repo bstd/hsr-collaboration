@@ -1,22 +1,10 @@
 'use strict';
 
 angular.module('brewApp')
-  .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeProducts = [];
+.controller('MainCtrl', ['$scope', '$http', 'ProductService', function ($scope, $http, ProductService) {
+  $scope.products = [];
 
-    $http.get('/api/products').success(function(awesomeProducts) {
-      $scope.awesomeProducts = awesomeProducts;
-    });
-
-    $scope.addProduct = function() {
-      if($scope.newProduct === '') {
-        return;
-      }
-      $http.post('/api/products', { name: $scope.newProduct });
-      $scope.newProduct = '';
-    };
-
-    $scope.deleteProduct = function(product) {
-      $http.delete('/api/products/' + product._id);
-    };
+  ProductService.query().$promise.then(function(data) {
+    $scope.products = data;
   });
+}]);

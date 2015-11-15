@@ -1,27 +1,36 @@
 'use strict';
 
 angular.module('brewApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location) {
-    $scope.user = {};
-    $scope.errors = {};
+.controller('LoginCtrl', ['$scope', '$state', '$mdToast', 'Auth', function($scope, $state, $mdToast, Auth) {
+  $scope.user = {};
+  $scope.errors = {};
 
-    $scope.login = function(form) {
-      $scope.submitted = true;
+  // test toast
+  $scope.showSimpleToast = function() {
+    $mdToast.show(
+      $mdToast.simple()
+      .content('login successful')
+      .position('top right')
+      .hideDelay(3000)
+    );
+  };
 
-      if(form.$valid) {
-        Auth.login({
-          email: $scope.user.email,
-          password: $scope.user.password
-        })
-        .then( function() {
-console.log('auth.login then');
-          // Logged in, redirect to home
-          $location.path('/');
-        })
-        .catch( function(err) {
-          $scope.errors.other = err.message;
-        });
-      }
-    };
+  $scope.loginUser = function(form) {
+    $scope.submitted = true;
 
-  });
+    if (form.$valid) {
+      Auth.login({
+        email: $scope.user.email,
+        password: $scope.user.password
+      })
+      .then(function() {
+        // TODO redirect to home for user, to admin for admin
+        $state.go('settings');
+        $scope.showSimpleToast();
+      })
+      .catch(function(err) {
+        $scope.errors.other = err.message;
+      });
+    }
+  };
+}]);

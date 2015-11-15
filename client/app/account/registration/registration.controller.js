@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('brewApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location) {
+  .controller('RegistrationCtrl', function ($scope, Auth, $location) {
     $scope.user = {};
     $scope.errors = {};
 

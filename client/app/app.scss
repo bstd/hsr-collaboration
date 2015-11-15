@@ -7,6 +7,11 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
  * App-wide Styles
  */
 
+.debug-restricted {// debug helper for all restricted views
+	color: red;
+	font-weight: bold;
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -25,5 +30,13 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 // injector
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
+@import 'basket/basket.scss';
+@import 'checkout/checkout.scss';
 @import 'main/main.scss';
+@import 'product/product.scss';
+@import 'test/icons/icons.scss';
+@import 'test/test.scss';
+@import 'header/header.scss';
+@import 'search/search.scss';
+@import 'sidenav/sidenav.scss';
 // endinjector
