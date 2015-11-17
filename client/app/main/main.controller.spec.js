@@ -8,7 +8,7 @@ describe('Controller: MainCtrl', function () {
   var MainCtrl,
       scope,
       $httpBackend;
-
+// TODO refactor to mock resource based
   // Initialize the controller and a mock scope
   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
     $httpBackend = _$httpBackend_;
@@ -23,6 +23,6 @@ describe('Controller: MainCtrl', function () {
 
   it('should attach a list of products to the scope', function () {
     $httpBackend.flush();
-    expect(scope.awesomeProducts.length).toBe(4);
+    expect(scope.products.length).toBe(4);
   });
 });
