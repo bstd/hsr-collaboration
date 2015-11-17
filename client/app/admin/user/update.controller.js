@@ -1,32 +1,29 @@
 'use strict';
-// TODO
+
 angular.module('brewApp')
-.controller('AdminUserUpdateCtrl', ['$scope', '$http', '$state', 'AdminUserService', function($scope, $http, $state, AdminUserService) {
-//console.log($stateParams);
-	$scope.id = $state.params.id;
-	$scope.user = {};
-	$scope.errors = {};
+.controller('AdminUserUpdateCtrl', ['$scope', '$http', '$state', '$log', 'AdminUserService', function($scope, $http, $state, $log, AdminUserService) {
+  $log.debug($state.params);
+  $scope.id = $state.params.id;
+  $scope.user = {};
+  $scope.errors = {};
 
-	// prefill
-	$scope.user = AdminUserService.get({ id: $scope.id }).$promise.then(function(data) {
-//console.log('queried:',data);
-		$scope.user = data;
-	});
+  // prefill
+  $scope.user = AdminUserService.get({ id: $scope.id }, function(data) {
+    $log.debug('queried:',data);
+  });
 
-	// submit
-	$scope.update = function(form) {
-		 $scope.submitted = true;
-//console.log('submit:',form);
-//console.log('id:',$scope.id);
+  // submit
+  $scope.update = function(form) {
+     $scope.submitted = true;
 
-		if (form.$valid) {
-			// avoid email constraint checks: read-only
+    if (form.$valid) {
+      var $id = $scope.id;
 
-			var $id = $scope.id;
-//console.log('AdminUserService.update with id:',$id);
-			AdminUserService.update({ id: $id }, $scope.user).$promise.then(function() {
-				$state.go('admin.user-list');
-			});
-		}
-	};
+      $log.debug('AdminUserService.update with id:',$id);
+
+      AdminUserService.update({ id: $id }, $scope.user, function() {
+        $state.go('admin.user-list');
+      });
+    }
+  };
 }]);

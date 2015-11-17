@@ -1,19 +1,9 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('LoginCtrl', ['$scope', '$state', '$mdToast', 'Auth', function($scope, $state, $mdToast, Auth) {
+.controller('LoginCtrl', ['$scope', '$state', 'Auth', 'ToastSimpleService', function($scope, $state, Auth, ToastSimpleService) {
   $scope.user = {};
   $scope.errors = {};
-
-  // test toast
-  $scope.showSimpleToast = function() {
-    $mdToast.show(
-      $mdToast.simple()
-      .content('login successful')
-      .position('top right')
-      .hideDelay(3000)
-    );
-  };
 
   $scope.loginUser = function(form) {
     $scope.submitted = true;
@@ -24,9 +14,8 @@ angular.module('brewApp')
         password: $scope.user.password
       })
       .then(function() {
-        // TODO redirect to home for user, to admin for admin
-        $state.go('settings');
-        $scope.showSimpleToast();
+        $state.go('main');
+        ToastSimpleService('Anmeldung erfolgreich');
       })
       .catch(function(err) {
         $scope.errors.other = err.message;

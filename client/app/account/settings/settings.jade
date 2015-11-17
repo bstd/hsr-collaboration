@@ -3,12 +3,23 @@ include ../../partials/header.jade
 section
   h1.debug-restricted
     | Persönlicher Bereich
+  // name and email readonly for 'user'
+  md-content(layout='row', layout-wrap, class='md-padding')
+    div(class='form-group')
+      label
+        | Name
+      input(type='text', name='name', class='form-control', ng-model='user.name', readonly)
+    div(class='form-group')
+      label
+        | E-Mail Adresse
+      input(type='email', name='email', class='form-control', ng-model='user.email', readonly)
+
   md-content(layout='row', layout-wrap, class='md-padding')
     form(class='form', name='form', ng-submit='changePassword(form)', novalidate='')
       div(class='form-group')
         label
           | Aktuelles Passwort
-        input.form-control(type='password', name='password', ng-model='user.oldPassword', mongoose-error='')
+        input(type='password', name='password', class='form-control', ng-model='user.oldPassword', mongoose-error='')
 
         p(class='help-block', ng-show='form.password.$error.mongoose')
           | {{ errors.other }}

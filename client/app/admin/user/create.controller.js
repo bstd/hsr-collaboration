@@ -1,21 +1,19 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('AdminUserCreateCtrl', ['$scope', '$http', '$state', 'AdminUserService', function($scope, $http, $state, AdminUserService) {
+.controller('AdminUserCreateCtrl', ['$scope', '$http', '$state', '$log', 'AdminUserService', 'ToastSimpleService', function($scope, $http, $state, $log, AdminUserService, ToastSimpleService) {
   $scope.user = {};
   $scope.errors = {};
 
   // submit
   $scope.create = function(form) {
     $scope.submitted = true;
-//console.log('submit:',form);
-//console.log('valid:', form.$valid);
+
     if (form.$valid) {
-//console.log('form.$valid');
-//console.log('create user:', $scope.user);
-      AdminUserService.create($scope.user).$promise.then(function(result) {
-        //$location.path('/');
+      AdminUserService.create($scope.user, function(result) {
+        $log.debug('AdminUserCreateCtrl - AdminUserService.create:',result);
         $state.go('admin.user-list');
+        ToastSimpleService('Benutzer erfolgreich erstellt');
       })
       .catch( function(err) {
         err = err.data;

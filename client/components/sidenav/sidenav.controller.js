@@ -1,20 +1,10 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('SidenavCtrl', ['$scope', '$location', '$mdSidenav', '$mdToast', '$log', 'Auth', function($scope, $location, $mdSidenav, $mdToast, $log, Auth) {
+.controller('SidenavCtrl', ['$scope', '$location', '$mdSidenav', 'Auth', 'ToastSimpleService', function($scope, $location, $mdSidenav, Auth, ToastSimpleService) {
   // auth
   $scope.isLoggedIn = Auth.isLoggedIn;
   $scope.isAdmin = Auth.isAdmin;
-
-  // test toast
-  $scope.showSimpleToast = function() {
-    $mdToast.show(
-      $mdToast.simple()
-      .content('logout successful')
-      .position('top right')
-      .hideDelay(3000)
-    );
-  };
 
   // active route
   $scope.isActive = function(route) {
@@ -30,6 +20,6 @@ angular.module('brewApp')
   $scope.logout = function() {
     Auth.logout();
     $location.path('/login');
-    $scope.showSimpleToast();
+    ToastSimpleService('Abmeldung erfolgreich');
   };
 }]);

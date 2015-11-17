@@ -1,14 +1,14 @@
 {
   "node": true,
   "browser": true,
-  "esnext": true,
+  "esnext": false,//http://jshint.com/docs/options/#esnext
   "bitwise": true,
   "camelcase": true,
   "curly": true,
   "eqeqeq": true,
   "immed": true,
   "latedef": true,
-  "newcap": true,
+  "newcap": false,//http://jshint.com/docs/options/#newcap
   "noarg": true,
   "quotmark": "single",
   "undef": true,

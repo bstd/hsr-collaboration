@@ -8,7 +8,7 @@ section
           | E-Mail Adresse
         input(type='email', name='email', class='form-control', ng-model='user.email', readonly)
 
-      div(class='form-group', ng-class="{ 'has-success': form.password.$valid && submitted, 'has-error': form.password.$invalid && submitted }")
+      div(class='form-group', ng-class='{ "has-success": form.password.$valid && submitted, "has-error": form.password.$invalid && submitted }')
         label
           | Passwort
         input(type='password', name='password', class='form-control', ng-model='user.password',	ng-minlength='3', required)

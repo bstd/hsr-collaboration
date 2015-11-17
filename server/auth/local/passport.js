@@ -4,13 +4,13 @@ var LocalStrategy = require('passport-local').Strategy;
 exports.setup = function (User, config) {
   passport.use(new LocalStrategy({
       usernameField: 'email',
-      passwordField: 'password' // this is the virtual field on the model
+      passwordField: 'password'// virtual
     },
     function(email, password, done) {
       User.findOne({
         email: email.toLowerCase()
       }, function(err, user) {
-console.log('fnc returned user:',user);
+//console.log('fnc returned user:',user);
         if (err) return done(err);
 
         if (!user) {
