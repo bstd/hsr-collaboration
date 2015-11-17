@@ -14,13 +14,13 @@ angular.module('brewApp')
         email: $scope.user.email,
         password: $scope.user.password
       })
-      .then( function() {
+      .then(function() {
         // Account created, redirect to home
         //$location.path('/');
         $state.go('main');
         ToastSimpleService('Registrierung erfolgreich');
       })
-      .catch( function(err) {
+      .catch(function(err) {
         err = err.data;
         $scope.errors = {};
 

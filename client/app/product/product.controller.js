@@ -1,4 +1,5 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('ProductCtrl', []);
+.controller('ProductCtrl', ['$scope', function($scope) {
+}]);

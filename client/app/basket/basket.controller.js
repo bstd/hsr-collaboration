@@ -1,4 +1,5 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('BasketCtrl', []);
+.controller('BasketCtrl', ['$scope', function($scope) {
+}]);

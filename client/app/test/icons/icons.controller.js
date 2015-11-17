@@ -1,4 +1,5 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('TestIconListCtrl', []);
+.controller('TestIconListCtrl', ['$scope', function($scope) {
+}]);

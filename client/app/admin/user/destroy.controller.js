@@ -1,11 +1,12 @@
 'use strict';
-// TODO
+
 angular.module('brewApp')
-.controller('AdminUserDestroyCtrl', ['$scope', '$http', '$state', 'AdminUserService', function($scope, $http, $state, AdminUserService) {
+.controller('AdminUserDestroyCtrl', ['$scope', '$http', '$state', '$log', 'AdminUserService', 'ToastSimpleService', function($scope, $http, $state, $log, AdminUserService, ToastSimpleService) {
   $scope.id = $state.params.id;
 
-  // TODO confirm dialog
-  AdminUserService.remove({ id: $scope.id }).$promise.then(function() {
+  AdminUserService.remove({ id: $scope.id }, function(result) {
+    $log.debug('AdminUserDestroyCtrl - AdminUserService.remove:',result);
     $state.go('admin.user-list');
+    ToastSimpleService('Benutzer erfolgreich gelöscht');
   });
 }]);
