@@ -1,19 +1,21 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: MainCtrl', function() {
 
   // load the controller's module
   beforeEach(module('brewApp'));
 
   var MainCtrl,
       scope,
-      $httpBackend;
-// TODO refactor to mock resource based
+      $httpBackend,
+      assetRequestHandler;
+
   // Initialize the controller and a mock scope
-  beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
+  beforeEach(inject(function(_$httpBackend_, $controller, $rootScope) {
     $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET('/api/products')
-      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+    assetRequestHandler = $httpBackend.whenGET(/\/assets/).respond('');// assume all assets working
+
+    $httpBackend.expectGET('api/products').respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
 
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
@@ -21,7 +23,7 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of products to the scope', function () {
+  it('should attach a list of products to the scope', function() {
     $httpBackend.flush();
     expect(scope.products.length).toBe(4);
   });
