@@ -1,32 +1,27 @@
 'use strict';
 
-var should = require('should');
-var app = require('../../app');
-var Product = require('./product.model');
+var util = require('../../test.util');
 
-var product = new Product({
+var product = new util.Product({
   ean: '1234567890123',
   name: 'Fake Product',
   info: 'info whatever',
   active: true
 });
 
+
 describe('Product Model', function() {
   before(function(done) {
-    // Clear products before testing
-    Product.remove().exec().then(function() {
-      done();
-    });
+    util.removeProduct(done);
   });
 
   afterEach(function(done) {
-    Product.remove().exec().then(function() {
-      done();
-    });
+    util.removeProduct(done);
   });
 
+
   it('should begin with no products', function(done) {
-    Product.find({}, function(err, products) {
+    util.Product.find({}, function(err, products) {
       products.should.have.length(0);
       done();
     });
@@ -34,9 +29,9 @@ describe('Product Model', function() {
 
   it('should fail when saving a duplicate product', function(done) {
     product.save(function() {
-      var productDup = new Product(product);
+      var productDup = new util.Product(product);
       productDup.save(function(err) {
-        should.exist(err);
+        util.should.exist(err);
         done();
       });
     });
@@ -45,7 +40,7 @@ describe('Product Model', function() {
   it('should fail when saving without an EAN', function(done) {
     product.ean = '';
     product.save(function(err) {
-      should.exist(err);
+      util.should.exist(err);
       done();
     });
   });
@@ -53,9 +48,8 @@ describe('Product Model', function() {
   it('should fail when saving without a name', function(done) {
     product.name = '';
     product.save(function(err) {
-      should.exist(err);
+      util.should.exist(err);
       done();
     });
   });
-
 });
