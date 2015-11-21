@@ -35,8 +35,8 @@ section
           p(class='help-block', ng-show='form.password.$error.mongoose')
             | {{ errors.password }}
 
-        md-button(class='btn btn-inverse btn-lg btn-login', type='submit')
+        md-button(type='submit', class='md-raised md-primary')
           | Registrieren
 
-        a(class='btn btn-default btn-lg btn-register', href='/login')
+        md-button(ng-href='/login', class='md-primary')
           | zum Login

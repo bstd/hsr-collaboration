@@ -28,7 +28,7 @@ section
       div(class='form-group', ng-class='{ "has-success": form.password.$valid && submitted, "has-error": form.password.$invalid && submitted }')
         label
           | Passwort
-        input(type='password', name='password', class='form-control', ng-model='user.password',	ng-minlength='3', required, mongoose-error)
+        input(type='password', name='password', class='form-control', ng-model='user.password', ng-minlength='3', required, mongoose-error)
 
         p(class='help-block', ng-show='(form.password.$error.minlength || form.password.$error.required) && submitted')
           | Passwort muss mindestens 3 Zeichen lang sein
@@ -43,8 +43,8 @@ section
         input(type='text', name='role', class='form-control', ng-model='user.role')
 
 
-      md-button(type='submit', class='btn btn-inverse btn-lg btn-login')
+      md-button(type='submit', class='md-raised md-primary')
         | Speichern
 
-      md-button(ui-sref='admin.user-list')
+      md-button(ui-sref='admin.user-list', class='md-raised')
         | Abbrechen
