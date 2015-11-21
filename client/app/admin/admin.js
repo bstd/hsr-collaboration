@@ -19,8 +19,8 @@ angular.module('brewApp')
   })
   .state('admin.product-list', {
     url: '/products',
-    templateUrl: 'app/admin/product/list.html',
-    controller: 'AdminProductListCtrl',
+    templateUrl: 'app/admin/products/products.html',
+    controller: 'ProductsCtrl',
     //controllerAs: 'admin.product.list',
     // restricted
     authenticate: true,

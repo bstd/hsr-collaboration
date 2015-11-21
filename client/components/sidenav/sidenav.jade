@@ -27,17 +27,16 @@ navigation(ng-controller='SidenavCtrl', layout='row', flex)
           a(href='admin', ng-click="toggleSidenav('right')", ng-show='isAdmin()', ng-class="{active: isActive('/admin')}")
             | Adminbereich
           ul
-            // TODO: product
               li
                 a(href='admin/products', ng-show='isAdmin()', ng-class="{active: isActive('/admin/products')}")
                   | Produktliste
               li
                 a(href='admin/products/create', ng-show='isAdmin()', ng-class="{active: isActive('/admin/products/create')}")
                   | Produkt erfassen
-            li
+              li
               a(href='admin/users', ng-click="toggleSidenav('right')", ng-show='isAdmin()', ng-class="{active: isActive('/admin/users')}")
                 | Benutzerliste
-            li
+              li
               a(href='admin/users/create', ng-click="toggleSidenav('right')", ng-show='isAdmin()', ng-class="{active: isActive('/admin/users/create')}")
                 | Benutzer erfassen
         //
