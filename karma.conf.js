@@ -9,6 +9,9 @@ module.exports = function(config) {
     // testing framework to use (jasmine/mocha/qunit/...)
     frameworks: ['jasmine'],
 
+    // custom reporting: https://github.com/mlex/karma-spec-reporter
+    reporters: ['spec'],
+
     // list of files / patterns to load in the browser
     files: [
       'client/bower_components/angular/angular.js',

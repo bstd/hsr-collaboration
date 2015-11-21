@@ -19,7 +19,7 @@ describe('Service: product', function() {
   }));
 
 
-  it('mock http call to product API - single product (get: /api/products/:id)', inject(function($httpBackend, ProductService) {
+  it('mock http call to product api (GET /api/products/:id) - should return single product ', inject(function($httpBackend, ProductService) {
     var product = ProductService.get({ id: 'abc' });
 
     // Create an expectation for the correct url, and respond with a mock object
@@ -35,7 +35,7 @@ describe('Service: product', function() {
   }));
 
 
-  it('mock http call to product API - list of products (query: /api/products)', inject(function($httpBackend, ProductService) {
+  it('mock http call to product api (GET /api/products) - should return list of products', inject(function($httpBackend, ProductService) {
     var products = ProductService.query();
 
     $httpBackend.expectGET('api/products').respond(200, JSON.stringify([
