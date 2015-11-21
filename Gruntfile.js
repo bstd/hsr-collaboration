@@ -14,7 +14,7 @@ module.exports = function (grunt) {
     express: 'grunt-express-server',
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
-    cdnify: 'grunt-google-cdn',
+    //cdnify: 'grunt-google-cdn',
     protractor: 'grunt-protractor-runner',
     buildcontrol: 'grunt-build-control'
   });
@@ -102,9 +102,9 @@ module.exports = function (grunt) {
         files: [
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.css',
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.html',
-          
+
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
-          
+
           '!{.tmp,<%= yeoman.client %>}{app,components}/**/*.spec.js',
           '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js',
           '<%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -345,11 +345,11 @@ module.exports = function (grunt) {
     },
 
     // Replace Google CDN references
-    cdnify: {
+    /*cdnify: {
       dist: {
         html: ['<%= yeoman.dist %>/public/*.html']
       }
-    },
+    },*/
 
     // Copies remaining files to places other tasks can use
     copy: {
@@ -531,12 +531,12 @@ module.exports = function (grunt) {
         files: {
           '<%= yeoman.client %>/index.html': [
                [
-                 
+
                  '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
-                 
-                 '!{.tmp,<%= yeoman.client %>}/app/app.js',               
+
+                 '!{.tmp,<%= yeoman.client %>}/app/app.js',
                  '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
-                 '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js'               
+                 '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js'
                ]
             ]
         }
@@ -606,7 +606,7 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'clean:server',
         'env:all',
-        'injector:sass', 
+        'injector:sass',
         'concurrent:server',
         'injector',
         'wiredep',
@@ -618,7 +618,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'env:all',
-      'injector:sass', 
+      'injector:sass',
       'concurrent:server',
       'injector',
       'wiredep',
@@ -648,7 +648,7 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'clean:server',
         'env:all',
-        'injector:sass', 
+        'injector:sass',
         'concurrent:test',
         'injector',
         'autoprefixer',
@@ -661,7 +661,7 @@ module.exports = function (grunt) {
         'clean:server',
         'env:all',
         'env:test',
-        'injector:sass', 
+        'injector:sass',
         'concurrent:test',
         'injector',
         'wiredep',
@@ -679,7 +679,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'injector:sass', 
+    'injector:sass',
     'concurrent:dist',
     'injector',
     'wiredep',
@@ -689,7 +689,7 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
-    'cdnify',
+    //'cdnify',
     'cssmin',
     'uglify',
     'rev',

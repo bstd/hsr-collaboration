@@ -5,6 +5,7 @@ angular.module('brewApp', [
   'ngResource',
   'ngSanitize',
   'ngMaterial',
+  'ngMessages',
   'ui.router',
   'components.constants'
 ])

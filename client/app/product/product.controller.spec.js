@@ -15,7 +15,7 @@ describe('Controller: ProductCtrl', function () {
     });
   }));
 
-  it('should ...', function () {
+  it('TODO should ...', function () {
     expect(1).toEqual(1);
   });
 });

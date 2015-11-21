@@ -9,6 +9,9 @@ module.exports = function(config) {
     // testing framework to use (jasmine/mocha/qunit/...)
     frameworks: ['jasmine'],
 
+    // custom reporting: https://github.com/mlex/karma-spec-reporter
+    reporters: ['spec'],
+
     // list of files / patterns to load in the browser
     files: [
       'client/bower_components/angular/angular.js',
@@ -19,6 +22,7 @@ module.exports = function(config) {
       'client/bower_components/angular-animate/angular-animate.js',
       'client/bower_components/angular-aria/angular-aria.js',
       'client/bower_components/angular-material/angular-material.js',
+      'client/bower_components/angular-messages/angular-messages.js',
       'client/bower_components/lodash/dist/lodash.compat.js',
       'client/bower_components/angular-ui-router/release/angular-ui-router.js',
       'client/app/app.js',

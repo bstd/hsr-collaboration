@@ -11,7 +11,7 @@ section
         p
           | {{user.role}}
         div(layout='row', layout-align='end center', class='md-actions')
-          md-button(ng-click='confirmDelete(user)')
+          md-button(ng-click='confirmDelete(user)', class='md-button md-raised md-warn')
             | Löschen
-          md-button(ui-sref='admin.user-update({ id: user._id })')
+          md-button(ui-sref='admin.user-update({ id: user._id })', class='md-raised md-primary')
             | Bearbeiten
