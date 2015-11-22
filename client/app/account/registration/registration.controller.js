@@ -10,13 +10,10 @@ angular.module('brewApp')
 
     if (form.$valid) {
       Auth.createUser({
-        name: $scope.user.name,
         email: $scope.user.email,
         password: $scope.user.password
       })
       .then(function() {
-        // Account created, redirect to home
-        //$location.path('/');
         $state.go('main');
         ToastSimpleService('Registrierung erfolgreich');
       })

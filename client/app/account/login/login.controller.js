@@ -18,19 +18,8 @@ angular.module('brewApp')
         ToastSimpleService('Anmeldung erfolgreich');
       })
       .catch(function(err) {
-console.log(err);
-        //$scope.errors.other = err.message;
         form.password.$setValidity('mongoose', false);
         $scope.errors.password = err.message;
-
-        /*err = err.data;
-        $scope.errors = {};
-
-        // Update validity of form fields that match the mongoose errors
-        angular.forEach(err.errors, function(error, field) {
-          form[field].$setValidity('mongoose', false);
-          $scope.errors[field] = error.message;
-        });*/
       });
     }
   };
