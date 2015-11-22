@@ -59,7 +59,7 @@ angular.module('brewApp')
         $log.debug('exit admin.producst-update');
       }
     })
-    .state('admin.products-destroy', {
+    .state('admin.product-destroy', {
       url: '/products/destroy/:id',
       controller: 'ProductsDestroyCtrl',
       //controllerAs: 'admin.user.destroy',
