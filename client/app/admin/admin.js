@@ -31,7 +31,48 @@ angular.module('brewApp')
       $log.debug('exit admin.product-list');
     }
   })
-  .state('admin.user-list', {
+    .state('admin.product-create', {
+      url: '/products/create',
+      templateUrl: 'app/admin/products/create/create.html',
+      controller: 'ProductsCreateCtrl',
+      //controllerAs: 'admin.product.list',
+      // restricted
+      authenticate: true,
+      onEnter: function($log) {
+        $log.debug('enter admin.product-create');
+      },
+      onExit: function($log) {
+        $log.debug('exit admin.product-create');
+      }
+    })
+    .state('admin.product-update', {
+      url: '/products/update/:id',
+      templateUrl: 'app/admin/products/update.html',
+      controller: 'ProductsUpdateCtrl',
+      //controllerAs: 'admin.user.update',
+      // restricted
+      authenticate: true,
+      onEnter: function($log) {
+        $log.debug('enter admin.products-update');
+      },
+      onExit: function($log) {
+        $log.debug('exit admin.producst-update');
+      }
+    })
+    .state('admin.products-destroy', {
+      url: '/products/destroy/:id',
+      controller: 'ProductsDestroyCtrl',
+      //controllerAs: 'admin.user.destroy',
+      // restricted
+      authenticate: true,
+      onEnter: function($log) {
+        $log.debug('enter admin.products-destroy');
+      },
+      onExit: function($log) {
+        $log.debug('exit admin.products-destroy');
+      }
+    })
+    .state('admin.user-list', {
     url: '/users',
     templateUrl: 'app/admin/user/list.html',
     controller: 'AdminUserListCtrl',
