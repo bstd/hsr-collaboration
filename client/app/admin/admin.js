@@ -100,20 +100,6 @@ angular.module('brewApp')
       $log.debug('exit admin.user-create');
     }
   })
-  .state('admin.user-update', {
-    url: '/users/update/:id',
-    templateUrl: 'app/admin/user/update.html',
-    controller: 'AdminUserUpdateCtrl',
-    //controllerAs: 'admin.user.update',
-    // restricted
-    authenticate: true,
-    onEnter: function($log) {
-      $log.debug('enter admin.user-update');
-    },
-    onExit: function($log) {
-      $log.debug('exit admin.user-update');
-    }
-  })
   .state('admin.user-destroy', {
     url: '/users/destroy/:id',
     controller: 'AdminUserDestroyCtrl',

@@ -21,7 +21,7 @@ section
         include ../../partials/form.messages.password.jade
 
 
-    md-input-container(md-is-error='(form.newPassword.$touched && form.newPassword.$invalid) || form.newPassword.$error.mongoose', class='md-block')
+    md-input-container(md-is-error='form.newPassword.$touched && form.newPassword.$invalid', class='md-block')
       label
         | Neues Passwort
       input(type='password', name='newPassword', ng-model='user.newPassword', required)
