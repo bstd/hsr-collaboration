@@ -8,6 +8,7 @@ var Schema = mongoose.Schema;
 var ProductSchema = new Schema({
   ean: String,
   name: String,
+  price: String,
   info: String,
   active: Boolean
 });

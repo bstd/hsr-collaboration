@@ -33,7 +33,7 @@ angular.module('brewApp')
   })
     .state('admin.product-create', {
       url: '/products/create',
-      templateUrl: 'app/admin/products/create/create.html',
+      templateUrl: 'app/admin/products/create.html',
       controller: 'ProductsCreateCtrl',
       //controllerAs: 'admin.product.list',
       // restricted

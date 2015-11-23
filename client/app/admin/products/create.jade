@@ -12,32 +12,28 @@ md-content
       section.section(layout='column')
         span(layout='row', layout-sm='column')
           md-input-container(flex='', ng-class='{ "has-success": form.name.$valid && submitted, "has-error": form.name.$invalid && submitted }')
-              label
-                | Name
-              input(type='text', name='name', class='form-control', ng-model='product.name', required)
-
-              p(class='help-block', ng-show='form.name.$error.required && submitted')
-                | Bitte geben Sie einen Namen ein
+            label
+              | Name
+            input(type='text', name='name', class='form-control', ng-model='product.name', required)
+            p(class='help-block', ng-show='form.name.$error.required && submitted')
+              | Bitte geben Sie einen Namen ein
       section.section(layout='column')
         span(layout='row', layout-sm='column')
           md-input-container(flex='', ng-class='{ "has-success": form.price.$valid && submitted, "has-error": form.price.$invalid && submitted }')
-              label
-                | Preis
-              input(type='text', name='price', class='form-control', ng-model='product.price', required)
-
-              p(class='help-block', ng-show='form.price.$error.required && submitted')
-                | Bitte geben Sie einen Preis ein
+            label
+              | Preis
+            input(type='text', name='price', class='form-control', ng-model='product.price', required)
+            p(class='help-block', ng-show='form.price.$error.required && submitted')
+              | Bitte geben Sie einen Preis ein
       section.section(layout='column')
         span(layout='row', layout-sm='column')
           md-input-container(flex='', ng-class='{ "has-success": form.info.$valid && submitted, "has-error": form.info.$invalid && submitted }')
-              label
-                | Info
-              input(type='text', name='info', class='form-control', ng-model='product.info', required)
-              p(class='help-block', ng-show='form.info.$error.required && submitted')
-                | Bitte geben Sie eine Info ein
-
+            label
+              | Info
+            input(type='text', name='info', class='form-control', ng-model='product.info', required)
+            p(class='help-block', ng-show='form.info.$error.required && submitted')
+              | Bitte geben Sie eine Info ein
       md-button(type='submit', class='md-raised md-primary')
         | Speichern
       md-button(ui-sref='admin.product-list', class='md-raised')
         | Abbrechen
-
