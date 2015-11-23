@@ -1,0 +1,29 @@
+h2.debug-restricted
+  | Produkt ändern
+section
+  md-content(layout='row', layout-wrap, class='md-padding')
+    form(ng-submit='update(form)', name='form', class='form', novalidate)
+      div(class='form-group', ng-class='{ "has-success": form.name.$valid && submitted, "has-error": form.name.$invalid && submitted }')
+        label
+          | Name
+        input(type='text', name='name', class='form-control', ng-model='product.name', required)
+
+        p(class='help-block', ng-show='form.name.$error.required && submitted')
+          | Bitte geben Sie einen Namen ein
+
+      div(class='form-group', ng-class='{ "has-success": form.info.$valid && submitted, "has-error": form.info.$invalid && submitted }')
+        label
+          | Info
+        input(type='text', name='info', class='form-control', ng-model='product.info', required)
+
+        p(class='help-block', ng-show='form.info.$error.required && submitted')
+          | Bitte geben Sie eine Info ein
+      //div(class='form-group')
+        label
+          | Rolle
+        input(type='text', name='role', class='form-control', ng-model='user.role')
+      md-button(type='submit', class='md-raised md-primary')
+        | Speichern
+      md-button(ui-sref='admin.product-list', class='md-raised')
+        | Abbrechen
+

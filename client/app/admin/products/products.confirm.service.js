@@ -5,7 +5,7 @@ angular.module('brewApp')
     return function(product) {
       var confirm = $mdDialog.confirm()
         .title('Bestätigen: Produkt löschen')
-        .htmlContent('Wollen Sie Product<br>' + product.name + '<br>wirklich löschen?')
+        .htmlContent('Wollen Sie Produkt<br>' + product.name + '<br>wirklich löschen?')
         .ariaLabel('Bestätigen: Produkt löschen')
         .ok('Ok')
         .cancel('Abbrechen');

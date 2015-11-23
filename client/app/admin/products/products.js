@@ -1,6 +1,13 @@
 'use strict';
 
-angular.module('brewApp')
+angular
+  .module('brewApp.products', [
+    'ngResource',
+    'ui.router',
+    'brewApp.products.main',
+    'brewApp.products.list',
+    'brewApp.products.create'
+  ])
 .config(function($stateProvider) {
   $stateProvider
   .state('products', {

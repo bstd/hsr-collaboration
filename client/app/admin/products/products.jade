@@ -13,5 +13,5 @@ section
         div(layout='row', layout-align='end center', class='md-actions')
           md-button(ng-click='confirmDelete(product)', class='md-button md-raised md-warn')
             | Löschen
-          md-button(ui-sref='admin.product-update({ id: product._id })', class='md-raised md-primary')
+          md-button(ui-sref='admin.product-edit({ id: product._id })', class='md-raised md-primary')
             | Bearbeiten

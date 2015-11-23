@@ -45,18 +45,18 @@ angular.module('brewApp')
         $log.debug('exit admin.product-create');
       }
     })
-    .state('admin.product-update', {
-      url: '/products/update/:id',
-      templateUrl: 'app/admin/products/update.html',
-      controller: 'ProductsUpdateCtrl',
+    .state('admin.product-edit', {
+      url: '/products/edit/:id',
+      templateUrl: 'app/admin/products/edit.html',
+      controller: 'ProductsEditCtrl',
       //controllerAs: 'admin.user.update',
       // restricted
       authenticate: true,
       onEnter: function($log) {
-        $log.debug('enter admin.products-update');
+        $log.debug('enter admin.product-edit');
       },
       onExit: function($log) {
-        $log.debug('exit admin.producst-update');
+        $log.debug('exit admin.product-edit');
       }
     })
     .state('admin.product-destroy', {
