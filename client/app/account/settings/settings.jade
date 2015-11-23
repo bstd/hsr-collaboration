@@ -3,37 +3,32 @@ include ../../partials/header.jade
 section
   h1.debug-restricted
     | Persönlicher Bereich
-  // name and email readonly for 'user'
-  md-content(layout='row', layout-wrap, class='md-padding')
-    div(class='form-group')
-      label
-        | Name
-      input(type='text', name='name', class='form-control', ng-model='user.name', readonly)
-    div(class='form-group')
+  // email disabled
+  form(name='form', ng-submit='changePassword(form)', novalidate)
+    // email and password
+    md-input-container(class='md-block')
       label
         | E-Mail Adresse
-      input(type='email', name='email', class='form-control', ng-model='user.email', readonly)
+      input(type='email', name='email', ng-model='user.email', disabled)
 
-  md-content(layout='row', layout-wrap, class='md-padding')
-    form(class='form', name='form', ng-submit='changePassword(form)', novalidate='')
-      div(class='form-group')
-        label
-          | Aktuelles Passwort
-        input(type='password', name='password', class='form-control', ng-model='user.oldPassword', mongoose-error='')
 
-        p(class='help-block', ng-show='form.password.$error.mongoose')
-          | {{ errors.other }}
+    md-input-container(md-is-error='(form.oldPassword.$touched && form.oldPassword.$invalid) || form.oldPassword.$error.mongoose', class='md-block')
+      label
+        | Aktuelles Passwort
+      input(type='password', name='oldPassword', ng-model='user.oldPassword', required, mongoose-error)
 
-      div(class='form-group')
-          label
-            | Neues Passwort
-          input(type='password', name='newPassword', class='form-control', ng-model='user.newPassword', ng-minlength='3', required='')
+      div(class='help-block', ng-messages='form.oldPassword.$error', ng-show='(form.oldPassword.$touched && form.oldPassword.$invalid) || form.oldPassword.$error.mongoose')
+        include ../../partials/form.messages.password.jade
 
-          p(class='help-block', ng-show='(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)')
-            | Passwort muss mindestens 3 Zeichen lang sein
 
-      p(class='help-block')
-        | {{ message }}
+    md-input-container(md-is-error='(form.newPassword.$touched && form.newPassword.$invalid) || form.newPassword.$error.mongoose', class='md-block')
+      label
+        | Neues Passwort
+      input(type='password', name='newPassword', ng-model='user.newPassword', required)
 
-      md-button(type='submit', class='md-raised md-primary')
-        | Speichern
+      div(class='help-block', ng-messages='form.newPassword.$error', ng-show='form.newPassword.$touched && form.newPassword.$invalid')
+        include ../../partials/form.messages.password.jade
+
+
+    md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
+      | Speichern

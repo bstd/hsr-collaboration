@@ -21,7 +21,7 @@ section
       div(class='help-block', ng-messages='form.password.$error', ng-show='(form.password.$touched && form.password.$invalid) || form.password.$error.mongoose')
         include ../../partials/form.messages.password.jade
 
-    md-button(type='submit', class='md-raised md-primary')
+    md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
       | Login
 
     md-button(ng-href='/registration', class='md-primary')

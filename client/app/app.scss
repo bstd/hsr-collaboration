@@ -2,8 +2,13 @@
  * App-wide Styles
  */
 
+// VARIABLES
+
+// colors
+$red: red;
+
 .debug-restricted {// debug helper for all restricted views
-	color: red;
+	color: $red;
 	font-weight: bold;
 }
 

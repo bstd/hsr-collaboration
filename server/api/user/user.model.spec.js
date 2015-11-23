@@ -4,7 +4,6 @@ var util = require('../../test.util');
 
 var user = new util.User({
   provider: 'local',
-  name: 'Fake User',
   email: 'test@test.com',
   password: 'password'
 });
@@ -29,6 +28,7 @@ describe('User Model', function() {
   it('should fail when saving a duplicate user', function(done) {
     user.save(function() {
       var userDup = new util.User(user);
+
       userDup.save(function(err) {
         util.should.exist(err);
         done();

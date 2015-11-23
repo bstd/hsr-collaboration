@@ -1,12 +1,13 @@
 ﻿.header {
-	&__nav {
-		.active {
-			md-icon {
-				color: red;
-			}
-		}
-	}
-}
-.header__logo img{
-  width: 150px;
+  &__nav {
+    .active {
+      md-icon {
+        color: $red;
+      }
+    }
+  }
+
+  &__logo img {
+    width: 150px;
+  }
 }

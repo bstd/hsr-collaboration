@@ -24,13 +24,11 @@ var createUsers = function(done) {
   removeUser();
 
   var user = new User({
-    name: 'Fake User',
     email: 'test@test.com',
     password: 'password'
   });
 
   var admin = new User({
-    name: 'Fake Admin',
     email: 'admin@admin.com',
     password: 'admin',
     role: 'admin'
@@ -40,6 +38,7 @@ var createUsers = function(done) {
   User.create(user, function(err, users) {
     if (err) return done(err);
 //console.log('TEST util create user');
+
     User.create(admin, function(err, users) {
       if (err) return done(err);
 //console.log('TEST util create admin');

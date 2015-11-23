@@ -7,14 +7,10 @@ var crypto = require('crypto');
 // http://mongoosejs.com/docs/guide.html
 
 var UserSchema = new Schema({
-  name: String,
   email: { type: String, lowercase: true },
-  role: {
-    type: String,
-    default: 'user'
-  },
+  role: { type: String, default: 'user' },
+  provider: { type: String, default: 'local' },
   hashedPassword: String,
-  provider: String,
   salt: String
 });
 
@@ -38,7 +34,6 @@ UserSchema
 .virtual('profile')
 .get(function() {
   return {
-    'name': this.name,
     'email': this.email,
     'role': this.role
   };
