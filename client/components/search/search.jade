@@ -1,7 +1,8 @@
-div(ng-controller='SearchCtrl as ac', layout-column)
+div(ng-controller='HeaderSearchCtrl as ac', layout-column)
   md-content(class='md-padding')
     form(ng-submit='search(searchForm)', name='searchForm', novalidate, class='layout-row')
       md-autocomplete(
+        md-input-name='q'
         md-items='item in ac.querySearch(ac.searchText)'
         md-item-text='item.name'
         md-menu-class='header__search'

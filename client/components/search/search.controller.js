@@ -1,7 +1,7 @@
 ﻿'use strict';
 // TODO submit and refactoring
 angular.module('brewApp')
-.controller('SearchCtrl', ['$scope', '$location', '$log', 'ProductService', function($scope, $location, $log, ProductService) {
+.controller('HeaderSearchCtrl', ['$scope', '$state', '$location', '$log', 'ProductService', function($scope, $state, $location, $log, ProductService) {
   var self = this;
 
     self.repos              = ProductService.query();
@@ -46,6 +46,9 @@ angular.module('brewApp')
    */
   $scope.search = function(form) {
     $log.debug('scope searchForm:',form);
-    $location.path('/results');
+    $log.debug('form.q:',form.q)
+    $log.debug('form.q.$modelValue:',form.q.$modelValue)
+
+    $state.go('result', { query: form.q.$modelValue });
   };
 }]);
