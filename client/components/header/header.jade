@@ -1,11 +1,11 @@
 div(layout='row')
   // logo
-  div(layout='row', flex, class='header__logo')
+  div(layout='row', class='header__logo')
     a(href='/', title='Startseite')
       img(src='/assets/images/logo.png')
 
   // search
-  div(flex, class='header__search')
+  div(flex='auto', class='header__search')
     include ../search/search.jade
 
   // nav
