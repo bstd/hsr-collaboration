@@ -46,8 +46,8 @@ angular.module('brewApp')
    */
   $scope.search = function(form) {
     $log.debug('scope searchForm:',form);
-    $log.debug('form.q:',form.q)
-    $log.debug('form.q.$modelValue:',form.q.$modelValue)
+    $log.debug('form.q:',form.q);
+    $log.debug('form.q.$modelValue:',form.q.$modelValue);
 
     $state.go('result', { query: form.q.$modelValue });
   };

@@ -1,5 +1,11 @@
 'use strict';
 
+/*
+ * clientside route restrictions:
+ *  authenticate: {Boolean} -> user must be logged in
+ *  role: {String} -> user must have role
+ */
+
 angular.module('brewApp')
 .config(function($stateProvider) {
   $stateProvider
@@ -10,6 +16,7 @@ angular.module('brewApp')
     //controllerAs: 'admin',
     // restricted
     authenticate: true,
+    role: 'admin',
     onEnter: function($log) {
       $log.debug('enter admin');
     },
@@ -24,6 +31,7 @@ angular.module('brewApp')
     //controllerAs: 'admin.product.list',
     // restricted
     authenticate: true,
+    role: 'admin',
     onEnter: function($log) {
       $log.debug('enter admin.product-list');
     },
@@ -31,54 +39,58 @@ angular.module('brewApp')
       $log.debug('exit admin.product-list');
     }
   })
-    .state('admin.product-create', {
-      url: '/products/create',
-      templateUrl: 'app/admin/products/create.html',
-      controller: 'ProductsCreateCtrl',
-      //controllerAs: 'admin.product.list',
-      // restricted
-      authenticate: true,
-      onEnter: function($log) {
-        $log.debug('enter admin.product-create');
-      },
-      onExit: function($log) {
-        $log.debug('exit admin.product-create');
-      }
-    })
-    .state('admin.product-edit', {
-      url: '/products/edit/:id',
-      templateUrl: 'app/admin/products/edit.html',
-      controller: 'ProductsEditCtrl',
-      //controllerAs: 'admin.user.update',
-      // restricted
-      authenticate: true,
-      onEnter: function($log) {
-        $log.debug('enter admin.product-edit');
-      },
-      onExit: function($log) {
-        $log.debug('exit admin.product-edit');
-      }
-    })
-    .state('admin.product-destroy', {
-      url: '/products/destroy/:id',
-      controller: 'ProductsDestroyCtrl',
-      //controllerAs: 'admin.user.destroy',
-      // restricted
-      authenticate: true,
-      onEnter: function($log) {
-        $log.debug('enter admin.products-destroy');
-      },
-      onExit: function($log) {
-        $log.debug('exit admin.products-destroy');
-      }
-    })
-    .state('admin.user-list', {
+  .state('admin.product-create', {
+    url: '/products/create',
+    templateUrl: 'app/admin/products/create.html',
+    controller: 'ProductsCreateCtrl',
+    //controllerAs: 'admin.product.list',
+    // restricted
+    authenticate: true,
+    role: 'admin',
+    onEnter: function($log) {
+      $log.debug('enter admin.product-create');
+    },
+    onExit: function($log) {
+      $log.debug('exit admin.product-create');
+    }
+  })
+  .state('admin.product-edit', {
+    url: '/products/edit/:id',
+    templateUrl: 'app/admin/products/edit.html',
+    controller: 'ProductsEditCtrl',
+    //controllerAs: 'admin.user.update',
+    // restricted
+    authenticate: true,
+    role: 'admin',
+    onEnter: function($log) {
+      $log.debug('enter admin.product-edit');
+    },
+    onExit: function($log) {
+      $log.debug('exit admin.product-edit');
+    }
+  })
+  .state('admin.product-destroy', {
+    url: '/products/destroy/:id',
+    controller: 'ProductsDestroyCtrl',
+    //controllerAs: 'admin.user.destroy',
+    // restricted
+    authenticate: true,
+    role: 'admin',
+    onEnter: function($log) {
+      $log.debug('enter admin.products-destroy');
+    },
+    onExit: function($log) {
+      $log.debug('exit admin.products-destroy');
+    }
+  })
+  .state('admin.user-list', {
     url: '/users',
     templateUrl: 'app/admin/user/list.html',
     controller: 'AdminUserListCtrl',
     //controllerAs: 'admin.user.list',
     // restricted
     authenticate: true,
+    role: 'admin',
     onEnter: function($log) {
       $log.debug('enter admin.user-list');
     },
@@ -93,6 +105,7 @@ angular.module('brewApp')
     //controllerAs: 'admin.user.create',
     // restricted
     authenticate: true,
+    role: 'admin',
     onEnter: function($log) {
       $log.debug('enter admin.user-create');
     },
@@ -106,6 +119,7 @@ angular.module('brewApp')
     //controllerAs: 'admin.user.destroy',
     // restricted
     authenticate: true,
+    role: 'admin',
     onEnter: function($log) {
       $log.debug('enter admin.user-destroy');
     },
