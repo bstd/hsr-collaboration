@@ -71,4 +71,9 @@ angular.module('brewApp', [
       }
     });
   });
+
+  // document title -> route title
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+    document.title = toState.title ? toState.title : 'brew Shop';
+  });
 });

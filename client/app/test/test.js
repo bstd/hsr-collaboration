@@ -5,6 +5,7 @@ angular.module('brewApp')
   $stateProvider
   .state('test',{
     url: '/test',
+    title: 'Testseiten',
     templateUrl: 'app/test/test.html',
     controller: 'TestCtrl',
     //controllerAs: 'test',
@@ -16,8 +17,10 @@ angular.module('brewApp')
     onExit: function($log) {
       $log.debug('exit test');
     }
-  }).state('test.icons',{
+  })
+  .state('test.icons',{
     url: '/test/icons',
+    title: 'Test - Icons',
     templateUrl: 'app/test/icons/icons.html',
     controller: 'TestIconListCtrl',
     //controllerAs: 'test.icons',

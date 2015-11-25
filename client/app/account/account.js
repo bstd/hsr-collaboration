@@ -5,6 +5,7 @@ angular.module('brewApp')
   $stateProvider
   .state('login', {
     url: '/login',
+    title: 'Anmeldung',
     templateUrl: 'app/account/login/login.html',
     controller: 'LoginCtrl',
     //controllerAs: 'login',
@@ -19,6 +20,7 @@ angular.module('brewApp')
   })
   .state('registration', {
     url: '/registration',
+    title: 'Registrierung',
     templateUrl: 'app/account/registration/registration.html',
     controller: 'RegistrationCtrl',
     //controllerAs: 'registration',
@@ -33,6 +35,7 @@ angular.module('brewApp')
   })
   .state('settings', {
     url: '/settings',
+    title: 'Persönlicher Bereich',
     templateUrl: 'app/account/settings/settings.html',
     controller: 'SettingsCtrl',
     controllerAs: 'settings',

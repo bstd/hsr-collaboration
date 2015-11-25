@@ -5,6 +5,7 @@ angular.module('brewApp')
   $stateProvider
   .state('result', {
     url: '/result?query',
+    title: 'Suchresultate',
     templateUrl: 'app/result/result.html',
     controller: 'ResultCtrl',
     //controllerAs: 'Result',

@@ -5,6 +5,7 @@ angular.module('brewApp')
   $stateProvider
   .state('basket', {
     url: '/basket',
+    title: 'Warenkorb',
     templateUrl: 'app/basket/basket.html',
     controller: 'BasketCtrl',
     //controllerAs: 'Basket',
