@@ -11,6 +11,7 @@ angular.module('components.constants', [])
     check_box_outline_blank: '/assets/svg/ic_check_box_outline_blank_24px.svg',
     chevron_left: '/assets/svg/ic_chevron_left_24px.svg',
     chevron_right: '/assets/svg/ic_chevron_right_24px.svg',
+    close: '/assets/svg/ic_close_24px.svg',
     indeterminate_check_box: '/assets/svg/ic_indeterminate_check_box_24px.svg',
     menu: '/assets/svg/ic_menu_24px.svg',
     people: '/assets/svg/ic_people_24px.svg',

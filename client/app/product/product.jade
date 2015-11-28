@@ -1,3 +1,16 @@
+include ../partials/header.jade
+
 section
   h1
-    | Produkt
+    | Produkte
+section(layout='row', flex)
+  md-content(layout='row', layout-wrap, class='md-padding')
+    md-card(ng-repeat='product in products track by product._id', flex='25', flex-md='33', flex-sm='100')
+      md-card-content
+        p
+          | {{product.name}}
+        p
+          | {{product.info}}
+        div(layout='row', layout-align='end center', class='md-actions')
+          md-button(ng-click='addToBasket(product)', class='md-button md-raised md-primary')
+            | Kaufen
