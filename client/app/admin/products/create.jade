@@ -33,6 +33,14 @@ md-content
             input(type='text', name='info', class='form-control', ng-model='product.info', required)
             p(class='help-block', ng-show='form.info.$error.required && submitted')
               | Bitte geben Sie eine Info ein
+      section.section(layout='column')
+        span(layout='row', layout-sm='column')
+          md-input-container(flex='', ng-class='{ "has-success": form.photo.$valid && submitted, "has-error": form.photo.$invalid && submitted }')
+            label
+              | Info
+            input(type="file", multiple="multiple", name='info', class='form-control', ng-model='product.photo', required)
+            p(class='help-block', ng-show='form.photo.$error.required && submitted')
+              | Bitte geben Sie eine Info ein
       md-button(type='submit', class='md-raised md-primary')
         | Speichern
       md-button(ui-sref='admin.product-list', class='md-raised')
