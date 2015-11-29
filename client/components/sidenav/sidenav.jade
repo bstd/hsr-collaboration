@@ -39,10 +39,10 @@ navigation(ng-controller='SidenavCtrl', layout='row', flex)
               li
               a(href='admin/users/create', ng-click="toggleSidenav('right')", ng-show='isAdmin()', ng-class="{active: isActive('/admin/users/create')}")
                 | Benutzer erfassen
-        //
-          li
-            a(href='products', ng-class="{active: isActive('/products')}")
-              | Produkte
+
+        li
+          a(href='product', ng-class="{active: isActive('/product')}")
+            | Produkte
         li
           a(href='test', ng-class="{active: isActive('/test')}")
             | Testseiten

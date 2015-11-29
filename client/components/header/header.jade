@@ -10,7 +10,7 @@ div(layout='row')
 
   // nav
   div(layout='row', flex, class='header__nav')
-    a(href='basket', title='Warenkorb', ng-show='isLoggedIn()', ng-class="{active: isActive('/basket')}")
+    a(href='basket', title='Warenkorb', ng-class="{active: isActive('/basket')}")
       md-icon(md-svg-icon='shopping_cart')
     a(href='settings', title='MyAccount', ng-class="{active: isActive('/settings')}")
       md-icon(md-svg-icon='person')
