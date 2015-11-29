@@ -1,3 +1,22 @@
+include ../partials/header.jade
+
 section
   h1
     | Bestellen
+
+section(layout='row', flex)
+  md-content(layout='row', layout-wrap, flex, class='md-padding')
+    p(class='md-title')
+      | Total: {{basketTotal | number: 2}}
+
+section(layout='row', flex)
+  md-content(layout='row', layout-wrap, flex, class='md-padding')
+    form(name='form', ng-submit='order(form)', novalidate)
+        md-input-container(class='md-block')
+          | TODO
+
+        md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
+          | Bestellung abschicken
+
+        md-button(href='/product', class='md-primary')
+          | Weiter einkaufen

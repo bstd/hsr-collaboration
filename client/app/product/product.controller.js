@@ -4,7 +4,8 @@ angular.module('brewApp')
 .controller('ProductCtrl', ['$scope', '$state', '$http', '$mdDialog', 'ProductService', 'BasketService', function($scope, $state, $http, $mdDialog, ProductService, BasketService) {
   $scope.products = [];
   $scope.basketItems = [];
-
+  $scope.basketItems = BasketService.items();
+//console.log('ProductCtrl basketItems:',$scope.basketItems);
 
   // get all products from ProductService
   $scope.products = ProductService.query();
@@ -17,7 +18,7 @@ angular.module('brewApp')
   //      - choice to go to basket or checkout
   $scope.addToBasket = function(product) {
 //console.log('addToBasket:',product);
-    BasketService.addItem(product);
+    BasketService.addItem(product._id, product.name, product.price, 1);
 
     $mdDialog.show({
       controller: DialogCtrl,

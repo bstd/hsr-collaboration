@@ -1,50 +1,70 @@
 ﻿'use strict';
-// TODO
+// TODO cleanup
 angular.module('brewApp')
-.factory('BasketService', ['$mdDialog', function($mdDialog) {
+.service('BasketService', ['$log', 'BasketItem', function($log, BasketItem) {
   var items = [];
   var Basket = {};
 
 
-  Basket.addItem = function(item) {
-console.log('Basket.addItem:',item);
-    var id = item._id,
-        isInBasket = Basket.getItemById(id);
-
-    if (typeof isInBasket === 'object') {
-console.log('todo quantity increase');
-      // increase quantity of item already in basket
+  Basket.addItem = function(id, name, price, quantity) {
+    var inBasket = Basket.getItemById(id);
+//console.log('Basket.addItem:',id, name, price, quantity);
+    if (typeof inBasket === 'object') {
+      inBasket.setQuantity(quantity, true);// use relative increase (+1)
     }
     else {
-      items.push(item);
+      var newItem = new BasketItem(id, name, price, quantity);
+
+      items.push(newItem);
     }
-  };
-
-
-  Basket.removeItem = function(item) {
-    var index = items.indexOf(item);
-
-    items.splice(index, 1);
-  };
-
-
-  Basket.items = function() {
-    return items;
   };
 
 
   Basket.getItemById = function(itemId) {
     var items = Basket.items(),
         foundInItems = false;
-
+//console.log('Basket.getItemById:',itemId);
+//console.log('items:',items);
     angular.forEach(items, function(item) {
-      if (item._id === itemId) {
+      if (item.getId() === itemId) {
         foundInItems = item;
       }
     });
 
     return foundInItems;
   };
+
+
+  Basket.items = function() {
+//console.log('Basket.items:',items);
+    return items;
+  };
+
+
+  Basket.removeItem = function(item) {
+    var index = items.indexOf(item);
+//console.log('Basket.removeItem:',item);
+    items.splice(index, 1);
+  };
+
+
+  Basket.total = function() {
+    var items = Basket.items(),
+        sum = 0;
+
+    angular.forEach(items, function(item) {
+        sum += item.getTotal();
+    });
+
+    return +parseFloat(sum).toFixed(2);
+  };
+
+
+  Basket.isEmpty = function(length) {
+//console.log('Basket.isEmpty - length:',length);
+    return length === 0;
+  };
+
 
   return Basket;
 }]);
