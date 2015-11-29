@@ -35,13 +35,21 @@ md-content
               | Bitte geben Sie eine Info ein
       section.section(layout='column')
         span(layout='row', layout-sm='column')
-          md-input-container(flex='', ng-class='{ "has-success": form.photo.$valid && submitted, "has-error": form.photo.$invalid && submitted }')
+          md-input-container(flex='', ng-class='{ "has-success": form.photo.$valid && submitted}')
             label
-              | Info
-            input(type="file", multiple="multiple", name='info', class='form-control', ng-model='product.photo', required)
-            p(class='help-block', ng-show='form.photo.$error.required && submitted')
-              | Bitte geben Sie eine Info ein
-      md-button(type='submit', class='md-raised md-primary')
+              | Upload Foto
+            input(type='file', ngf-select='', ng-model='picFile', name='file', accept='image/*', ngf-max-size='2MB')
+            br
+            i(ng-show='myForm.file.$error.maxSize')
+            | File too large
+            | {{picFile.size / 1000000|number:1}}MB: max 2M
+            img.thumb(ng-show='myForm.file.$valid', ngf-thumbnail='picFile')
+            button(ng-click='picFile = null', ng-show='picFile') Entfernen
+      md-button(type='submit', ng-disabled="!form.$valid", class='md-raised md-primary')
         | Speichern
       md-button(ui-sref='admin.product-list', class='md-raised')
         | Abbrechen
+      span.progress(ng-show='picFile.progress >= 0')
+      div(style='width:{{picFile.progress}}%', ng-bind="picFile.progress + '%'")
+      span(ng-show='picFile.result') Upload Successful
+      span.err(ng-show='errorMsg') {{errorMsg}}

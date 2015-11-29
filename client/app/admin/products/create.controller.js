@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('ProductsCreateCtrl', ['$scope', '$http', '$state', 'AdminProductService', 'ToastSimpleService', function($scope, $http, $state, AdminProductService, ToastSimpleService) {
+.controller('ProductsCreateCtrl', ['$scope', '$http', '$state', '$timeout', 'Upload', 'AdminProductService', 'ToastSimpleService', function($scope, $http, $state, $timeout, Upload, AdminProductService, ToastSimpleService) {
     $scope.product = {};
     $scope.errors = {};
 
