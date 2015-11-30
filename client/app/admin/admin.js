@@ -44,7 +44,7 @@ angular.module('brewApp')
   .state('admin.product-create', {
     url: '/products/create',
     title: 'Admin - Produkt erstellen',
-    templateUrl: 'app/admin/products/create.html',
+    templateUrl: 'app/admin/products/edit.html',
     controller: 'ProductsCreateCtrl',
     //controllerAs: 'admin.product.list',
     // restricted

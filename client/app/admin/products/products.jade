@@ -10,6 +10,14 @@ section
           | {{product.price}}
         p
           | {{product.info}}
+        p
+          | {{product.taste}}
+        p
+          | {{product.country}}
+        p
+          | {{product.vanity}}
+        p
+          | {{product.active}}
         div(layout='row', layout-align='end center', class='md-actions')
           md-button(ng-click='confirmDelete(product)', class='md-button md-raised md-warn')
             | Löschen

@@ -7,14 +7,14 @@ var Schema = mongoose.Schema;
 
 var ProductSchema = new Schema({
   ean: String,
+  active: Boolean,
   name: String,
   price: String,
   info: String,
-  active: Boolean,
-  image: {
-    type: String,
-    default: ''
-  }
+  stock: Number,
+  taste: String,
+  vanity: String,
+  country: String
 });
 
 

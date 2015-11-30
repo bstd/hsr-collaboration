@@ -1,5 +1,5 @@
 h2.debug-restricted
-  | Produkt ändern
+  | Produkt
 md-content
   section.section.slim(layout='column')
     p
@@ -35,11 +35,37 @@ md-content
               | Bitte geben Sie eine Info ein
       section.section(layout='column')
         span(layout='row', layout-sm='column')
-          md-input-container(flex='', ng-class='{ "has-success": form.photo.$valid && submitted}')
+          md-input-container(flex='', ng-class='{ "has-success": form.stock.$valid && submitted, "has-error": form.stock.$invalid && submitted }')
             label
-              | Foto
-            input(type="file", multiple="multiple", name='photo', class='form-control', ng-model='product.photo')
-      md-button(type='submit', class='md-raised md-primary')
+              | Stück (Harass oder Pack)
+            input(type="number", name='stock', class='form-control', ng-model='product.stock', required)
+            p(class='help-block', ng-show='form.stock.$error.required && submitted')
+              | Bitte geben Sie die Stückzahl(Number) im Lager ein
+      section.section(layout='column')
+        b Geschmack
+        span(class="layout-wrap layout-row flex" layout="row" layout-wrap="" flex="")
+          div(class="flex-20", ng-repeat='taster in tastes')
+            md-checkbox(type='checkbox', name='{{taster}}', value='{{taster}}', ng-model="product.taste")
+            | {{taster}}
+      section.section(layout='column')
+        span(layout='row', layout-sm='column')
+          md-input-container(flex='', ng-class='{ "has-success": form.country.$valid && submitted, "has-error": form.country.$invalid && submitted }')
+            label Brau-Land
+            md-select(ng-model='product.country')
+              md-option(ng-repeat='state in states', value='{{state}}')
+                | {{state}}
+            p(class='help-block', ng-show='form.country.$error.required && submitted')
+              | Bitte geben Sie ein Land an
+      section.section(layout='column')
+        span(layout='row', layout-sm='column')
+          md-input-container(flex='', ng-class='{ "has-success": form.vanity.$valid && submitted, "has-error": form.vanity.$invalid && submitted }')
+            label Biersorte
+            md-select(ng-model='product.vanity')
+              md-option(ng-repeat='van in vanities', value='{{van}}')
+                | {{van}}
+            p(class='help-block', ng-show='form.vanity.$error.required && submitted')
+              | Bitte geben Sie eine Biersorte an
+      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
         | Speichern
       md-button(ui-sref='admin.product-list', class='md-raised')
         | Abbrechen
