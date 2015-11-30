@@ -26,8 +26,13 @@ exports.show = function(req, res) {
 // Creates a new product in the DB.
 exports.create = function(req, res) {
 	Product.create(req.body, function(err, product) {
-		if (err) { return handleError(res, err); }
+    // We are able to access req.files.file thanks to
+    // the multiparty middleware
+    var file = req.files.file;
+    console.log(file.name);
+    console.log(file.type);
 
+		if (err) { return handleError(res, err); }
 		return res.status(201).json(product);
 	});
 };

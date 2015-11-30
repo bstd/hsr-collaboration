@@ -11,7 +11,10 @@ var ProductSchema = new Schema({
   price: String,
   info: String,
   active: Boolean,
-  file:Buffer  // Image
+  image: {
+    type: String,
+    default: ''
+  }
 });
 
 

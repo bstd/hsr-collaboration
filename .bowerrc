@@ -1,3 +1,7 @@
 {
-    "directory": "client/bower_components"
+    "directory": "client/bower_components",
+    "analytics": false,
+    "proxy":"http://proxy.helvetia.group:8080",
+    "strict-ssl": false,
+    "https-proxy":"http://proxy.helvetia.group:8080"
 }
