@@ -4,7 +4,7 @@ md-content
   section.section.slim(layout='column')
     p
       | Create a new product for your application.
-    form(ng-submit='create(form)', name='form', class='form', novalidate)
+    form(ng-submit='create(form)', name='form', enctype="multipart/form-data", class='form', novalidate)
       section.section.slim(layout='column')
         span(layout='row', layout-align='start center')
           span(flex='33') Product is active
@@ -32,8 +32,24 @@ md-content
               | Info
             input(type='text', name='info', class='form-control', ng-model='product.info', required)
             p(class='help-block', ng-show='form.info.$error.required && submitted')
-              | Bitte geben Sie eine Info ein
+      section.section(layout='column')
+        span(layout='row', layout-sm='column')
+          md-input-container(flex='', ng-class='{ "has-success": form.info.$valid && submitted, "has-error": form.info.$invalid && submitted }')
+            label
+              | Image Upload
+            input(type='file', ngf-select='', ng-model='picFile', name='file', accept='image/*', ngf-max-size='2MB')
+            i(ng-show='myForm.file.$error.required') *required
+            br
+            p(class='help-block',ng-show='myForm.file.$error.maxSize')
+              | File too large
+              | {{picFile.size / 1000000|number:1}}MB: max 2M
+            img.thumb(ng-show='myForm.file.$valid', ngf-thumbnail='picFile')
+            button(ng-click='picFile = null', ng-show='picFile') Remove
       md-button(type='submit', class='md-raised md-primary')
         | Speichern
       md-button(ui-sref='admin.product-list', class='md-raised')
         | Abbrechen
+      span.progress(ng-show='picFile.progress >= 0')
+        div(style='width:{{picFile.progress}}%', ng-bind="picFile.progress + '%'")
+      span(ng-show='picFile.result') Upload Successful
+      span.err(ng-show='errorMsg') {{errorMsg}}

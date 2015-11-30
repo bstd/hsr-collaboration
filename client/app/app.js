@@ -7,6 +7,7 @@ angular.module('brewApp', [
   'ngMaterial',
   'ngMessages',
   'ui.router',
+  'ngFileUpload',
   'components.constants'
 ])
 

@@ -10,7 +10,11 @@ var ProductSchema = new Schema({
   name: String,
   price: String,
   info: String,
-  active: Boolean
+  active: Boolean,
+  image: {
+    type: String,
+    default: ''
+  }
 });
 
 
