@@ -9,6 +9,23 @@ angular.module('brewApp')
     $scope.create = function(form) {
       $scope.submitted = true;
 
+      form.upload = Upload.upload({
+        url: '/upload',
+        data: {file: file}
+      });
+
+      form.upload.then(function (response) {
+        $timeout(function () {
+          form.result = response.data;
+        });
+      }, function (response) {
+        if (response.status > 0)
+          $scope.errorMsg = response.status + ': ' + response.data;
+      }, function (evt) {
+        // Math.min is to fix IE which reports 200% sometimes
+        form.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+      });
+
       if (form.$valid) {
         AdminProductService.create($scope.product).$promise.then(function() {
           $state.go('admin.product-list');
