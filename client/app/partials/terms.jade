@@ -1,0 +1,19 @@
+﻿md-dialog(aria-label='AGB', ng-cloak)
+  form
+    md-toolbar
+      div(class='md-toolbar-tools')
+        h2
+          | Allgemeinen Geschäftsbedingungen
+        span(flex)
+        md-button(class='md-icon-button', ng-click='close()')
+          md-icon(md-svg-icon='close', aria-label='Schliessen')
+    md-dialog-content
+      div(class='md-dialog-content')
+        p
+          | AGB text TODO
+
+    md-dialog-actions(layout='row')
+      md-button(ng-click='close()')
+        | Schliessen
+      md-button(ng-click='answer("accept")' md-autofocus)
+        | Gelesen und Akzeptiert

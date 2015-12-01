@@ -4,19 +4,97 @@ section
   h1
     | Bestellen
 
+
 section(layout='row', flex)
-  md-content(layout='row', layout-wrap, flex, class='md-padding')
+  // if there is a basket to checkout
+  md-content(ng-hide='empty', flex, class='md-padding')
     p(class='md-title')
       | Total: {{basketTotal | number: 2}}
 
-section(layout='row', flex)
-  md-content(layout='row', layout-wrap, flex, class='md-padding')
     form(name='form', ng-submit='order(form)', novalidate)
+        // LOGGEDIN
+        md-content(ng-show='isLoggedIn()', class='md-padding')
+          h2
+            | rechnungs- und lieferadresse LOGGEDIN für {{user.email}}
+
+          // TODO user address data
+
+
+        // ANONYM
+        md-content(ng-hide='isLoggedIn()', class='md-padding')
+          h2
+            | rechnungs- und lieferadresse anonym
+
+
+          // ADDRESS
+          md-input-container(md-is-error='form.lastName.$touched && form.lastName.$invalid', class='md-block')
+            label
+              | Nachname
+            input(type='text', name='lastName', ng-model='user.lastName', required)
+
+            div(class='help-block', ng-messages='form.lastName.$error', ng-show='form.lastName.$touched && form.lastName.$invalid')
+              include ../partials/form.messages.address.jade
+
+          md-input-container(md-is-error='form.firstName.$touched && form.firstName.$invalid', class='md-block')
+            label
+              | Vorname
+            input(type='text', name='firstName', ng-model='user.firstName', required)
+
+            div(class='help-block', ng-messages='form.firstName.$error', ng-show='form.firstName.$touched && form.firstName.$invalid')
+              include ../partials/form.messages.address.jade
+
+          md-input-container(md-is-error='form.street.$touched && form.street.$invalid', class='md-block')
+            label
+              | Strasse
+            input(type='text', name='street', ng-model='user.street', required)
+
+            div(class='help-block', ng-messages='form.street.$error', ng-show='form.street.$touched && form.street.$invalid')
+              include ../partials/form.messages.address.jade
+
+          md-input-container(md-is-error='form.zip.$touched && form.zip.$invalid', class='md-block')
+            label
+              | Postleitzahl
+            input(type='text', name='zip', ng-pattern="/^\([1-468][0-9]|[57][0-7]|9[0-6])[0-9]{2}$/", ng-model='user.zip', required)
+
+            div(class='help-block', ng-messages='form.zip.$error', ng-show='form.zip.$touched && form.zip.$invalid')
+              include ../partials/form.messages.address.jade
+
+          md-input-container(md-is-error='form.city.$touched && form.city.$invalid', class='md-block')
+            label
+              | Ort
+            input(type='text', name='city', ng-model='user.city', required)
+
+            div(class='help-block', ng-messages='form.city.$error', ng-show='form.city.$touched && form.city.$invalid')
+              include ../partials/form.messages.address.jade
+
+
+
+        md-content(layout='row', layout-wrap, class='md-padding')
+          p
+            | Bitte lesen Sie unsere #[a(ng-click='showTerms()', class='md-primary md-button') Allgemeinen Geschäftsbedingungen]
+
         md-input-container(class='md-block')
-          | TODO
+          md-checkbox(ng-model='terms', aria-label='AGB gelesen und akzeptiert', required)
+            | AGB gelesen und akzeptiert
+
+          div(class='help-block', ng-messages='form.terms.$error', ng-show='form.terms.$touched && form.terms.$invalid')
+            include ../partials/form.messages.terms.jade
+
+
+
+
 
         md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
           | Bestellung abschicken
 
         md-button(href='/product', class='md-primary')
           | Weiter einkaufen
+
+  // no basket found
+  md-content(ng-show='empty', flex, class='md-padding')
+    p
+      | Warenkorb ist leer, keine Bestellung möglich.
+
+    md-input-container(class='md-block')
+      md-button(href='/product', class='md-primary')
+        | Produkte kaufen
