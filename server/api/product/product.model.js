@@ -12,7 +12,6 @@ var ProductSchema = new Schema({
   price: String,
   info: String,
   stock: Number,
-  taste: String,
   vanity: String,
   country: String
 });

@@ -4,7 +4,7 @@ md-content
   section.section.slim(layout='column')
     p
       | Create a new product for your application.
-    form(ng-submit='create(form)', name='form', class='form', novalidate)
+    form(ng-submit='update(form)', name='form', class='form', novalidate)
       section.section.slim(layout='column')
         span(layout='row', layout-align='start center')
           span(flex='33') Product is active
@@ -41,12 +41,6 @@ md-content
             input(type="number", name='stock', class='form-control', ng-model='product.stock', required)
             p(class='help-block', ng-show='form.stock.$error.required && submitted')
               | Bitte geben Sie die Stückzahl(Number) im Lager ein
-      section.section(layout='column')
-        b Geschmack
-        span(class="layout-wrap layout-row flex" layout="row" layout-wrap="" flex="")
-          div(class="flex-20", ng-repeat='taster in tastes')
-            md-checkbox(type='checkbox', name='{{taster}}', value='{{taster}}', ng-model="product.taste")
-            | {{taster}}
       section.section(layout='column')
         span(layout='row', layout-sm='column')
           md-input-container(flex='', ng-class='{ "has-success": form.country.$valid && submitted, "has-error": form.country.$invalid && submitted }')

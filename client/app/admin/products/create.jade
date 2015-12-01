@@ -1,5 +1,5 @@
 h2.debug-restricted
-  | Produkt ändern
+  | Produkt
 md-content
   section.section.slim(layout='column')
     p
@@ -37,16 +37,10 @@ md-content
         span(layout='row', layout-sm='column')
           md-input-container(flex='', ng-class='{ "has-success": form.stock.$valid && submitted, "has-error": form.stock.$invalid && submitted }')
             label
-              | Stück (in Harass oder Pack)
-            input(type='text', name='stock', class='form-control', ng-model='product.stock', required)
+              | Stück (Harass oder Pack)
+            input(type="number", name='stock', class='form-control', ng-model='product.stock', required)
             p(class='help-block', ng-show='form.stock.$error.required && submitted')
-              | Bitte geben Sie die Stückzahl im Lager ein
-      section.section(layout='column')
-        b Geschmack
-        span(class="layout-wrap layout-row flex" layout="row" layout-wrap="" flex="")
-          div(class="flex-20", ng-repeat='taste in tastes')
-              md-checkbox(type='checkbox', name='{{taste}}', value='{{taste}}')
-              | {{taste}}
+              | Bitte geben Sie die Stückzahl(Number) im Lager ein
       section.section(layout='column')
         span(layout='row', layout-sm='column')
           md-input-container(flex='', ng-class='{ "has-success": form.country.$valid && submitted, "has-error": form.country.$invalid && submitted }')

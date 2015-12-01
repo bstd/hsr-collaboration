@@ -6,11 +6,45 @@ section(layout='row', flex)
 section(layout='row', flex)
   h2
     | Produkte
-section(layout='row', flex)
+section.section(layout='column')
   md-content(layout='row', layout-wrap, class='md-padding')
-    md-card(ng-repeat='product in products', flex='25', flex-md='33', flex-sm='100')
-      md-card-content
-        p
-          | {{product.name}}
-        p
-          | {{product.info}}
+    md-input-container(flex='')
+      label Filter
+      input(ng-model='search')
+    md-input-container(flex='')
+      label Sortierung
+      md-select(ng-model='order')
+        md-option(value="name")
+          | Name Alphabet
+        md-option(value="price")
+          | Preis
+    md-input-container(flex='')
+      label Brau-Land
+      md-select(ng-model='countryFilter')
+        md-option(ng-repeat="state in states" value="{{state}}")
+          | {{state}}
+    md-input-container(flex='')
+      label Biersorte
+      md-select(ng-model='vanityFilter')
+        md-option(ng-repeat="vanity in vanities" value="{{vanity}}")
+          | {{vanity}}
+section.section(layout='column')
+    md-content(layout='row', layout-wrap, class='md-padding')
+      md-card(ng-repeat='product in products | filter:search | filter:countryFilter | filter:vanityFilter |orderBy:order', flex='25', flex-md='33', flex-sm='100' ng-if="product.active")
+        img.md-card-image(ng-src='http://placehold.it/300x150', alt='Washed Out')
+        md-card-title
+          md-card-title-text
+            span.md-headline {{product.name}}
+        md-card-content
+          md-chips
+            md-chip
+              | {{product.price}}
+          p {{product.info}}
+          div(layout='row')
+            div(flex='')
+              | {{product.country}}
+            div(flex='')
+              | {{product.vanity}}
+          div(layout='row', layout-align='end center', class='md-actions')
+            md-button(ng-click='addToBasket(product)', class='md-button md-raised md-primary')
+              | Kaufen

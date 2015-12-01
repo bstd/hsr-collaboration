@@ -4,20 +4,13 @@ section
   md-content(layout='row', layout-wrap, class='md-padding')
     md-card(ng-repeat='product in products track by product._id', flex='25', flex-md='33', flex-sm='100')
       md-card-content
-        p
-          | {{product.name}}
-        p
-          | {{product.price}}
-        p
-          | {{product.info}}
-        p
-          | {{product.taste}}
-        p
-          | {{product.country}}
-        p
-          | {{product.vanity}}
-        p
-          | {{product.active}}
+        h3 {{product.name}}
+        p {{product.price}}
+        p {{product.info}}
+        p {{product.stock}}
+        p {{product.country}}
+        p {{product.vanity}}
+        md-checkbox(ng-checked="{{product.active}}" ng-disabled="true" ) Veröffentlicht
         div(layout='row', layout-align='end center', class='md-actions')
           md-button(ng-click='confirmDelete(product)', class='md-button md-raised md-warn')
             | Löschen

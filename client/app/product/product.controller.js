@@ -10,8 +10,6 @@ angular.module('brewApp')
   // get all products from ProductService
   $scope.products = ProductService.query();
 
-  //ToDo Search, Sort, Filters
-
   // add product to basket:
   //  1) call BasketService
   //  2) show md-dialog with
