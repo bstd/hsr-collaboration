@@ -43,7 +43,7 @@ angular.module('brewApp')
 //console.log('You cancelled the dialog');
     });
 
-    function DialogCtrl($scope, $mdDialog, item) {
+    function DialogCtrl($scope, item, $mdDialog) {
       $scope.item = product;
 //console.log('DialogCtrl:',item);
 //console.log('$scope.item:',$scope.item);

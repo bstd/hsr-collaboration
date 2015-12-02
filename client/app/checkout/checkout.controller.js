@@ -19,12 +19,49 @@ angular.module('brewApp')
   // basket
   $scope.basketItems = [];
   $scope.basketItems = BasketService.items();
-console.log('CheckoutCtrl basketItems:',$scope.basketItems);
+//console.log('CheckoutCtrl basketItems:',$scope.basketItems);
 
-$scope.empty = BasketService.isEmpty($scope.basketItems.length);
-console.log('$scope.empty:',$scope.empty);
+  $scope.empty = BasketService.isEmpty($scope.basketItems.length);
+//console.log('$scope.empty:',$scope.empty);
 
   $scope.basketTotal = BasketService.total();
+
+
+  // md-dialog for basketPreview
+  $scope.showBasket = function() {
+    $mdDialog.show({
+      controller: BasketDialogCtrl,
+      templateUrl: 'app/basket/basket-preview.html',
+      parent: angular.element(document.body),
+      clickOutsideToClose: true,
+      locals: {
+        basketPreview: $scope.basketItems
+      }
+    }).then(function(answer) {
+      if (typeof answer !== 'undefined') {
+        if (answer === 'edit') {
+          $state.go('basket');
+        }
+      }
+    }, function() {
+//console.log('You cancelled the dialog');
+    });
+  };
+
+  function BasketDialogCtrl($scope, basketPreview, $mdDialog) {
+    $scope.previewItems = basketPreview;
+//console.log('basketPreview:',basketPreview);
+//console.log('$scope.previewItems',$scope.previewItems);
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+    $scope.close = function() {
+      $mdDialog.cancel();
+    };
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }
 
 
   // md-dialog for terms

@@ -11,7 +11,12 @@ var UserSchema = new Schema({
   role: { type: String, default: 'user' },
   provider: { type: String, default: 'local' },
   hashedPassword: String,
-  salt: String
+  salt: String,
+  firstName: String,
+  lastName: String,
+  street: String,
+  zip: Number,
+  city: String
 });
 
 
@@ -29,7 +34,7 @@ UserSchema
   return this._password;
 });
 
-// Admin profile information
+// Admin profile information (unused)
 UserSchema
 .virtual('profile')
 .get(function() {
@@ -37,6 +42,19 @@ UserSchema
     'email': this.email,
     'role': this.role
   };
+});
+
+// address only
+UserSchema
+.virtual('address')
+.get(function() {
+  return {
+    'firstName': this.firstName,
+    'lastName': this.lastName,
+    'street': this.street,
+    'zip': this.zip,
+    'city': this.city
+  }
 });
 
 // Non-sensitive info we'll be putting in the token

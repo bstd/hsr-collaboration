@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('SettingsCtrl', ['$scope', '$state', '$log', 'User', 'Auth', 'ToastSimpleService', function($scope, $state, $log, User, Auth, ToastSimpleService) {
+.controller('SettingsCtrl', ['$scope', '$state', '$log', '$document', 'User', 'Auth', 'AddressService', 'ToastSimpleService', function($scope, $state, $log, $document, User, Auth, AddressService, ToastSimpleService) {
   $scope.user = {};
   $scope.errors = {};
 
@@ -10,13 +10,13 @@ angular.module('brewApp')
     $log.debug('SettingsCtrl - User.get:',data);
   });
 
+  // change password
   $scope.changePassword = function(form) {
     $scope.submitted = true;
 
     if (form.$valid) {
       Auth.changePassword($scope.user.oldPassword, $scope.user.newPassword)
       .then(function() {
-        $state.go('main');
         ToastSimpleService('Passwort erfolgreich geändert');
       })
       .catch(function(err) {
@@ -30,6 +30,41 @@ angular.module('brewApp')
           form.oldPassword.$setValidity('mongoose', false);
           $scope.errors.oldPassword = err.data;
         }
+      });
+    }
+  };
+
+
+  // change address
+  $scope.changeAddress = function(addressForm) {
+    $scope.submitted2 = true;
+
+    if (addressForm.$valid) {
+      var $id = $scope.user._id,
+          addressData = {
+            'lastName': $scope.user.lastName,
+            'firstName': $scope.user.firstName,
+            'street': $scope.user.street,
+            'zip': $scope.user.zip,
+            'city': $scope.user.city
+          };
+
+      $log.debug('AddressService.changeAddress with id:',$id);
+
+      AddressService.changeAddress({ id: $id }, addressData).$promise.then(function() {
+        var posHelper = $document[0].querySelector('.js-toast-parent');
+
+        ToastSimpleService('Rechnungsadresse erfolgreich geändert', posHelper);
+      })
+      .catch(function(err) {
+        err = err.data;
+        $scope.errors = {};
+
+        // Update validity of form fields that match the mongoose errors
+        angular.forEach(err.errors, function(error, field) {
+          form[field].$setValidity('mongoose', false);
+          $scope.errors[field] = error.message;
+        });
       });
     }
   };

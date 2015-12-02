@@ -1,0 +1,25 @@
+﻿md-dialog(aria-label='Warenkorb', ng-cloak)
+  form
+    md-toolbar
+      div(class='md-toolbar-tools')
+        h2
+          | Warenkorb
+        span(flex)
+        md-button(class='md-icon-button', ng-click='close()')
+          md-icon(md-svg-icon='close', aria-label='Schliessen')
+    md-dialog-content
+      div(class='md-dialog-content')
+        md-list
+          md-list-item(ng-repeat='item in previewItems')
+            p
+              | {{item._name}}
+            p
+              | {{item._price | number: 2}}
+            p
+              | Anzahl: {{item._qty}}
+
+    md-dialog-actions(layout='row')
+      md-button(ng-click='close()', md-autofocus)
+        | Schliessen
+      md-button(ng-click='answer("edit")')
+        | Warenkorb ändern

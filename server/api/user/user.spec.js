@@ -327,6 +327,130 @@ describe('/api/users routes', function() {
 
 
   /*
+   * router.put('/:id/address', auth.isAuthenticated(), controller.changeAddress);
+   */
+
+  describe('PUT /api/users/:id/address', function() {
+
+    // create user(s) that we can auth later
+    before(function(done) {
+      util.createUsers(done);
+    });
+
+
+    describe('without auth', function() {
+      var id;
+
+      // get valid user _id
+      // TODO implement as helper (test.util)
+      before(function(done) {
+        util.User.findOne({ email: 'test@test.com' }, '-salt -hashedPassword', function(err, user) {
+          if (err) return done(err);
+
+          id = user._id;
+
+          done();
+        });
+      });
+
+      // clear variable(s)
+      after(function(done) {
+        id = '';
+        done();
+      });
+
+
+      it('should return 401 without auth because restricted', function(done) {
+        request(util.app)
+        .put('/api/users/' + id + '/address')
+        .expect(401)
+        .end(function(err, res) {
+          if (err) return done(err);
+          done();
+        });
+      });
+    });
+
+    describe('with user auth', function() {
+      var userToken;
+      var id;
+
+      // get valid user _id
+      // TODO implement as helper (test.util)
+      before(function(done) {
+        util.User.findOne({ email: 'test@test.com' }, '-salt -hashedPassword', function(err, user) {
+          if (err) return done(err);
+
+          id = user._id;
+
+          done();
+        });
+      });
+
+      // auth user
+      before(function(done) {
+        request(util.app)
+        .post('/auth/local')
+        .send({
+          email: 'test@test.com',
+          password: 'password'
+        })
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end(function(err, res) {
+          userToken = res.body.token;
+          done();
+        });
+      });
+
+      // clear variable(s)
+      after(function(done) {
+        userToken = '';
+        id = '';
+        done();
+      });
+
+
+      it('should return 200 and data as json with user auth and valid data', function(done) {
+        request(util.app)
+        .put('/api/users/' + id + '/address')
+        .send({
+          lastName: 'lastName',
+          firstName: 'firstName',
+          street: 'street',
+          zip: 9000,
+          city: 'city'
+        })
+        .set('authorization', 'Bearer ' + userToken)
+        .expect(200, {
+          lastName: 'lastName',
+          firstName: 'firstName',
+          street: 'street',
+          zip: 9000,
+          city: 'city'
+        })
+        .end(function(err, res) {
+          if (err) return done(err);
+          done();
+        });
+      });
+
+      it('should return 403 with user auth but invalid user._id', function(done) {
+        request(util.app)
+        .put('/api/users/invaliduserid/password')
+        .send({ lastName: 'lastName', firstName: 'firstName' })
+        .set('authorization', 'Bearer ' + userToken)
+        .expect(403)
+        .end(function(err, res) {
+          if (err) return done(err);
+          done();
+        });
+      });
+    });
+  });
+
+
+  /*
    * router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
    */
 
