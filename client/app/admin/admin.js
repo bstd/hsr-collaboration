@@ -14,125 +14,98 @@ angular.module('brewApp')
     title: 'Adminbereich',
     templateUrl: 'app/admin/admin.html',
     controller: 'AdminCtrl',
-    //controllerAs: 'admin',
     // restricted
     authenticate: true,
-    role: 'admin',
-    onEnter: function($log) {
-      $log.debug('enter admin');
-    },
-    onExit: function($log) {
-      $log.debug('exit admin');
-    }
+    role: 'admin'
   })
+  // PRODUCTS
   .state('admin.product-list', {
     url: '/products',
     title: 'Admin - Produktliste',
     templateUrl: 'app/admin/products/products.html',
     controller: 'ProductsCtrl',
-    //controllerAs: 'admin.product.list',
     // restricted
     authenticate: true,
-    role: 'admin',
-    onEnter: function($log) {
-      $log.debug('enter admin.product-list');
-    },
-    onExit: function($log) {
-      $log.debug('exit admin.product-list');
-    }
+    role: 'admin'
   })
   .state('admin.product-create', {
     url: '/products/create',
     title: 'Admin - Produkt erstellen',
     templateUrl: 'app/admin/products/create.html',
     controller: 'ProductsCreateCtrl',
-    //controllerAs: 'admin.product.list',
     // restricted
     authenticate: true,
-    role: 'admin',
-    onEnter: function($log) {
-      $log.debug('enter admin.product-create');
-    },
-    onExit: function($log) {
-      $log.debug('exit admin.product-create');
-    }
+    role: 'admin'
   })
   .state('admin.product-edit', {
     url: '/products/edit/:id',
     title: 'Admin - Produkt bearbeiten',
     templateUrl: 'app/admin/products/edit.html',
     controller: 'ProductsEditCtrl',
-    //controllerAs: 'admin.user.update',
     // restricted
     authenticate: true,
-    role: 'admin',
-    onEnter: function($log) {
-      $log.debug('enter admin.product-edit');
-    },
-    onExit: function($log) {
-      $log.debug('exit admin.product-edit');
-    }
+    role: 'admin'
   })
   .state('admin.product-destroy', {
     url: '/products/destroy/:id',
     title: 'Admin - Produkt löschen',
     controller: 'ProductsDestroyCtrl',
-    //controllerAs: 'admin.user.destroy',
     // restricted
     authenticate: true,
-    role: 'admin',
-    onEnter: function($log) {
-      $log.debug('enter admin.products-destroy');
-    },
-    onExit: function($log) {
-      $log.debug('exit admin.products-destroy');
-    }
+    role: 'admin'
   })
+  // USERS
   .state('admin.user-list', {
     url: '/users',
     title: 'Admin - Benutzerliste',
     templateUrl: 'app/admin/user/list.html',
     controller: 'AdminUserListCtrl',
-    //controllerAs: 'admin.user.list',
     // restricted
     authenticate: true,
-    role: 'admin',
-    onEnter: function($log) {
-      $log.debug('enter admin.user-list');
-    },
-    onExit: function($log) {
-      $log.debug('exit admin.user-list');
-    }
+    role: 'admin'
   })
   .state('admin.user-create', {
     url: '/users/create',
     title: 'Admin - Benutzer erstellen',
     templateUrl: 'app/admin/user/create.html',
     controller: 'AdminUserCreateCtrl',
-    //controllerAs: 'admin.user.create',
     // restricted
     authenticate: true,
-    role: 'admin',
-    onEnter: function($log) {
-      $log.debug('enter admin.user-create');
-    },
-    onExit: function($log) {
-      $log.debug('exit admin.user-create');
-    }
+    role: 'admin'
   })
   .state('admin.user-destroy', {
     url: '/users/destroy/:id',
     title: 'Admin - Benutzer löschen',
     controller: 'AdminUserDestroyCtrl',
-    //controllerAs: 'admin.user.destroy',
     // restricted
     authenticate: true,
-    role: 'admin',
-    onEnter: function($log) {
-      $log.debug('enter admin.user-destroy');
-    },
-    onExit: function($log) {
-      $log.debug('exit admin.user-destroy');
-    }
+    role: 'admin'
+  })
+  // ORDERS
+  .state('admin.order-list', {
+    url: '/orders',
+    title: 'Admin - Bestellungen',
+    templateUrl: 'app/admin/order/list.html',
+    controller: 'AdminOrderListCtrl',
+    // restricted
+    authenticate: true,
+    role: 'admin'
+  })
+  .state('admin.order-edit', {
+    url: '/orders/edit/:id',
+    title: 'Admin - Bestellung anpassen',
+    templateUrl: 'app/admin/order/edit.html',
+    controller: 'AdminOrderEditCtrl',
+    // restricted
+    authenticate: true,
+    role: 'admin'
+  })
+  .state('admin.order-destroy', {
+    url: '/orders/destroy/:id',
+    title: 'Admin - Bestellung löschen',
+    controller: 'AdminOrderDestroyCtrl',
+    // restricted
+    authenticate: true,
+    role: 'admin'
   });
 });

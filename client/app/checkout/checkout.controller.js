@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('CheckoutCtrl', ['$scope', '$state', '$mdDialog', '$log', 'Auth', 'User', 'BasketService', 'CheckoutService', function($scope, $state, $mdDialog, $log, Auth, User, BasketService, CheckoutService) {
+.controller('CheckoutCtrl', ['$scope', '$state', '$mdDialog', '$log', 'Auth', 'User', 'BasketService', 'CheckoutService', 'ToastSimpleService', function($scope, $state, $mdDialog, $log, Auth, User, BasketService, CheckoutService, ToastSimpleService) {
   $scope.user = {};
   $scope.order = {};
   $scope.terms = false;
@@ -103,24 +103,43 @@ angular.module('brewApp')
     $scope.submitted = true;
 
     if (form.$valid) {
-      // TODO create order
+      // create order
+console.log('valid submit with basket:',$scope.basketItems);
+console.log('and total:',$scope.basketTotal);
+console.log('for optional user email:',$scope.user.email);
+console.log('addressdata lastName:',$scope.user.lastName);
+console.log('addressdata firstName:',$scope.user.firstName);
+console.log('addressdata street:',$scope.user.street);
+console.log('addressdata zip:',$scope.user.zip);
+console.log('addressdata city:',$scope.user.city);
 
-      // then
-      //.then(function() {
+      $scope.order = {
+        userEmail: $scope.user.email,
+        addressLastName: $scope.user.lastName,
+        addressFirstName: $scope.user.firstName,
+        addressStreet: $scope.user.street,
+        addressZip: $scope.user.zip,
+        addressCity: $scope.user.city,
+        total: $scope.basketTotal,
+        products: $scope.basketItems
+      };
+
+console.log('order to create:',$scope.order);
+
+      CheckoutService.create($scope.order).$promise.then(function() {
         $state.go('confirmation');
-      //})
-      /*
+        ToastSimpleService('Bestellung erfolgreich abgeschickt');
+      })
       .catch(function(err) {
         err = err.data;
         $scope.errors = {};
-
+console.log('mongo err:',err);
         // Update validity of form fields that match the mongoose errors
-        angular.forEach(err.errors, function(error, field) {
+        /*angular.forEach(err.errors, function(error, field) {
           form[field].$setValidity('mongoose', false);
           $scope.errors[field] = error.message;
-        });
+        });*/
       });
-       */
     }
   };
 }]);
