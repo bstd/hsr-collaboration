@@ -1,4 +1,4 @@
-.header__search {
+.search__container {
   md-autocomplete {
     background: none;
   }
@@ -21,5 +21,23 @@
       display: block;
       line-height: 2;
     }
+  }
+}
+
+.search__button {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  min-width: 2em;
+
+  @include breakpoint(sm) {
+    min-width: 4em;
+  }
+
+  @include breakpoint(md) {
+    min-width: 5em;
+  }
+
+  @include breakpoint(lg) {
+    min-width: 8em;
   }
 }

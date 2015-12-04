@@ -1,0 +1,19 @@
+﻿@mixin breakpoint($point) {
+  @if $point == sm {
+    @media only screen and (min-width: $screen-sm-min) {
+       @content;
+    }
+  }
+
+  @if $point == md {
+    @media only screen and (min-width: $screen-md-min) {
+      @content;
+    }
+  }
+
+  @if $point == lg {
+    @media only screen and (min-width: $screen-lg-min) {
+      @content;
+    }
+  }
+}

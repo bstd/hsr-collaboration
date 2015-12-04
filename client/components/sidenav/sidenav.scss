@@ -1,5 +1,14 @@
-﻿md-sidenav {
-	.active {
-		background-color: grey;
-	}
+﻿.brew__sidenav {
+  /*&__title {
+    &--closed {
+      margin: 0;
+      text-align: center;
+    }
+  }*/
+
+  md-sidenav {
+    .active {
+      background-color: $grey;
+    }
+  }
 }

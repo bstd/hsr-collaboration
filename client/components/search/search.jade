@@ -1,11 +1,13 @@
-div(ng-controller='HeaderSearchCtrl as ac', layout-column)
+- var txtSearch = 'Suchen'
+
+div(ng-controller='HeaderSearchCtrl as ac', layout='column', class='search__container')
   md-content(class='md-padding')
     form(ng-submit='search(searchForm)', name='searchForm', novalidate, class='layout-row')
       md-autocomplete(
         md-input-name='q'
         md-items='item in ac.querySearch(ac.searchText)'
         md-item-text='item.name'
-        md-menu-class='header__search'
+        md-menu-class='search__container'
         md-min-length='0'
         md-search-text='ac.searchText'
         md-search-text-change='ac.searchTextChange(ac.searchText)'
@@ -31,5 +33,5 @@ div(ng-controller='HeaderSearchCtrl as ac', layout-column)
           | Keine Suchtreffer gefunden
 
 
-      md-button(type='submit', aria-label='Suchen')
+      md-button(type='submit', class='search__button', aria-label='#{txtSearch}', title='#{txtSearch}')
         md-icon(md-svg-icon='search')

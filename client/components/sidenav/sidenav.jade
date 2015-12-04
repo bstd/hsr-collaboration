@@ -1,11 +1,13 @@
+- var txtMenu = 'Menü'
+
 // in order to close sidenav when switching states containing sub-states use ng-click to toggle sidenav
-navigation(ng-controller='SidenavCtrl', layout='row', flex)
+navigation(ng-controller='SidenavCtrl', layout='row', class='brew__sidenav')
   md-sidenav(class='md-sidenav-right md-whiteframe-z2', md-component-id='right')
     md-toolbar(class='md-theme-indigo')
-      p(class='md-toolbar-tools')
-        | Menü
+      p(class='md-toolbar-tools brew__sidenav__title brew__sidenav__title--open')
+        | #{txtMenu}
     md-content(layout-padding)
-      md-button(ng-click="toggleSidenav('right')", class='md-primary', aria-label='Menü schliessen')
+      md-button(ng-click="toggleSidenav('right')", class='md-primary', aria-label='#{txtMenu} schliessen', title='#{txtMenu} schliessen')
         md-icon(md-svg-icon='arrow_forward')
       ul
         li
@@ -48,10 +50,8 @@ navigation(ng-controller='SidenavCtrl', layout='row', flex)
             | Testseiten
 
   md-content
-    div(layout='column', layout-fill, layout-align='top center')
+    div(layout='column', layout-align='top center')
       div
-        md-button(ng-click="toggleSidenav('right')", class='md-primary', aria-label='Menü')
+        md-button(ng-click="toggleSidenav('right')", class='md-primary', aria-label='#{txtMenu}', title='#{txtMenu}')
           md-icon(md-svg-icon='menu')
-        p(hide-sm, hide-md)
-          | Menü
     div(flex)

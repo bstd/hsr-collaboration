@@ -1,0 +1,18 @@
+﻿// colors
+$red: red;
+$grey: #ccc;
+
+// icon sizes
+$icon-width: 48px;
+$icon-height: 48px;
+$icon-width-sm: 36px;
+$icon-height-sm: 36px;
+$icon-width-md: 32px;
+$icon-height-md: 32px;
+$icon-width-lg: 30px;
+$icon-height-lg: 30px;
+
+// breakpoint variables for media query mixin (matching angular material layout-breakpoints)
+$screen-sm-min: 600px;
+$screen-md-min: 960px;
+$screen-lg-min: 1200px;

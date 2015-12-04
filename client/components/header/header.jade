@@ -1,19 +1,29 @@
-div(layout='row')
-  // logo
-  div(layout='row', class='header__logo')
-    a(href='/', title='Startseite')
-      img(src='/assets/images/logo.png')
+- var txtBasket = 'Warenkorb'
+- var txtMyAccount = 'MyAccount'
 
-  // search
-  div(flex='auto', class='header__search')
-    include ../search/search.jade
+div(layout='row', layout-wrap, flex)
+  div(layout='row', flex-order-sm='1', flex-order-md='1')
+    // logo
+    div(class='header__logo')
+      a(href='/', title='Startseite')
+        img(src='/assets/images/logo.png')
 
-  // nav
-  div(layout='row', flex, class='header__nav')
-    a(href='basket', title='Warenkorb', ng-class="{active: isActive('/basket')}")
-      md-icon(md-svg-icon='shopping_cart')
-    a(href='settings', title='MyAccount', ng-class="{active: isActive('/settings')}")
-      md-icon(md-svg-icon='person')
+  div(flex, flex-sm='100', flex-order-sm='3', flex-md='100', flex-order-md='3')
+    // search
+    div(flex='auto', class='header__search')
+      include ../search/search.jade
 
-    // sidenav
-    include ../sidenav/sidenav.jade
+  div(flex-sm, flex-md, flex-order-sm='2', flex-order-md='2')
+    // nav
+    div(layout='row', layout-align='end', class='header__nav')
+      a(href='basket', title='#{txtBasket}', ng-class='{active: isActive("/basket")}', class='header__nav__link')
+        md-tooltip
+          | #{txtBasket}
+        md-icon(md-svg-icon='shopping_cart')
+      a(href='settings', title='#{txtMyAccount}', ng-class='{active: isActive("/settings")}', class='header__nav__link')
+        md-tooltip
+          | #{txtMyAccount}
+        md-icon(md-svg-icon='person')
+
+      // sidenav
+      include ../sidenav/sidenav.jade
