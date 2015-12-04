@@ -5,6 +5,12 @@ section
     | Bestellbestätigung
 
 section(layout='row', flex)
-  md-content(layout='row', layout-wrap, flex, class='md-padding')
+  md-content(layout='column', flex, class='md-padding')
     p(class='md-title')
-      | Danke
+      | Danke für Ihre Bestellung.
+    p
+      | Sie erhalten eine Benachrichtigung per E-Mail, sobald Ihre Bestellung versendet wird.
+section(layout='row', flex)
+  md-content(layout='row', layout-wrap, flex, class='md-padding')
+    md-button(href='/product', class='md-primary')
+      | Im Shop stöbern

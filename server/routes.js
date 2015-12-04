@@ -11,6 +11,7 @@ module.exports = function(app) {
   // API
   app.use('/api/products', require('./api/product'));
   app.use('/api/users', require('./api/user'));
+  app.use('/api/orders', require('./api/order'));
 
   // auth (passport)
   app.use('/auth', require('./auth'));

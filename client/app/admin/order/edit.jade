@@ -1,0 +1,17 @@
+h2.debug-restricted
+  | Bestellung
+md-content(flex, class='md-padding')
+  // unchangeable information
+  p(ng-show='order.userEmail !== "undefined"')
+    | {{order.userEmail}}
+
+form(name='form', ng-submit='update(form)', novalidate)
+  md-input-container(class='md-block')
+    label
+      | Status ändern
+    //md-select(name='state', ng-model='order.state', required)
+
+  md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
+    | Speichern
+  md-button(ui-sref='admin.order-list', class='md-raised')
+    | Abbrechen
