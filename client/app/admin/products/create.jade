@@ -4,7 +4,7 @@ md-content
   section.section.slim(layout='column')
     p
       | Create a new product for your application.
-    form(ng-submit='create(form)', name='form', class='form', novalidate)
+    form(ng-submit='create(form)', name='form', class='form', enctype="multipart/form-data", novalidate)
       section.section.slim(layout='column')
         span(layout='row', layout-align='start center')
           span(flex='33') Product is active
@@ -59,6 +59,22 @@ md-content
                 | {{van}}
             p(class='help-block', ng-show='form.vanity.$error.required && submitted')
               | Bitte geben Sie eine Biersorte an
+      section.section(layout='column')
+        span(layout='row', layout-sm='column')
+          md-input-container(flex='', ng-class='{ "has-success": form.file.$valid && submitted, "has-error": form.file.$invalid && submitted }')
+            label
+              | Image Upload
+            md-button(type='file', ngf-select='uploadFiles($file, $invalidFiles)', accept='image/*', ngf-max-height='1000', ngf-max-size='1MB')
+              | Select File
+            br
+            br
+            |   File:
+            div(style='font:smaller')
+              | {{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+              span.progress(ng-show='f.progress >= 0')
+                div(style='width:{{f.progress}}%', ng-bind="f.progress + '%'")
+            |   {{errorMsg}}
+
       md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
         | Speichern
       md-button(ui-sref='admin.product-list', class='md-raised')

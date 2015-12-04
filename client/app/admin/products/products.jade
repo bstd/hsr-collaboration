@@ -5,6 +5,7 @@ section
     md-card(ng-repeat='product in products track by product._id', flex='25', flex-md='33', flex-sm='100')
       md-card-content
         h3 {{product.name}}
+        img {{product.picFile}}
         p {{product.price}}
         p {{product.info}}
         p {{product.stock}}
