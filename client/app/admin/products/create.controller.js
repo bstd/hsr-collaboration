@@ -39,7 +39,7 @@ angular.module('brewApp')
       $scope.errFile = errFiles && errFiles[0];
       if (file) {
         file.upload = Upload.upload({
-          url: 'api/products/upload',
+          url: 'api/products',
           data: {file: file}
         });
 

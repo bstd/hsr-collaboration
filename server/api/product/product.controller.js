@@ -2,6 +2,11 @@
 
 var _ = require('lodash');
 var Product = require('./product.model');
+var multer = require('multer');
+var upload = multer({dest:'uploads/'});
+var fs = require('fs');
+
+
 
 // Get list of products
 exports.index = function(req, res) {
@@ -27,7 +32,26 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   Product.create(req.body, function(err, product) {
     if (err) { return handleError(res, err); }
-
+    console.log(req.file);
+    Product.findById(req.param('id'), function (err, product) {
+      console.log(req.file) // File from Client
+      if(req.file){   // If the Image exists
+        fs.readFile(req.file.path, function (dataErr, data) {
+          if(data) {
+            product.photo ='';
+            product.photo = data;  // Assigns the image to the path.
+            product.save(function (saveerr, saveproduct) {
+              if (saveerr) {
+                throw saveerr;
+              }
+              res.json(HttpStatus.OK, saveproduct);
+            });
+          }
+        });
+        return
+      }
+      res.json(HttpStatus.BAD_REQUEST,{error:"Error in file upload"});
+    });
     return res.status(201).json(product);
   });
 };
@@ -67,28 +91,7 @@ exports.destroy = function(req, res) {
 };
 
 /* images */
-var productPicture = function(req,res){             // Stores Picture for a product matching the ID.
-  product.findById(req.param('id'), function (err, product) {
-    console.log(req.files) // File from Client
-    if(req.files.file){   // If the Image exists
-      var fs = require('node-fs');
-      fs.readFile(req.files.file.path, function (dataErr, data) {
-        if(data) {
-          product.photo ='';
-          product.photo = data;  // Assigns the image to the path.
-          product.save(function (saveerr, saveproduct) {
-            if (saveerr) {
-              throw saveerr;
-            }
-            res.json(HttpStatus.OK, saveproduct);
-          });
-        }
-      });
-      return
-    }
-    res.json(HttpStatus.BAD_REQUEST,{error:"Error in file upload"});
-  });
-};
+// CREATE
 
 function handleError(res, err) {
   return res.status(500).send(err);

@@ -13,7 +13,9 @@ var ProductSchema = new Schema({
   info: String,
   stock: Number,
   vanity: String,
-  country: String
+  country: String,
+  photo:Buffer,  // Image
+  modificationDate: {type: Date, "default": Date.now}
 });
 
 
