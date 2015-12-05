@@ -6,14 +6,14 @@ angular.module('brewApp')
   var Basket = {};
 
 
-  Basket.addItem = function(id, name, price, quantity) {
+  Basket.addItem = function(id, ean, name, price, quantity) {
     var inBasket = Basket.getItemById(id);
-//console.log('Basket.addItem:',id, name, price, quantity);
+//console.log('Basket.addItem:',id, ean, name, price, quantity);
     if (typeof inBasket === 'object') {
       inBasket.setQuantity(quantity, true);// use relative increase (+1)
     }
     else {
-      var newItem = new BasketItem(id, name, price, quantity);
+      var newItem = new BasketItem(id, ean, name, price, quantity);
 
       items.push(newItem);
     }

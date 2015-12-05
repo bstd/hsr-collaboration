@@ -8,7 +8,9 @@ section(layout='row', flex)
     md-card(ng-repeat='product in products track by product._id', flex='25', flex-md='33', flex-sm='100')
       md-card-content
         p
-          | {{product.name}}
+          | {{product.name}} (EAN: {{product.ean}})
+        p
+          | {{product.price | number: 2}}
         p
           | {{product.info}}
         div(layout='row', layout-align='end center', class='md-actions')

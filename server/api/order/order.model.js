@@ -16,7 +16,7 @@ var OrderSchema = new Schema({
   state: {
     type: String,
     trim: true,
-    enum: ['new','sent','paid','done'],
+    enum: ['new','open','paid','done'],
     default: 'new'
   },
   userEmail: { type: String, trim: true },
@@ -28,7 +28,10 @@ var OrderSchema = new Schema({
   total: Number,
   products: [{
     id: { type: Schema.Types.ObjectId, ref: 'Product' },
-    _qty: { type: Number }
+    _qty: { type: Number },
+    _ean: { type: String },
+    _name: { type: String },
+    _price: { type: String }
   }]
 });
 
