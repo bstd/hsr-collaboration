@@ -9,7 +9,11 @@ form(name='form', ng-submit='update(form)', novalidate)
   md-input-container(class='md-block')
     label
       | Status ändern
-    //md-select(name='state', ng-model='order.state', required)
+    md-select(name='state', ng-model='objOrderState', ng-model-options="{ trackBy: '$value.id' }", required)
+      md-select-label
+        | {{objOrderState ? objOrderState.value : 'Bestellstatus wählen'}}
+      md-option(ng-value='opt', ng-repeat='opt in orderStates')
+        | {{opt.value}}
 
   md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
     | Speichern

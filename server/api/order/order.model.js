@@ -16,7 +16,7 @@ var OrderSchema = new Schema({
   state: {
     type: String,
     trim: true,
-    enum: ['new','sent','paid','done'],
+    enum: ['new','open','paid','done'],
     default: 'new'
   },
   userEmail: { type: String, trim: true },

@@ -17,7 +17,12 @@ section
         p
           | letzte Statusänderung am: {{order.dateUpdated}}
         p
-          | Status: {{order.state}}
+          span Status:&#160;
+          span(ng-switch='order.state')
+            span(ng-switch-when='new') neu
+            span(ng-switch-when='open') Rechnung offen
+            span(ng-switch-when='paid') bezahlt
+            span(ng-switch-when='done') abgeschlossen
         p
           | Adresse: {{order.addressLastName}} {{order.addressFirstName}} {{order.addressStreet}} {{order.addressZip}} {{order.addressCity}}
         p(class='md-title')

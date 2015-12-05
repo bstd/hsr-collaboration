@@ -62,7 +62,7 @@ function hasRole(roleRequired) {
  */
 function signToken(id) {
 //console.log('server auth - sign token:',id);
-	return jwt.sign({ _id: id }, config.secrets.session, { expiresIn: 300 });// in seconds
+	return jwt.sign({ _id: id }, config.secrets.session, { expiresIn: 1800 });// in seconds
 }
 
 /**
