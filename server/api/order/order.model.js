@@ -28,7 +28,10 @@ var OrderSchema = new Schema({
   total: Number,
   products: [{
     id: { type: Schema.Types.ObjectId, ref: 'Product' },
-    _qty: { type: Number }
+    _qty: { type: Number },
+    _ean: { type: String },
+    _name: { type: String },
+    _price: { type: String }
   }]
 });
 

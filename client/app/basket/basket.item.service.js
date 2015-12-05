@@ -2,9 +2,10 @@
 // TODO cleanup factory
 angular.module('brewApp')
 .factory('BasketItem', ['$log', function($log) {
-  var item = function(id, name, price, qty) {
-//console.log('BasketItem item:',id,name,price,qty);
+  var item = function(id, ean, name, price, qty) {
+console.log('BasketItem item:',id,ean,name,price,qty);
     this.setId(id);
+    this.setEan(ean);
     this.setName(name);
     this.setPrice(price);
     this.setQuantity(qty);
@@ -20,6 +21,18 @@ angular.module('brewApp')
   };
   item.prototype.getId = function() {
     return this._id;
+  };
+
+  item.prototype.setEan = function(ean) {
+    if (ean) {
+      this._ean = ean;
+    }
+    else {
+      $log.error('An EAN must be provided');
+    }
+  };
+  item.prototype.getEan = function() {
+    return this._ean;
   };
 
   item.prototype.setName = function(name) {

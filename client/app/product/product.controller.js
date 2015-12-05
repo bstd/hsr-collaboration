@@ -17,7 +17,7 @@ angular.module('brewApp')
   //      - choice to go to basket or checkout
   $scope.addToBasket = function(product) {
 //console.log('addToBasket:',product);
-    BasketService.addItem(product._id, product.name, product.price, 1);
+    BasketService.addItem(product._id, product.ean, product.name, product.price, 1);
 
     $mdDialog.show({
       controller: DialogCtrl,

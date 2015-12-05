@@ -1,15 +1,15 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('AdminOrderEditCtrl',  ['$scope', '$http', '$state', '$log', 'AdminOrderService', 'ToastSimpleService', function($scope, $http, $state, $log, AdminOrderService, ToastSimpleService) {
+.controller('AdminOrderEditCtrl',  ['$scope', '$http', '$state', '$log', 'AdminOrderService', 'ToastSimpleService', 'CONSTANTS', function($scope, $http, $state, $log, AdminOrderService, ToastSimpleService, CONSTANTS) {
     $scope.id = $state.params.id;
     $scope.order = {};
     $scope.orderStates = [
-      { id: 'new', value: 'neu' },
-      { id: 'open', value: 'Rechnung offen' },
-      { id: 'paid', value: 'bezahlt' },
-      { id: 'done', value: 'abgeschlossen' }
-    ];// TODO CONSTANTS (could also be combined with schema.path api/service)
+      { id: CONSTANTS.enums.order.new.key, value: CONSTANTS.enums.order.new.value },
+      { id: CONSTANTS.enums.order.open.key, value: CONSTANTS.enums.order.open.value },
+      { id: CONSTANTS.enums.order.paid.key, value: CONSTANTS.enums.order.paid.value },
+      { id: CONSTANTS.enums.order.done.key, value: CONSTANTS.enums.order.done.value }
+    ];// could also be combined with schema.path api/service
     $scope.objOrderState = {};// obj helper for order.state {STRING}
     $scope.errors = {};
 

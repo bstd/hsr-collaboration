@@ -7,35 +7,7 @@ section
 
     md-card(ng-repeat='order in orders track by order._id')
       md-card-content
-        p(ng-show='order.userEmail !== "undefined"')
-          | Registrierte Benutzer E-Mail: {{order.userEmail}}
-
-        p
-          | orderId: {{order.orderId}}
-        p
-          | bestellt am: {{order.dateCreated}}
-        p
-          | letzte Statusänderung am: {{order.dateUpdated}}
-        p
-          span Status:&#160;
-          span(ng-switch='order.state')
-            span(ng-switch-when='new') neu
-            span(ng-switch-when='open') Rechnung offen
-            span(ng-switch-when='paid') bezahlt
-            span(ng-switch-when='done') abgeschlossen
-        p
-          | Adresse: {{order.addressLastName}} {{order.addressFirstName}} {{order.addressStreet}} {{order.addressZip}} {{order.addressCity}}
-        p(class='md-title')
-          | Produkte:
-
-        ul(ng-repeat='items in order.products track by $index')
-          li
-            | id: {{order.products[$index]._id}}
-          li
-            | qty: {{order.products[$index]._qty}}
-
-        p
-          | Bestellsumme: {{order.total}}
+        include partial-order-detail.jade
 
 
         div(layout='row', layout-align='end center', class='md-actions')

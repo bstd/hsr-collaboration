@@ -23,6 +23,26 @@ angular.module('components.constants', [])
     star: '/assets/svg/ic_star_24px.svg',
     star_border: '/assets/svg/ic_star_border_24px.svg',
     supervisor_account: '/assets/svg/ic_supervisor_account_24px.svg'
+  },
+  enums: {
+    order: {
+      new: {
+        key: 'new',
+        value: 'neu'
+      },
+      open: {
+        key: 'open',
+        value: 'Rechnung offen'
+      },
+      paid: {
+        key: 'paid',
+        value: 'bezahlt'
+      },
+      done: {
+        key: 'done',
+        value: 'abgeschlossen'
+      }
+    }
   }
 })
 .config(function(CONSTANTS) {

@@ -2,8 +2,8 @@ h2.debug-restricted
   | Bestellung
 md-content(flex, class='md-padding')
   // unchangeable information
-  p(ng-show='order.userEmail !== "undefined"')
-    | {{order.userEmail}}
+  include partial-order-detail.jade
+
 
 form(name='form', ng-submit='update(form)', novalidate)
   md-input-container(class='md-block')
