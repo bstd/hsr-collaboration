@@ -7,6 +7,6 @@ angular.module('brewApp')
   AdminUserService.remove({ id: $scope.id }, function(result) {
     $log.debug('AdminUserDestroyCtrl - AdminUserService.remove:',result);
     $state.go('admin.user-list');
-    ToastSimpleService('Benutzer erfolgreich gelöscht');
+    ToastSimpleService('Benutzer erfolgreich gelöscht', 'success');
   });
 }]);

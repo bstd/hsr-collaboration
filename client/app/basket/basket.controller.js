@@ -5,14 +5,14 @@ angular.module('brewApp')
   $scope.basketTotal = 0;
   $scope.basketItems = [];
   $scope.basketItems = BasketService.items();
-//console.log('BasketCtrl basketItems:',$scope.basketItems);
+console.log('BasketCtrl basketItems:',$scope.basketItems);
   // track empty basket
   $scope.empty = BasketService.isEmpty($scope.basketItems.length);
-//console.log('$scope.empty:',$scope.empty);
+console.log('BasketCtrl $scope.empty:',$scope.empty);
 
   // calculate basket total via service
   $scope.basketTotal = BasketService.total();
-//console.log('basketTotal:',$scope.basketTotal);
+console.log('BasketCtrl basketTotal:',$scope.basketTotal);
 
 
   // remove from basket via service, show toast
@@ -20,7 +20,7 @@ angular.module('brewApp')
     BasketService.removeItem(basketItem);
 
     $scope.basketTotal = BasketService.total();
-    ToastSimpleService('Warenkorb aktualisiert');
+    ToastSimpleService('Warenkorb aktualisiert', 'success');
 //console.log($scope.basketTotal);
 //console.log($scope.basketItems.length);
     $scope.empty = BasketService.isEmpty($scope.basketItems.length);

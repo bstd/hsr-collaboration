@@ -20,6 +20,6 @@ angular.module('brewApp')
   $scope.logout = function() {
     Auth.logout();
     $location.path('/login');
-    ToastSimpleService('Abmeldung erfolgreich');
+    ToastSimpleService('Abmeldung erfolgreich', 'success');
   };
 }]);

@@ -12,7 +12,7 @@ angular.module('brewApp')
     if (form.$valid) {
       AdminUserService.create($scope.user).$promise.then(function() {
         $state.go('admin.user-list');
-        ToastSimpleService('Benutzer erfolgreich erstellt');
+        ToastSimpleService('Benutzer erfolgreich erstellt', 'success');
       })
       .catch( function(err) {
         err = err.data;

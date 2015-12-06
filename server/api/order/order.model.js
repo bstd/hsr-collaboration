@@ -11,7 +11,7 @@ var OrderSchema = new Schema({
     getter: function(val) { return this._id.toString(); },
     unique: true
   },
-  dateCreated: {type: Date, default: Date.now, required: true },
+  dateCreated: {type: Date, default: Date.now, required: true },// alternative: .getTimestamp() -> method
   dateUpdated: { type: Date, default: Date.now },
   state: {
     type: String,
@@ -55,10 +55,8 @@ OrderSchema
   // new entries: index new entries with orderId
   this.orderId = this._id.toString().replace(/\D/g,'');
 
-  if (!this.isModified) return next();
-
   // modified entries: update dateUpdated
-  this.update({},{ $set: { dateUpdated: new Date() } });
+  this.dateUpdated = new Date();
 
   next();
 });

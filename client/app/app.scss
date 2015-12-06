@@ -22,6 +22,7 @@
 // injector
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
+@import 'admin/order/partial-order-detail.scss';
 @import 'admin/products/products.scss';
 @import 'basket/basket.scss';
 @import 'checkout/checkout.scss';
@@ -29,9 +30,9 @@
 @import 'main/main.scss';
 @import 'product/product.scss';
 @import 'result/result.scss';
-@import 'test/icons/icons.scss';
 @import 'test/test.scss';
 @import 'header/header.scss';
 @import 'search/search.scss';
 @import 'sidenav/sidenav.scss';
+@import 'theme/toast-theme.scss';
 // endinjector

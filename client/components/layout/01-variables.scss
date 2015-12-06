@@ -1,6 +1,13 @@
 ﻿// colors
 $red: red;
+$orange: orange;
 $grey: #ccc;
+$green1: lime;
+$green2: green;
+$purple: purple;
+$blue: #03a9f4;
+$white: #fff;
+$black: #000;
 
 // icon sizes
 $icon-width: 48px;
@@ -16,3 +23,9 @@ $icon-height-lg: 30px;
 $screen-sm-min: 600px;
 $screen-md-min: 960px;
 $screen-lg-min: 1200px;
+
+// order state highlighting
+$order-state-bgColor-new: $red;
+$order-state-bgColor-open: $orange;
+$order-state-bgColor-paid: $purple;
+$order-state-bgColor-done: $green2;

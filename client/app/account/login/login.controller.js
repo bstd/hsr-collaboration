@@ -15,7 +15,7 @@ angular.module('brewApp')
       })
       .then(function() {
         $state.go('main');
-        ToastSimpleService('Anmeldung erfolgreich');
+        ToastSimpleService('Anmeldung erfolgreich', 'success');
       })
       .catch(function(err) {
         form.password.$setValidity('mongoose', false);

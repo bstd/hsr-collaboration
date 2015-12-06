@@ -1,3 +1,4 @@
+- var txtOrders = 'Bestellungen';
 - var txtBasket = 'Warenkorb';
 - var txtMyAccount = 'MyAccount';
 
@@ -16,6 +17,10 @@ div(layout='row', layout-wrap, flex)
   div(flex-sm, flex-md, flex-order-sm='2', flex-order-md='2')
     // nav
     div(layout='row', layout-align='end', class='header__nav')
+      a(ng-if='isAdmin()', href='admin/orders', title='#{txtBasket}', ng-class='{active: isActive("/admin/orders")}', class='header__nav__link')
+        md-tooltip
+          | #{txtOrders}
+        md-icon(md-svg-icon='move_to_inbox')
       a(href='basket', title='#{txtBasket}', ng-class='{active: isActive("/basket")}', class='header__nav__link')
         md-tooltip
           | #{txtBasket}

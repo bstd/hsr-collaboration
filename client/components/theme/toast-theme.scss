@@ -1,0 +1,13 @@
+﻿md-toast {
+  &.md-toast {
+    &-error-theme {
+      background-color: $red;
+    }
+    &-success-theme {
+      background-color: $green2;
+    }
+    &-info-theme {
+      background-color: $blue;
+    }
+  }
+}

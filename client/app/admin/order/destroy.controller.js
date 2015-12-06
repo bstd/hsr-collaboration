@@ -7,6 +7,6 @@ angular.module('brewApp')
   AdminOrderService.remove({ id: $scope.id }, function(result) {
     //$log.debug('AdminOrderConfirmDeleteService - AdminOrderService.remove:',result);
     $state.go('admin.order-list');
-    ToastSimpleService('Bestellung erfolgreich gelöscht');
+    ToastSimpleService('Bestellung erfolgreich gelöscht', 'success');
   });
 }]);

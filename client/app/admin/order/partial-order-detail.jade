@@ -1,31 +1,17 @@
-﻿p(ng-show='order.userEmail !== "undefined"')
-  | Registrierte Benutzer E-Mail: {{order.userEmail}}
+﻿div(ng-click='showChildren = !showChildren', ng-class="{ 'state-open': showChildren, 'state-closed': !showChildren }")
+  md-toolbar(ng-class='order.state')
+    div(class='md-toolbar-tools')
+      md-chips
+        md-chip
+          | {{order.dateCreated | date: 'dd.MM.yyyy HH:mm'}}
+        md-chip
+          | {{order.addressLastName}}
+        md-chip
+          | {{order.total | number:2}}
+      span(flex)
+      md-button(class='md-icon-button', aria-label='Auf-/zuklappen')
+        md-icon(md-svg-icon='expand_more', class='icon-open')
+        md-icon(md-svg-icon='expand_less', class='icon-close')
 
-p
-  | orderId: {{order.orderId}}
-p
-  | bestellt am: {{order.dateCreated | date: 'dd.mm.yyyy HH:mm'}}
-p
-  | letzte Statusänderung am: {{order.dateUpdated | date: 'dd.mm.yyyy HH:mm'}}
-p
-  span Status:&#160;
-  span(ng-switch='order.state')
-    span(ng-switch-when='new') neu
-    span(ng-switch-when='open') Rechnung offen
-    span(ng-switch-when='paid') bezahlt
-    span(ng-switch-when='done') abgeschlossen
-p
-  | Adresse: {{order.addressLastName}} {{order.addressFirstName}} {{order.addressStreet}} {{order.addressZip}} {{order.addressCity}}
-p(class='md-title')
-  | Produkte:
-
-ul(ng-repeat='items in order.products track by $index')
-  li
-    | {{order.products[$index]._name}} (ean: {{order.products[$index]._ean}})
-  li
-    | Einzelpreis: {{order.products[$index]._price | number:2}}
-  li
-    | Bestellmenge: {{order.products[$index]._qty}}
-
-p
-  | Bestellsumme: {{order.total | number:2}}
+  div(ng-show='showChildren')
+    include partial-order-detail-edit.jade

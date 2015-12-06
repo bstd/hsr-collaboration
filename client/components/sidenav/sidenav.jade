@@ -26,23 +26,23 @@ navigation(ng-controller='SidenavCtrl', layout='row', class='brew__sidenav')
           a(href='registration', ng-hide='isLoggedIn()', ng-class="{active: isActive('/registration')}")
             | Registrierung
         li
-          a(href='admin', ng-click="toggleSidenav('right')", ng-show='isAdmin()', ng-class="{active: isActive('/admin')}")
+          a(href='admin', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin')}")
             | Adminbereich
           ul
             li
-              a(href='admin/products', ng-click="toggleSidenav('right')", ng-show='isAdmin()', ng-class="{active: isActive('/admin/products')}")
+              a(href='admin/products', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/products')}")
                 | Produktliste
             li
-              a(href='admin/products/create', ng-click="toggleSidenav('right')", ng-show='isAdmin()', ng-class="{active: isActive('/admin/products/create')}")
+              a(href='admin/products/create', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/products/create')}")
                 | Produkt erfassen
             li
-              a(href='admin/orders', ng-click="toggleSidenav('right')", ng-show='isAdmin()', ng-class="{active: isActive('/admin/orders')}")
+              a(href='admin/orders', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/orders')}")
                 | Bestellungen
             li
-              a(href='admin/users', ng-click="toggleSidenav('right')", ng-show='isAdmin()', ng-class="{active: isActive('/admin/users')}")
+              a(href='admin/users', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/users')}")
                 | Benutzerliste
             li
-              a(href='admin/users/create', ng-click="toggleSidenav('right')", ng-show='isAdmin()', ng-class="{active: isActive('/admin/users/create')}")
+              a(href='admin/users/create', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/users/create')}")
                 | Benutzer erfassen
 
         li

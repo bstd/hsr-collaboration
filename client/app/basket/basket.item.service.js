@@ -1,9 +1,9 @@
 ﻿'use strict';
-// TODO cleanup factory
+// TODO cleanup factory, match product properties
 angular.module('brewApp')
 .factory('BasketItem', ['$log', function($log) {
   var item = function(id, ean, name, price, qty) {
-console.log('BasketItem item:',id,ean,name,price,qty);
+//console.log('BasketItem item:',id,ean,name,price,qty);
     this.setId(id);
     this.setEan(ean);
     this.setName(name);

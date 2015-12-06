@@ -1,0 +1,66 @@
+﻿.brew__orders {
+  md-toolbar {
+    cursor: pointer;
+
+    &.new {
+      background-color: $order-state-bgColor-new;
+    }
+
+    &.open {
+      background-color: $order-state-bgColor-open;
+    }
+
+    &.paid {
+      background-color: $order-state-bgColor-paid;
+    }
+
+    &.done {
+      background-color: $order-state-bgColor-done;
+    }
+  }
+
+  .md-icon-button {
+    md-icon {
+      width: $icon-width;
+      height: $icon-height;
+
+      @include breakpoint(sm) {
+        width: $icon-width-sm;
+        height: $icon-height-sm;
+      }
+      @include breakpoint(md) {
+        width: $icon-width-md;
+        height: $icon-height-md;
+      }
+      @include breakpoint(lg) {
+        width: $icon-width-lg;
+        height: $icon-height-lg;
+      }
+    }
+  }
+
+  .state- {
+    &closed {
+      .icon-open {
+        display: inline-block;
+      }
+      .icon-close {
+        display: none;
+      }
+    }
+
+    &open {
+      .icon-open {
+        display: none;
+      }
+      .icon-close {
+        display: inline-block;
+      }
+    }
+  }
+
+  md-chips,
+  & .md-chips {
+    box-shadow: none;
+  }
+}
