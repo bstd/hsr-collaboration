@@ -13,6 +13,8 @@ angular.module('components.constants', [])
     chevron_right: '/assets/svg/ic_chevron_right_24px.svg',
     close: '/assets/svg/ic_close_24px.svg',
     event_note: '/assets/svg/ic_event_note_24px.svg',
+    expand_less: '/assets/svg/ic_expand_less_24px.svg',
+    expand_more: '/assets/svg/ic_expand_more_24px.svg',
     indeterminate_check_box: '/assets/svg/ic_indeterminate_check_box_24px.svg',
     menu: '/assets/svg/ic_menu_24px.svg',
     move_to_inbox: '/assets/svg/ic_move_to_inbox_24px.svg',

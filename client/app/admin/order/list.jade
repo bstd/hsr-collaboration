@@ -1,17 +1,37 @@
 h2.debug-restricted
-  | Bestellungen
+  | Bestellungen (insgesamt: {{orders.length}})
 section
   md-content(layout-wrap, class='md-padding')
+    // NO ORDERS
     p(ng-show='orders.length === 0')
       | Keine Bestellungen vorhanden
 
-    md-card(ng-repeat='order in orders track by order._id')
-      md-card-content
-        include partial-order-detail.jade
 
+    md-tabs(md-dynamic-height, md-border-bottom)
+      // TAB: NEW orders
+      md-tab(label='Neu')
+        md-card(ng-repeat='order in orders | orderBy: "-dateCreated" | filter: { state: "new" }:true track by order._id', class='brew__orders')
+          md-card-content
+            include partial-order-detail.jade
+            include partial-order-detail-actions.jade
 
-        div(layout='row', layout-align='end center', class='md-actions')
-          md-button(ui-sref='admin.order-edit({ id: order._id })', class='md-raised md-primary')
-            | Bearbeiten
-          md-button(ng-click='confirmDelete(order)', class='md-raised md-warn')
-            | Löschen
+      // TAB: OPEN orders
+      md-tab(label='Rechnung offen')
+        md-card(ng-repeat='order in orders | orderBy: "-dateUpdated" | filter: { state: "open" }:true track by order._id', class='brew__orders')
+          md-card-content
+            include partial-order-detail.jade
+            include partial-order-detail-actions.jade
+
+      // TAB: PAID orders
+      md-tab(label='Bezahlt')
+        md-card(ng-repeat='order in orders | orderBy: "-dateUpdated" | filter: { state: "paid" }:true track by order._id', class='brew__orders')
+          md-card-content
+            include partial-order-detail.jade
+            include partial-order-detail-actions.jade
+
+      // TAB: DONE orders
+      md-tab(label='Abgeschlossen')
+        md-card(ng-repeat='order in orders | orderBy: "-dateUpdated" | filter: { state: "done" }:true track by order._id', class='brew__orders')
+          md-card-content
+            include partial-order-detail.jade
+            include partial-order-detail-actions.jade
