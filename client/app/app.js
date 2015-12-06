@@ -57,7 +57,7 @@ angular.module('brewApp', [
       if (toState.authenticate && !loggedIn) {
 //console.log('AUTH REDIRECT');
         $location.path('/login');
-        ToastSimpleService('Zugriffsfehler: Sie müssen angemeldet sein');
+        ToastSimpleService('Zugriffsfehler: Sie müssen angemeldet sein', 'error');
       }
 
       // redirect to login if route requires admin role and authed user !isAdmin
@@ -67,7 +67,7 @@ angular.module('brewApp', [
         if (!isAdmin) {
 //console.log('ROLE REDIRECT');
           $location.path('/');
-          ToastSimpleService('Zugriffsfehler: Keine Rechte');
+          ToastSimpleService('Zugriffsfehler: Keine Rechte', 'error');
         }
       }
     });

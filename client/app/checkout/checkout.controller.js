@@ -128,7 +128,7 @@ console.log('addressdata city:',$scope.user.city);*/
 
       CheckoutService.create($scope.order).$promise.then(function() {
         $state.go('confirmation');
-        ToastSimpleService('Bestellung erfolgreich abgeschickt');
+        ToastSimpleService('Bestellung erfolgreich abgeschickt', 'success');
       })
       .catch(function(err) {
         err = err.data;

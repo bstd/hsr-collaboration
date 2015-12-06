@@ -20,7 +20,7 @@ console.log('BasketCtrl basketTotal:',$scope.basketTotal);
     BasketService.removeItem(basketItem);
 
     $scope.basketTotal = BasketService.total();
-    ToastSimpleService('Warenkorb aktualisiert');
+    ToastSimpleService('Warenkorb aktualisiert', 'success');
 //console.log($scope.basketTotal);
 //console.log($scope.basketItems.length);
     $scope.empty = BasketService.isEmpty($scope.basketItems.length);

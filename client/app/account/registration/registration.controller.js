@@ -15,7 +15,7 @@ angular.module('brewApp')
       })
       .then(function() {
         $state.go('main');
-        ToastSimpleService('Registrierung erfolgreich');
+        ToastSimpleService('Registrierung erfolgreich', 'success');
       })
       .catch(function(err) {
         err = err.data;

@@ -40,7 +40,7 @@ angular.module('brewApp')
       //AdminOrderService.update({ id: $id }, $scope.order, function() {
       AdminOrderService.update({ id: $id }, $scope.order).$promise.then(function() {
         $state.go('admin.order-list');
-        ToastSimpleService('Bestellung erfolgreich geändert');
+        ToastSimpleService('Bestellung erfolgreich geändert', 'success');
       })
       .catch(function(err) {
         err = err.data;

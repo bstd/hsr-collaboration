@@ -17,7 +17,7 @@ angular.module('brewApp')
     if (form.$valid) {
       Auth.changePassword($scope.user.oldPassword, $scope.user.newPassword)
       .then(function() {
-        ToastSimpleService('Passwort erfolgreich geändert');
+        ToastSimpleService('Passwort erfolgreich geändert', 'success');
       })
       .catch(function(err) {
         if (typeof err.status !== 'undefined') {
@@ -54,7 +54,7 @@ angular.module('brewApp')
       AddressService.changeAddress({ id: $id }, addressData).$promise.then(function() {
         var posHelper = $document[0].querySelector('.js-toast-parent');
 
-        ToastSimpleService('Rechnungsadresse erfolgreich geändert', posHelper);
+        ToastSimpleService('Rechnungsadresse erfolgreich geändert', 'success', posHelper);
       })
       .catch(function(err) {
         err = err.data;
