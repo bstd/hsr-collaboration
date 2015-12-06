@@ -2,11 +2,11 @@
   | Registrierte Benutzer E-Mail: {{order.userEmail}}
 
 p
-  | orderId: {{order.orderId}}
+  | Bestellnummer: {{order.orderId}}
 p
-  | bestellt am: {{order.dateCreated | date: 'dd.mm.yyyy HH:mm'}}
+  | bestellt am: {{order.dateCreated | date: 'dd.MM.yyyy HH:mm'}}
 p
-  | letzte Statusänderung am: {{order.dateUpdated | date: 'dd.mm.yyyy HH:mm'}}
+  | letzte Statusänderung am: {{order.dateUpdated | date: 'dd.MM.yyyy HH:mm'}}
 p
   span Status:&#160;
   span(ng-switch='order.state')

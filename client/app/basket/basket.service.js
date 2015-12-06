@@ -66,5 +66,11 @@ angular.module('brewApp')
   };
 
 
+  Basket.clear = function() {
+//console.log('Basket.clear');
+    items = [];
+  };
+
+
   return Basket;
 }]);

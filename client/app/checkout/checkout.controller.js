@@ -22,7 +22,7 @@ angular.module('brewApp')
 //console.log('CheckoutCtrl basketItems:',$scope.basketItems);
 
   $scope.empty = BasketService.isEmpty($scope.basketItems.length);
-//console.log('$scope.empty:',$scope.empty);
+//console.log('CheckoutCtrl $scope.empty:',$scope.empty);
 
   $scope.basketTotal = BasketService.total();
 
@@ -104,14 +104,14 @@ angular.module('brewApp')
 
     if (form.$valid) {
       // create order
-console.log('valid submit with basket:',$scope.basketItems);
+/*console.log('valid submit with basket:',$scope.basketItems);
 console.log('and total:',$scope.basketTotal);
 console.log('for optional user email:',$scope.user.email);
 console.log('addressdata lastName:',$scope.user.lastName);
 console.log('addressdata firstName:',$scope.user.firstName);
 console.log('addressdata street:',$scope.user.street);
 console.log('addressdata zip:',$scope.user.zip);
-console.log('addressdata city:',$scope.user.city);
+console.log('addressdata city:',$scope.user.city);*/
 
       $scope.order = {
         userEmail: $scope.user.email,
@@ -124,7 +124,7 @@ console.log('addressdata city:',$scope.user.city);
         products: $scope.basketItems
       };
 
-console.log('order to create:',$scope.order);
+//console.log('order to create:',$scope.order);
 
       CheckoutService.create($scope.order).$promise.then(function() {
         $state.go('confirmation');
@@ -133,12 +133,7 @@ console.log('order to create:',$scope.order);
       .catch(function(err) {
         err = err.data;
         $scope.errors = {};
-console.log('mongo err:',err);
-        // Update validity of form fields that match the mongoose errors
-        /*angular.forEach(err.errors, function(error, field) {
-          form[field].$setValidity('mongoose', false);
-          $scope.errors[field] = error.message;
-        });*/
+        $log.debug('persistence error:',err);
       });
     }
   };
