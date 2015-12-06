@@ -73,7 +73,7 @@ md-content
             img.thumb(ng-show='form.file.$valid', ngf-thumbnail='product.file')
             button(ng-click='product.file = null', ng-show='product.file') Remove
 
-      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid', ng-click="uploadPic(product.file)")
+      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
         | Speichern
       md-button(ui-sref='admin.product-list', class='md-raised')
         | Abbrechen

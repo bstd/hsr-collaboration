@@ -11,40 +11,64 @@ var User = require('../api/user/user.model');
 Product.find({}).remove(function () {
   Product.create({
       ean: '1234567890123',
-      name: 'Development Tools',
+      name: 'St.Galler Klosterbräu',
       active: true,
-      price: '22.50',
-      info: 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
+      price: '16.00',
+      info: 'Das St.Galler Klosterbräu. Ein Spezialitätenbier mit Charakter und Geschichte. Denn bereits auf dem St.Galler Klosterplan des Jahres 820 waren drei Brauereien zu finden. Das St.Galler Klosterbräu knüpft direkt an diese lange Tradition an. So wird es nach alter Rezeptur gebraut. Das Resultat: Ein unfiltriertes Bier von leuchtender Amberfarbe, das eine treue Fangemeinde gefunden hat.',
+      stock: 20,
+      vanity: 'Naturtrübes Bier',
+      country: 'Schweiz',
+      image: 'Klosterbraeu_Fl-Glas.jpg'
     }, {
       ean: '2345678901234',
-      name: 'Server and Client integration',
+      name: 'Gallus 612',
       active: true,
       price: '22.50',
-      info: 'Built with a powerful and fun stack: MongoDB, Express, AngularJS, and Node.'
+      info: 'Ein Bier, wie es auch Gallus gemundet hätte. Denn Gallus 612 ist eine Hommage an den Biergenuss zu St.Gallens Gründungszeiten. Gebraut mit feinstem Smaragd-Aromahopfen, mit Wacholder gewürzt und mit original obergäriger Ale-Hefe vergoren. Die Reifung auf Eichenholz vollendet den einzigartigen Trinkgenuss der Gallus-Spezialität.',
+      stock: 10,
+      vanity: 'Pale Ale',
+      country: 'Schweiz',
+      image: 'gallusbier_web.jpg'
     }, {
       ean: '3456789012345',
-      name: 'Smart Build System',
+      name: 'Edelspez Premium',
       active: true,
-      price: '22.50',
-      info: 'Build system ignores `spec` files, allowing you to keep tests alongside code. Automatic injection of scripts and styles into your index.html'
+      price: '14.00',
+      info: 'Ein schmackhaftes Bier, das seinen Namen verdient. Das Edelspez Premium wird von unserem Braumeister aus hochwertiger, zweizeiliger Sommergerste und Hopfen der allerbesten Aromasorten gebraut. Das traditionelle und sorgfältige Brauverfahren sorgt für ein herrlich frisches Genusserlebnis. Ohne Frage, das Edelspez Premium ist das Bier für Geniesser – und die besonderen Momente im Leben.',
+      stock: 10,
+      vanity: 'Pale Ale',
+      country: 'Schweiz',
+      image: 'edelspez_web.jpg'
     }, {
       ean: '4567890123456',
-      name: 'Modular Structure',
+      name: 'Weisse Engel',
       active: true,
       price: '22.50',
-      info: 'Best practice client and server structures allow for more code reusability and maximum scalability'
+      info: 'Ein himmlischer Genuss mit weisser Krone. Ein St.Galler Bier mit bayerischer Seele. Der Weisse Engel ist ein echtes, naturtrübes Weissbier, gebraut nach dem bayerischen Reinheitsgebot von 1516. Seinen typischen und feinen Geschmack verdankt dieses Weizenbier hochwertigen Rohstoffen, wie feinstem Weizenmalz und der Gärung mit reingezüchteter, obergäriger Bierhefe.',
+      stock: 12,
+      vanity: 'Weizenbier (Weissbier)',
+      country: 'Schweiz',
+      image: 'edelspez_web.jpg'
     }, {
       ean: '5678901234567',
-      name: 'Optimized Build',
+      name: 'Heineken Flasche',
       active: true,
-      price: '22.50',
-      info: 'Build process packs up your templates as a single JavaScript payload, minifies your scripts/css/images, and rewrites asset names for caching.'
+      price: '10.50',
+      info: 'Das Heineken Bier hat eine Erfolgsgeschichte hinter sich, wie kein anderes Bier. Man kann sagen es ist eines der bekanntesten Biere der Welt. Ein traditionsreiches Bier und im Gegensatz zu anderen weniger bitter und herb. Das Heineken ist ideal für gelegentliche Bier-Geniesser aber auch echte Bier-Kenner.',
+      stock: 12,
+      vanity: 'Lager',
+      country: 'Holland',
+      image: 'heineken.jpg'
     }, {
       ean: '6789012345678',
-      name: 'Deployment Ready',
+      name: 'Becks',
       active: true,
-      price: '22.50',
-      info: 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
+      price: '18.00',
+      info: 'Der unnachahmliche Charakter und die herbe Frische von Beck’s sind Resultate einer Unternehmenskultur, die stets innovativ und nach vorne denkt. Diese Innovationen haben zum Erfolg der Marke Beck’s beigetragen.',
+      stock: 22,
+      vanity: 'Lager',
+      country: 'Deutschland',
+      image: 'becks.jpg'
     }, function () {
       console.log('finished populating products');
     }

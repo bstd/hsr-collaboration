@@ -7,6 +7,8 @@ angular.module('brewApp')
     $scope.product = {};
     $scope.errors = {};
 
+    //ToDo Pic Upload for Update
+
     // prefill
     $scope.product = AdminProductService.get({ id: $scope.id }, function(data) {
       $log.debug('queried:',data);
