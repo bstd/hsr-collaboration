@@ -2,11 +2,8 @@
 
 var _ = require('lodash');
 var Product = require('./product.model');
-var multer = require('multer');
-var upload = multer({dest:'uploads/'});
+
 var fs = require('fs');
-
-
 
 // Get list of products
 exports.index = function(req, res) {
@@ -31,29 +28,33 @@ exports.show = function(req, res) {
 // Creates a new product in the DB.
 exports.create = function(req, res) {
   Product.create(req.body, function(err, product) {
-    if (err) { return handleError(res, err); }
-    console.log(req.file);
-    Product.findById(req.param('id'), function (err, product) {
-      console.log(req.file) // File from Client
-      if(req.file){   // If the Image exists
-        fs.readFile(req.file.path, function (dataErr, data) {
-          if(data) {
-            product.photo ='';
-            product.photo = data;  // Assigns the image to the path.
-            product.save(function (saveerr, saveproduct) {
-              if (saveerr) {
-                throw saveerr;
-              }
-              res.json(HttpStatus.OK, saveproduct);
-            });
-          }
-        });
-        return
-      }
-      res.json(HttpStatus.BAD_REQUEST,{error:"Error in file upload"});
+
+    var dirname = require('path').dirname(__dirname);
+    var filename = req.files.file.name;
+    var path = req.files.file.path;
+    var type = req.files.file.mimetype;
+
+    var read_stream =  fs.createReadStream(dirname + '/' + path);
+
+    var conn = req.conn;
+    var Grid = require('gridfs-stream');
+    Grid.mongo = mongoose.mongo;
+
+    var gfs = Grid(conn.db);
+
+    var writestream = gfs.createWriteStream({
+      filename: filename
     });
+    read_stream.pipe(writestream);
+
+    if (err) { return handleError(res, err); }
     return res.status(201).json(product);
   });
+  console.log(req.file);
+  console.log(req.body);
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+  //res.redirect('/');
 };
 
 // Updates an existing product in the DB.

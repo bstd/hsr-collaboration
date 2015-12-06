@@ -5,7 +5,20 @@ var controller = require('./product.controller');
 var config = require('../../config/environment');
 var auth = require('../../auth/auth.service');
 var multer = require('multer');
-var upload = multer({dest:'uploads/'});
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/'); // Absolute path. Folder must exist, will not be created for you.
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+})
+var upload = multer({ storage: storage,
+  fileFilter: function (req, file, cb) {
+  cb(null, (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'))
+}
+});
 var cpUpload = upload.single('file');
 
 var router = express.Router();

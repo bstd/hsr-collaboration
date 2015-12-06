@@ -23,12 +23,13 @@ module.exports = function(app) {
 	app.set('view engine', 'jade');
 	app.use(compression());
 	app.use(bodyParser.urlencoded({ extended: false }));
-	app.use(bodyParser.json());
+	//app.use(bodyParser.json());
 	app.use(methodOverride());
 	app.use(cookieParser());
 	app.use(passport.initialize());
+  app.use(bodyParser.json({limit: '5mb'}));
 
-	if ('production' === env) {
+  if ('production' === env) {
 		app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
 		app.use(express.static(path.join(config.root, 'public')));
 		app.set('appPath', path.join(config.root, 'public'));

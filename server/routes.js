@@ -7,6 +7,8 @@
 var errors = require('./components/errors');
 var path = require('path');
 
+
+
 module.exports = function(app) {
   // API
   app.use('/api/products', require('./api/product'));
