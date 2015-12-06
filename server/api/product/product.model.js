@@ -14,7 +14,7 @@ var ProductSchema = new Schema({
   stock: Number,
   vanity: String,
   country: String,
-  file: {
+  image: {
     type: String,
     default: ''
   },

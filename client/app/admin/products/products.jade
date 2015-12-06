@@ -3,6 +3,8 @@ h2.debug-restricted
 section
   md-content(layout='row', layout-wrap, class='md-padding')
     md-card(ng-repeat='product in products track by product._id', flex='25', flex-md='33', flex-sm='100')
+      img(src='/public/{{product.image}}', alt='Washed Out' ng-if="product.image")
+      img(src='/public/beer_bottle.png', alt='Washed Out' ng-if="!product.image")
       md-card-content
         h3 {{product.name}}
         p {{product.price}}
@@ -10,7 +12,7 @@ section
         p {{product.stock}}
         p {{product.country}}
         p {{product.vanity}}
-        md-checkbox(ng-checked="{{product.active}}" ng-disabled="true" ) Veröffentlicht
+        md-checkbox(ng-checked="product.active" ng-disabled="true" ) Veröffentlicht
         div(layout='row', layout-align='end center', class='md-actions')
           md-button(ng-click='confirmDelete(product)', class='md-button md-raised md-warn')
             | Löschen

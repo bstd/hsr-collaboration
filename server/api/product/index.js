@@ -2,17 +2,18 @@
 
 var express = require('express');
 var controller = require('./product.controller');
+var Product = require('./product.model');
 var config = require('../../config/environment');
 var auth = require('../../auth/auth.service');
 var multer = require('multer');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Absolute path. Folder must exist, will not be created for you.
-  },
+    cb(null, './public/'); // Absolute path. Folder must exist, will not be created for you.
+  }/*,
   filename: function (req, file, cb) {
     cb(null, file.originalname);
-  }
+  }*/
 })
 var upload = multer({ storage: storage,
   fileFilter: function (req, file, cb) {

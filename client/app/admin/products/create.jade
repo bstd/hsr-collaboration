@@ -61,22 +61,22 @@ md-content
               | Bitte geben Sie eine Biersorte an
       section.section(layout='column')
         span(layout='row', layout-sm='column')
-          md-input-container(flex='', ng-class='{ "has-success": form.file.$valid && submitted, "has-error": form.file.$invalid && submitted }')
+          md-input-container(flex='', ng-class='{ "has-success": form.file.$valid && submitted }')
             label
               | Image Upload
-            input(type='file', ngf-select='', ng-model='picFile', name='file', accept='image/*', ngf-max-size='2MB')
-            i(ng-show='myForm.file.$error.required') *required
+            input(type='file', ngf-select='', ng-model='product.file', name='file', accept='image/*', ngf-max-size='2MB')
+            i(ng-show='form.file.$error.required') *required
             br
             p(class='help-block',ng-show='form.file.$error.maxSize')
               | File too large
-              | {{picFile.size / 1000000|number:1}}MB: max 2M
-            img.thumb(ng-show='form.file.$valid', ngf-thumbnail='picFile')
-            button(ng-click='picFile = null', ng-show='picFile') Remove
+              | {{product.file.size / 1000000|number:1}}MB: max 2M
+            img.thumb(ng-show='form.file.$valid', ngf-thumbnail='product.file')
+            button(ng-click='product.file = null', ng-show='product.file') Remove
 
-      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid', ng-click="uploadPic(picFile)")
+      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid', ng-click="uploadPic(product.file)")
         | Speichern
       md-button(ui-sref='admin.product-list', class='md-raised')
         | Abbrechen
 
-      span(ng-show='picFile.result') Upload Successful
+      span(ng-show='product.file.result') Upload Successful
       span.err(ng-show='errorMsg') {{errorMsg}}

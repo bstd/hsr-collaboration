@@ -4,6 +4,8 @@ angular.module('brewApp')
 .controller('ProductsCreateCtrl', ['$scope', '$http', '$state', '$timeout', 'Upload', 'AdminProductService', 'ToastSimpleService', function($scope, $http, $state, $timeout, Upload, AdminProductService, ToastSimpleService) {
     $scope.product = {};
     $scope.errors = {};
+
+    //ToDo JSONS File for Categories
     $scope.tastes = [ 'leicht', 'schlank', 'weich', 'süffig', 'abgerundet', 'sortentypisch', 'vollmundig', 'malzaromatisch',
       'röstmalzaromatisch', 'schwer', 'würzeartig', 'ausgewogen', 'harmonisch ausklingend', 'rund', 'kräftig betont', 'trocken', 'nicht anhängend', 'feinherb', 'feinbitter' ];
     $scope.vanities = [ '', 'Lagerbier', 'Spezialbier', 'Dunkles Bier', 'Naturtrübes Bier', 'Alkoholfreies Bier', 'Altbier',
@@ -18,7 +20,7 @@ angular.module('brewApp')
       $scope.submitted = true;
 
       if (form.$valid) {
-       /* AdminProductService.create($scope.product).$promise.then(function() {
+        /*AdminProductService.create($scope.product).$promise.then(function() {
           $state.go('admin.product-list');
           ToastSimpleService('Produkt erfolgreich erstellt');
         })
@@ -36,10 +38,13 @@ angular.module('brewApp')
         $scope.uploadPic = function(file) {
           file.upload = Upload.upload({
             url: 'api/products',
+            fields: {product: $scope.product},
             data: {file: file}
           });
 
           file.upload.then(function (response) {
+            $state.go('admin.product-list');
+            ToastSimpleService('Produkt erfolgreich erstellt');
             $timeout(function () {
               file.result = response.data;
             });

@@ -27,29 +27,20 @@ exports.show = function(req, res) {
 
 // Creates a new product in the DB.
 exports.create = function(req, res) {
-  Product.create(req.body, function(err, product) {
-
-    var dirname = require('path').dirname(__dirname);
-    var filename = req.files.file.name;
-    var path = req.files.file.path;
-    var type = req.files.file.mimetype;
-
-    var read_stream =  fs.createReadStream(dirname + '/' + path);
-
-    var conn = req.conn;
-    var Grid = require('gridfs-stream');
-    Grid.mongo = mongoose.mongo;
-
-    var gfs = Grid(conn.db);
-
-    var writestream = gfs.createWriteStream({
-      filename: filename
-    });
-    read_stream.pipe(writestream);
-
+  // Just save the image's local URI after it was uploaded and saved by, in this case, Multer
+  var newProduct = new Product(req.body);
+  //Base64
+  newProduct.image = req.file.filename; // (data:image/png;base64,...)
+  //newProduct.thumbnail = req.files.thumbnail.path;
+  //newProduct.brand = req.files.brand.path;
+  newProduct.save(function(err, product) {
+    if (err) return validationError(res, err);
+  });
+  res.send('ok');
+  /*newProduct.create(req.body, function(err, product) {
     if (err) { return handleError(res, err); }
     return res.status(201).json(product);
-  });
+  });*/
   console.log(req.file);
   console.log(req.body);
   // req.file is the `avatar` file
@@ -84,6 +75,13 @@ exports.destroy = function(req, res) {
     if (!product) { return res.status(404).send('Not Found'); }
 
     product.remove(function(err) {
+      var filePath = "./public/" + product.image;
+      console.log(filePath);
+      fs.unlink(filePath, function (err) {
+        if (err) throw err;
+        console.log('successfully deleted:' +filePath);
+      });
+
       if (err) { return handleError(res, err); }
 
       return res.status(204).send('No Content');
