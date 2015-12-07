@@ -1,0 +1,45 @@
+﻿md-content(layout-wrap, class='md-padding')
+  form(name='addressForm', ng-submit='changeAddress(addressForm)', class='js-toast-parent', novalidate)
+    md-input-container(md-is-error='addressForm.lastName.$touched && addressForm.lastName.$invalid', class='md-block')
+      label
+        | Nachname
+      input(type='text', name='lastName', ng-model='user.lastName', required)
+
+      div(class='help-block', ng-messages='addressForm.lastName.$error', ng-show='addressForm.lastName.$touched && addressForm.lastName.$invalid')
+        include ../../partials/form.messages.address.jade
+
+    md-input-container(md-is-error='addressForm.firstName.$touched && addressForm.firstName.$invalid', class='md-block')
+      label
+        | Vorname
+      input(type='text', name='firstName', ng-model='user.firstName', required)
+
+      div(class='help-block', ng-messages='addressForm.firstName.$error', ng-show='addressForm.firstName.$touched && addressForm.firstName.$invalid')
+        include ../../partials/form.messages.address.jade
+
+    md-input-container(md-is-error='addressForm.street.$touched && addressForm.street.$invalid', class='md-block')
+      label
+        | Strasse
+      input(type='text', name='street', ng-model='user.street', required)
+
+      div(class='help-block', ng-messages='addressForm.street.$error', ng-show='addressForm.street.$touched && addressForm.street.$invalid')
+        include ../../partials/form.messages.address.jade
+
+    md-input-container(md-is-error='addressForm.zip.$touched && addressForm.zip.$invalid', class='md-block')
+      label
+        | Postleitzahl
+      input(type='text', name='zip', ng-pattern="/^\([1-468][0-9]|[57][0-7]|9[0-6])[0-9]{2}$/", ng-model='user.zip', required)
+
+      div(class='help-block', ng-messages='addressForm.zip.$error', ng-show='addressForm.zip.$touched && addressForm.zip.$invalid')
+        include ../../partials/form.messages.address.jade
+
+    md-input-container(md-is-error='addressForm.city.$touched && addressForm.city.$invalid', class='md-block')
+      label
+        | Ort
+      input(type='text', name='city', ng-model='user.city', required)
+
+      div(class='help-block', ng-messages='addressForm.city.$error', ng-show='addressForm.city.$touched && addressForm.city.$invalid')
+        include ../../partials/form.messages.address.jade
+
+
+    md-button(type='submit', class='md-raised md-primary', ng-disabled='addressForm.$invalid')
+      | Speichern

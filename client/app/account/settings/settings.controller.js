@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('SettingsCtrl', ['$scope', '$state', '$log', '$document', 'User', 'Auth', 'AddressService', 'ToastSimpleService', function($scope, $state, $log, $document, User, Auth, AddressService, ToastSimpleService) {
+.controller('SettingsCtrl', ['$scope', '$state', '$log', '$document', 'User', 'Auth', 'AddressService', 'MyOrdersService', 'ToastSimpleService', function($scope, $state, $log, $document, User, Auth, AddressService, MyOrdersService, ToastSimpleService) {
   $scope.user = {};
   $scope.errors = {};
+  $scope.myOrders = {};
 
   // prefill
   $scope.user = User.get(function(data) {
@@ -68,4 +69,8 @@ angular.module('brewApp')
       });
     }
   };
+
+
+  // my orders
+  $scope.myOrders = MyOrdersService.getMyOrders();
 }]);

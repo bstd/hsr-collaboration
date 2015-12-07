@@ -1,0 +1,36 @@
+﻿md-content(layout-wrap, class='md-padding')
+  // NO ORDERS
+  p(ng-show='myOrders.length === 0')
+    | Keine Bestellungen vorhanden
+
+md-content(layout-wrap, class='md-padding')
+  md-card(ng-repeat='myorder in myOrders | orderBy: "-dateCreated" | filter: { state: "new" }:true track by myorder._id')
+    md-card-content
+      p
+        | Bestellnummer: {{myorder.orderId}}
+      p
+        | bestellt am: {{myorder.dateCreated | date: 'dd.MM.yyyy HH:mm'}}
+      p
+        | letzte Statusänderung am: {{myorder.dateUpdated | date: 'dd.MM.yyyy HH:mm'}}
+      p
+        span Status:&#160;
+        span(ng-switch='myorder.state')
+          span(ng-switch-when='new') neu
+          span(ng-switch-when='open') Rechnung offen
+          span(ng-switch-when='paid') bezahlt
+          span(ng-switch-when='done') abgeschlossen
+      p
+        | Adresse: {{myorder.addressLastName}} {{myorder.addressFirstName}} {{myorder.addressStreet}} {{myorder.addressZip}} {{myorder.addressCity}}
+      p(class='md-title')
+        | Produkte:
+
+      ul(ng-repeat='items in myorder.products track by $index')
+        li
+          | {{myorder.products[$index]._name}} (ean: {{myorder.products[$index]._ean}})
+        li
+          | Einzelpreis: {{myorder.products[$index]._price | number:2}}
+        li
+          | Bestellmenge: {{myorder.products[$index]._qty}}
+
+      p
+        | Bestellsumme: {{myorder.total | number:2}}

@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var User = require('./user.model');
+var Order = require('../order/order.model');// use as sub-collection resource (getMyOrders)
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
@@ -119,6 +120,30 @@ exports.me = function(req, res, next) {
     if (!user) return res.status(401).send('Unauthorized');
 
     res.json(user);
+  });
+};
+
+/**
+ * Get my orders (not using embed)
+ */
+exports.getMyOrders = function(req, res, next) {
+  var userId = req.user._id;
+//console.log('server api - user - getMyOrders - userID:',userId);
+  User.findOne({ _id: userId }, 'email', function(err, user) {// select only email
+    if (err) return next(err);
+//console.log('server api - user - findOne - email:',user);
+    if (!user) {
+      return res.status(401).send('Unauthorized');
+    }
+    else {
+      var _email = user.email;
+//console.log('_email:',_email);
+      Order.find({ userEmail: _email }, function(err, orders) {
+        if (err) return next(err);
+//console.log('server api - user - Order.find - _email, returns orders:',orders);
+        res.json(orders);
+      });
+    }
   });
 };
 

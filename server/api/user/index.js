@@ -12,6 +12,7 @@ var router = express.Router();
 router.get('/', auth.hasRole('admin'), controller.index);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 router.get('/me', auth.isAuthenticated(), controller.me);
+router.get('/me/orders', auth.isAuthenticated(), controller.getMyOrders);
 router.put('/:id/address', auth.isAuthenticated(), controller.changeAddress);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.hasRole('admin'), controller.show);
