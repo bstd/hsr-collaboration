@@ -29,23 +29,22 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   // Just save the image's local URI after it was uploaded and saved by, in this case, Multer
   var newProduct = new Product(req.body);
-  //Base64
-  newProduct.image = req.file.filename; // (data:image/png;base64,...)
-  //newProduct.thumbnail = req.files.thumbnail.path;
-  //newProduct.brand = req.files.brand.path;
-  newProduct.save(function(err, product) {
-    if (err) return validationError(res, err);
-  });
-  res.send('ok');
-  /*newProduct.create(req.body, function(err, product) {
-    if (err) { return handleError(res, err); }
-    return res.status(201).json(product);
-  });*/
-  console.log(req.file);
-  console.log(req.body);
-  // req.file is the `avatar` file
-  // req.body will hold the text fields, if there were any
-  //res.redirect('/');
+  // Check for file and save
+  try {
+    if (req.file.filename) {
+      newProduct.image = req.file.filename; // (data:image/png;base64,...)
+      newProduct.save(function (err, product) {
+        if (err) return validationError(res, err);
+      });
+      res.send('ok');
+    }
+  } catch(err) {
+    newProduct.save(function (err, product) {
+      if (err) return validationError(res, err);
+    });
+    res.send('ok')
+  }
+
 };
 
 // Updates an existing product in the DB.
@@ -58,12 +57,32 @@ exports.update = function(req, res) {
     if (!product) { return res.status(404).send('Not Found'); }
 
     var updated = _.merge(product, req.body);
-
+    // Check for file and save
+    try {
+      if (req.file.filename) {
+        var filePath = "./public/" + product.image;
+        console.log(filePath);
+        fs.unlink(filePath, function (err) {
+          if (err) throw err;
+          console.log('old File successfully deleted:' + filePath);
+        });
+        updated.image = req.file.filename;
+        updated.save(function (err) {
+          if (err) {
+            return handleError(res, err);
+          }
+          return res.status(200).json(product);
+        });
+      }
+    }
+    catch(err) {
     updated.save(function(err) {
-      if (err) { return handleError(res, err); }
-
+      if (err) {
+        return handleError(res, err);
+      }
       return res.status(200).json(product);
     });
+    }
   });
 };
 

@@ -5,7 +5,6 @@ angular.module('brewApp')
     $scope.product = {};
     $scope.errors = {};
 
-    //ToDo JSONS File for Categories
     $scope.tastes = ['leicht', 'schlank', 'weich', 'süffig', 'abgerundet', 'sortentypisch', 'vollmundig', 'malzaromatisch',
       'röstmalzaromatisch', 'schwer', 'würzeartig', 'ausgewogen', 'harmonisch ausklingend', 'rund', 'kräftig betont', 'trocken', 'nicht anhängend', 'feinherb', 'feinbitter'];
     $scope.vanities = ['', 'Lagerbier', 'Spezialbier', 'Dunkles Bier', 'Naturtrübes Bier', 'Alkoholfreies Bier', 'Altbier',

@@ -36,7 +36,7 @@ Product.find({}).remove(function () {
       price: '14.00',
       info: 'Ein schmackhaftes Bier, das seinen Namen verdient. Das Edelspez Premium wird von unserem Braumeister aus hochwertiger, zweizeiliger Sommergerste und Hopfen der allerbesten Aromasorten gebraut. Das traditionelle und sorgfältige Brauverfahren sorgt für ein herrlich frisches Genusserlebnis. Ohne Frage, das Edelspez Premium ist das Bier für Geniesser – und die besonderen Momente im Leben.',
       stock: 10,
-      vanity: 'Pale Ale',
+      vanity: 'Spezialbier',
       country: 'Schweiz',
       image: 'edelspez_web.jpg'
     }, {
@@ -56,7 +56,7 @@ Product.find({}).remove(function () {
       price: '10.50',
       info: 'Das Heineken Bier hat eine Erfolgsgeschichte hinter sich, wie kein anderes Bier. Man kann sagen es ist eines der bekanntesten Biere der Welt. Ein traditionsreiches Bier und im Gegensatz zu anderen weniger bitter und herb. Das Heineken ist ideal für gelegentliche Bier-Geniesser aber auch echte Bier-Kenner.',
       stock: 12,
-      vanity: 'Lager',
+      vanity: 'Lagerbier',
       country: 'Holland',
       image: 'heineken.jpg'
     }, {
@@ -66,7 +66,7 @@ Product.find({}).remove(function () {
       price: '18.00',
       info: 'Der unnachahmliche Charakter und die herbe Frische von Beck’s sind Resultate einer Unternehmenskultur, die stets innovativ und nach vorne denkt. Diese Innovationen haben zum Erfolg der Marke Beck’s beigetragen.',
       stock: 22,
-      vanity: 'Lager',
+      vanity: 'Lagerbier',
       country: 'Deutschland',
       image: 'becks.jpg'
     }, function () {
