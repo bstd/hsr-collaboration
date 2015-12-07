@@ -4,31 +4,31 @@
 
 div(layout='row', layout-wrap, flex)
   div(layout='row', flex-order-sm='1', flex-order-md='1')
-    // logo
+    // LOGO
     div(class='header__logo')
       a(href='/', title='Startseite')
         img(src='/assets/images/logo.png')
 
   div(flex, flex-sm='100', flex-order-sm='3', flex-md='100', flex-order-md='3')
-    // search
+    // SEARCH
     div(flex='auto', class='header__search')
       include ../search/search.jade
 
   div(flex-sm, flex-md, flex-order-sm='2', flex-order-md='2')
-    // nav
+    // NAV
     div(layout='row', layout-align='end', class='header__nav')
-      a(ng-if='isAdmin()', href='admin/orders', title='#{txtBasket}', ng-class='{active: isActive("/admin/orders")}', class='header__nav__link')
+      a(ng-if='isAdmin()', href='admin/orders', title='#{txtOrders}', ng-class='{active: isActive("/admin/orders")}', class='header__nav__link')
         md-tooltip
           | #{txtOrders}
-        md-icon(md-svg-icon='move_to_inbox')
+        md-icon(md-svg-icon='move_to_inbox', class='brew__icon md-primary')
       a(href='basket', title='#{txtBasket}', ng-class='{active: isActive("/basket")}', class='header__nav__link')
         md-tooltip
           | #{txtBasket}
-        md-icon(md-svg-icon='shopping_cart')
+        md-icon(md-svg-icon='shopping_cart', class='brew__icon md-primary')
       a(href='settings', title='#{txtMyAccount}', ng-class='{active: isActive("/settings")}', class='header__nav__link')
         md-tooltip
           | #{txtMyAccount}
-        md-icon(md-svg-icon='person')
+        md-icon(md-svg-icon='person', class='brew__icon md-primary')
 
-      // sidenav
+      // SIDENAV
       include ../sidenav/sidenav.jade

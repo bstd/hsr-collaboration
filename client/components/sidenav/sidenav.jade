@@ -8,7 +8,7 @@ navigation(ng-controller='SidenavCtrl', layout='row', class='brew__sidenav')
         | #{txtMenu}
     md-content(layout-padding)
       md-button(ng-click="toggleSidenav('right')", class='md-primary', aria-label='#{txtMenu} schliessen', title='#{txtMenu} schliessen')
-        md-icon(md-svg-icon='arrow_forward')
+        md-icon(md-svg-icon='arrow_forward', class='brew__icon')
       ul
         li
           a(href='home', ng-class="{active: isActive('/')}")
@@ -56,5 +56,5 @@ navigation(ng-controller='SidenavCtrl', layout='row', class='brew__sidenav')
     div(layout='column', layout-align='top center')
       div
         md-button(ng-click="toggleSidenav('right')", class='md-primary', aria-label='#{txtMenu}', title='#{txtMenu}')
-          md-icon(md-svg-icon='menu')
+          md-icon(md-svg-icon='menu', class='brew__icon')
     div(flex)

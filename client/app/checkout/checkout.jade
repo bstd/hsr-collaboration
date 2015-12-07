@@ -62,7 +62,7 @@ section(layout='row', flex)
 
 
       // TOTAL
-      md-content(layout='row', layout-wrap, class='md-padding')
+      md-content(class='md-padding')
         h2
           | Gesamtsumme
         p(class='md-title')
@@ -75,7 +75,9 @@ section(layout='row', flex)
       // TERMS
       md-content(layout='row', layout-wrap, class='md-padding')
         p
-          | Bitte lesen Sie unsere #[a(ng-click='showTerms()', class='md-primary md-button') Allgemeinen Geschäftsbedingungen]
+          | Bitte akzeptieren Sie unsere
+        a(ng-click='showTerms()', class='md-warn md-button')
+          | Allgemeinen Geschäftsbedingungen
 
       md-input-container(class='md-block')
         md-checkbox(ng-model='terms', aria-label='AGB gelesen und akzeptiert', required)
@@ -86,11 +88,12 @@ section(layout='row', flex)
 
 
       // SUBMIT
-      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
-        | Bestellung abschicken
+      div(layout='row', layout-align='start center')
+        md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
+          | Bestellung abschicken
 
-      md-button(href='/product', class='md-primary')
-        | Weiter einkaufen
+        md-button(href='/product', class='md-primary')
+          | Weiter einkaufen
 
 
   // no basket found
@@ -99,5 +102,5 @@ section(layout='row', flex)
       | Warenkorb ist leer, keine Bestellung möglich.
 
     md-input-container(class='md-block')
-      md-button(href='/product', class='md-primary')
+      md-button(href='/product', class='md-raised md-primary')
         | Produkte kaufen

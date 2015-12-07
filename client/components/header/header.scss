@@ -8,21 +8,6 @@
 
     md-icon {
       margin: 0.5em;
-      width: $icon-width;
-      height: $icon-height;
-
-      @include breakpoint(sm) {
-        width: $icon-width-sm;
-        height: $icon-height-sm;
-      }
-      @include breakpoint(md) {
-        width: $icon-width-md;
-        height: $icon-height-md;
-      }
-      @include breakpoint(lg) {
-        width: $icon-width-lg;
-        height: $icon-height-lg;
-      }
     }
 
     &__link {

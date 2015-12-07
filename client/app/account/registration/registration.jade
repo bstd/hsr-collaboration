@@ -21,9 +21,9 @@ section
       div(class='help-block', ng-messages='form.password.$error', ng-show='form.password.$touched && form.password.$invalid')
         include ../../partials/form.messages.password.jade
 
+    div(layout='row', layout-align='start center')
+      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
+        | Registrieren
 
-    md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
-      | Registrieren
-
-    md-button(ng-href='/login', class='md-primary')
-      | zum Login
+      md-button(href='/login', class='md-primary')
+        | zum Login

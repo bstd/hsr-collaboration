@@ -8,29 +8,17 @@ angular.module('brewApp')
     title: 'Testseiten',
     templateUrl: 'app/test/test.html',
     controller: 'TestCtrl',
-    //controllerAs: 'test',
-    // restricted
-    //authenticate: true,
-    onEnter: function($log) {
-      $log.debug('enter test');
-    },
-    onExit: function($log) {
-      $log.debug('exit test');
-    }
   })
   .state('test.icons',{
     url: '/test/icons',
     title: 'Test - Icons',
     templateUrl: 'app/test/icons/icons.html',
     controller: 'TestIconListCtrl',
-    //controllerAs: 'test.icons',
-    // restricted
-    //authenticate: true,
-    onEnter: function($log) {
-      $log.debug('enter test.icons');
-    },
-    onExit: function($log) {
-      $log.debug('exit test.icons');
-    }
+  })
+  .state('test.flex',{
+    url: '/test/flex',
+    title: 'Test - Flexbox',
+    templateUrl: 'app/test/flex/flex.html',
+    controller: 'TestFlexCtrl',
   });
 });

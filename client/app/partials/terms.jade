@@ -6,14 +6,14 @@
           | Allgemeinen Geschäftsbedingungen
         span(flex)
         md-button(class='md-icon-button', ng-click='close()')
-          md-icon(md-svg-icon='close', aria-label='Schliessen')
+          md-icon(md-svg-icon='close', aria-label='Schliessen', class='brew__icon')
     md-dialog-content
       div(class='md-dialog-content')
         p
-          | AGB text TODO
+          | AGB text TODO Lieferung nur gegen Vorkasse. Sie erhalten die Rechnung per E-Mail nach jeder Bestellung.
 
     md-dialog-actions(layout='row')
+      md-button(ng-click='answer("accept")', md-autofocus, class='md-raised md-primary')
+        | Gelesen und Akzeptiert
       md-button(ng-click='close()')
         | Schliessen
-      md-button(ng-click='answer("accept")' md-autofocus)
-        | Gelesen und Akzeptiert

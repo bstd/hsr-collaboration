@@ -10,8 +10,8 @@
           | {{order.total | number:2}}
       span(flex)
       md-button(class='md-icon-button', aria-label='Auf-/zuklappen')
-        md-icon(md-svg-icon='expand_more', class='icon-open')
-        md-icon(md-svg-icon='expand_less', class='icon-close')
+        md-icon(md-svg-icon='expand_more', class='icon-open brew__icon')
+        md-icon(md-svg-icon='expand_less', class='icon-close brew__icon')
 
   div(ng-show='showChildren')
     include partial-order-detail-edit.jade

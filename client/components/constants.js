@@ -12,6 +12,7 @@ angular.module('components.constants', [])
     chevron_left: '/assets/svg/ic_chevron_left_24px.svg',
     chevron_right: '/assets/svg/ic_chevron_right_24px.svg',
     close: '/assets/svg/ic_close_24px.svg',
+    delete: '/assets/svg/ic_delete_24px.svg',
     event_note: '/assets/svg/ic_event_note_24px.svg',
     expand_less: '/assets/svg/ic_expand_less_24px.svg',
     expand_more: '/assets/svg/ic_expand_more_24px.svg',

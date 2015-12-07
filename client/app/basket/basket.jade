@@ -3,15 +3,15 @@ include ../partials/header.jade
 section
   h1
     | Warenkorb
-section(layout='row', flex)
-  md-content(layout='row', layout-wrap, flex, class='md-padding')
+section
+  md-content(layout='row', layout-wrap)
     div(ng-show='empty')
       p
         | Warenkorb ist leer.
-      md-button(href='/product', class='md-primary')
+      md-button(href='/product', class='md-raised md-primary')
         | Produkte kaufen
 
-    md-card(ng-hide='empty', ng-repeat='basketItem in basketItems track by basketItem._id', flex='25', flex-md='33', flex-sm='100')
+    md-card(ng-hide='empty', ng-repeat='basketItem in basketItems track by basketItem._id', flex='30', flex-md='45', flex-sm='100')
       md-card-content
         p
           | {{basketItem._name}} (EAN: {{basketItem._ean}})
@@ -20,9 +20,12 @@ section(layout='row', flex)
         p
           | Anzahl: {{basketItem._qty}}
 
-        div(layout='row', layout-align='end center', class='md-actions')
-          md-button(ng-click='removeItem(basketItem)', class='md-button md-raised md-primary')
+      md-card-footer
+        div(layout='row', layout-align='end end', class='md-actions')
+          md-tooltip
             | Entfernen
+          md-button(ng-click='removeItem(basketItem)', class='md-icon-button md-raised md-warn')
+            md-icon(md-svg-icon='delete')
 
 section(ng-hide='empty', flex)
   md-content(layout='row', layout-wrap, class='md-padding')
