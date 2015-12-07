@@ -35,12 +35,13 @@ section.section(layout='column')
         img(src='/public/default/beer_bottle.png', alt='Washed Out' ng-if="!product.image")
         md-card-title
           md-card-title-text
-            span.md-headline {{product.name}}
+            a(ui-sref="productdetail({ id: product._id })")
+              span.md-headline {{product.name}}
         md-card-content
           md-chips
             md-chip
               | {{product.price}}
-          p {{product.info}}
+          p {{product.info | limitTo: 50 }}..
           div(layout='row')
             div(flex='')
               | {{product.country}}

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('MainCtrl', ['$scope', '$http', 'ProductService', function($scope, $http, ProductService) {
+.controller('MainCtrl', ['$scope', '$http', '$state', '$stateParams', 'ProductService', function($scope, $http, $state, $stateParams, ProductService) {
   $scope.products = [];
 
   $scope.vanities = [ '', 'Lagerbier', 'Spezialbier', 'Dunkles Bier', 'Naturtrübes Bier', 'Alkoholfreies Bier', 'Altbier',

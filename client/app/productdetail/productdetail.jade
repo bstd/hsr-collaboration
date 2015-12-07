@@ -1,0 +1,26 @@
+include ../partials/header.jade
+
+section
+  h1
+    | ProductDetail
+section.section(layout='column')
+  md-content(layout='row', layout-wrap, class='md-padding')
+    md-card(flex='')
+      img(src='/public/{{product.image}}', class="md-card-image", alt='Washed Out' ng-if="product.image")
+      img(src='/public/default/beer_bottle.png', class="md-card-image", alt='Washed Out' ng-if="!product.image")
+      md-card-title
+        md-card-title-text
+          span.md-headline {{product.name}}
+      md-card-content
+        md-chips
+          md-chip
+            | {{product.price}}
+        p {{product.info}}
+        div(layout='row')
+          div(flex='')
+            | {{product.country}}
+          div(flex='')
+            | {{product.vanity}}
+        div(layout='row', layout-align='end center', class='md-actions')
+          md-button(ng-click='addToBasket(product)', class='md-button md-raised md-primary')
+            | Kaufen
