@@ -19,7 +19,7 @@ angular.module('brewApp')
     $log.debug('queried:',data);
 
     // return obj from orderStates by matching order.state
-    $scope.objOrderState = _.find($scope.orderStates, function(obj) { return obj.id === $scope.order.state });
+    $scope.objOrderState = _.find($scope.orderStates, function(obj) { return obj.id === $scope.order.state; });
     $log.debug('$scope.objOrderState:',$scope.objOrderState);
   });
 
@@ -37,7 +37,6 @@ angular.module('brewApp')
       $log.debug('AdminOrderService.update with id:',$id);
       $log.debug('new state to save:',$scope.order.state);
 
-      //AdminOrderService.update({ id: $id }, $scope.order, function() {
       AdminOrderService.update({ id: $id }, $scope.order).$promise.then(function() {
         $state.go('admin.order-list');
         ToastSimpleService('Bestellung erfolgreich geändert', 'success');

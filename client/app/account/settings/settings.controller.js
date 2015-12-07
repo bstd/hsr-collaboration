@@ -62,7 +62,7 @@ angular.module('brewApp')
 
         // Update validity of form fields that match the mongoose errors
         angular.forEach(err.errors, function(error, field) {
-          form[field].$setValidity('mongoose', false);
+          addressForm[field].$setValidity('mongoose', false);
           $scope.errors[field] = error.message;
         });
       });
