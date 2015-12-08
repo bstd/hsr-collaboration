@@ -11,10 +11,11 @@ angular.module('brewApp', [
   'components.constants'
 ])
 
-.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $logProvider) {
+.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $logProvider, $compileProvider) {
   $urlRouterProvider.otherwise('/');
   $locationProvider.html5Mode(true);
   $httpProvider.interceptors.push('authInterceptor');// using passport example implementation
+  $compileProvider.debugInfoEnabled(false);
 })
 
 .factory('authInterceptor', function($rootScope, $q, $cookieStore, $location) {
