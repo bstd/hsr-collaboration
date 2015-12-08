@@ -13,10 +13,10 @@
           | {{item.name}} wurde Ihrem Warenkorb hinzugefügt.
 
     md-dialog-actions(layout='row')
-      md-button(ng-click='close()')
-        | Weiter einkaufen
-      md-button(ng-click='answer("basket")', md-autofocus, class='md-raised md-primary')
-        | Zum Warenkorb
-      span(flex)
       md-button(ng-click='answer("checkout")')
         | Jetzt bestellen
+      span(flex)
+      md-button(ng-click='close()')
+        | Weiter einkaufen
+      md-button(ng-click='answer("basket")', md-autofocus, class='md-primary')
+        | Zum Warenkorb

@@ -20,9 +20,8 @@ section
         include ../../partials/form.messages.password.jade
 
 
-
-    md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
-      | Benutzer erstellen
-
-    md-button(ui-sref='admin.user-list', class='md-raised')
-      | Abbrechen
+    div(layout='row', layout-align='start center')
+      md-button(ui-sref='admin.user-list', class='md-raised')
+        | Abbrechen
+      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
+        | Benutzer erstellen

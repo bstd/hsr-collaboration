@@ -19,7 +19,7 @@
               | Anzahl: {{item._qty}}
 
     md-dialog-actions(layout='row')
-      md-button(ng-click='close()', md-autofocus, class='md-raised md-primary')
-        | Schliessen
       md-button(ng-click='answer("edit")')
         | Warenkorb ändern
+      md-button(ng-click='close()', md-autofocus, class='md-primary')
+        | Schliessen
