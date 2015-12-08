@@ -5,9 +5,9 @@
 
 'use strict';
 
-var MainPage = function() {
-  this.headerSearch = element(by.model('$mdAutocompleteCtrl.scope.searchText'));
+var LoginPage = function() {
+  this.userName = element(by.model('user.email'));
   // more elements here
 };
 
-module.exports = new MainPage();
+module.exports = new LoginPage();

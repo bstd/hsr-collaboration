@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Main View', function() {
+describe('Startseite', function() {
   var page;
 
   beforeEach(function() {
@@ -8,9 +8,19 @@ describe('Main View', function() {
     page = require('./main.po');
   });
 
-  it('should include jumbotron with correct data', function() {
-    expect(page.h1El.getText()).toBe('\'Allo, \'Allo!');
-    expect(page.imgEl.getAttribute('src')).toMatch(/assets\/images\/yeoman.png$/);
-    expect(page.imgEl.getAttribute('alt')).toBe('I\'m Yeoman');
+
+  it('should have title "Startseite"', function() {
+    expect(browser.getTitle()).toEqual('Startseite');
   });
+
+  it('should have headerSearch', function() {
+    expect(page.headerSearch.isPresent()).toBe(true);
+  });
+
+
+/*
+  // __
+  it('should __', function() {
+  });
+*/
 });

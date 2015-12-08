@@ -46,6 +46,7 @@ exports.config = {
   //
   // See the full list at https://github.com/juliemr/minijasminenode
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 10000
+    defaultTimeoutInterval: 10000,
+    isVerbose: true// enable log to console
   }
 };
