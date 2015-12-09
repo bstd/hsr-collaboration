@@ -4,6 +4,7 @@
 angular.module('components.constants', [])
 .constant('CONSTANTS', {
   icons: {
+    account_box: '/assets/svg/ic_account_box_24px.svg',
     add_shopping_cart: '/assets/svg/ic_add_shopping_cart_24px.svg',
     arrow_back: '/assets/svg/ic_arrow_back_24px.svg',
     arrow_forward: '/assets/svg/ic_arrow_forward_24px.svg',

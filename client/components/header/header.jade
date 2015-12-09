@@ -1,5 +1,6 @@
 - var txtOrders = 'Bestellungen';
 - var txtBasket = 'Warenkorb';
+- var txtLogin = 'Anmeldung';
 - var txtMyAccount = 'MyAccount';
 
 div(layout='row', layout-wrap, flex)
@@ -25,10 +26,18 @@ div(layout='row', layout-wrap, flex)
         md-tooltip
           | #{txtBasket}
         md-icon(md-svg-icon='shopping_cart', class='brew__icon md-primary')
-      a(href='settings', title='#{txtMyAccount}', ng-class='{active: isActive("/settings")}', class='header__nav__link')
+
+      // show login if not authed
+      a(ng-if='!isLoggedIn()', href='login', title='#{txtLogin}', ng-class='{active: isActive("/login")}', class='header__nav__link')
+        md-tooltip
+          | #{txtLogin}
+        md-icon(md-svg-icon='person', class='brew__icon md-primary')
+
+      // show my account if authed
+      a(ng-if='isLoggedIn()', href='settings', title='#{txtMyAccount}', ng-class='{active: isActive("/settings")}', class='header__nav__link')
         md-tooltip
           | #{txtMyAccount}
-        md-icon(md-svg-icon='person', class='brew__icon md-primary')
+        md-icon(md-svg-icon='account_box', class='brew__icon md-primary')
 
       // SIDENAV
       include ../sidenav/sidenav.jade
