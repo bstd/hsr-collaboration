@@ -3,6 +3,8 @@
     div(class='md-toolbar-tools')
       md-chips
         md-chip
+          | {{order.orderId}}
+        md-chip
           | {{order.dateCreated | date: 'dd.MM.yyyy HH:mm'}}
         md-chip
           | {{order.addressLastName}}

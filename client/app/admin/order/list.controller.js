@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('AdminOrderListCtrl', ['$scope', '$http', '$state', '$mdDialog', 'AdminOrderService', 'AdminOrderConfirmDeleteService', function($scope, $http, $state, $mdDialog, AdminOrderService, AdminOrderConfirmDeleteService) {
+.controller('AdminOrderListCtrl', ['$scope', '$http', '$state', '$mdDialog', 'AdminOrderService', 'AdminConfirmDeleteService', function($scope, $http, $state, $mdDialog, AdminOrderService, AdminConfirmDeleteService) {
   // confirm dialog
   $scope.confirmDelete = function(order) {
-    AdminOrderConfirmDeleteService(order).then(function() {
+    AdminConfirmDeleteService('Bestellung', order.orderId).then(function() {
       $state.go('admin.order-destroy', { id: order._id });
     });
   };
