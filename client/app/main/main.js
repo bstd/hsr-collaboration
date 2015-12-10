@@ -7,15 +7,6 @@ angular.module('brewApp')
     url: '/',
     title: 'Startseite',
     templateUrl: 'app/main/main.html',
-    controller: 'MainCtrl',
-    //controllerAs: '',
-    // restricted
-    //authenticate: true,
-    onEnter: function($log) {
-      $log.debug('enter main');
-    },
-    onExit: function($log) {
-      $log.debug('exit main');
-    }
+    controller: 'MainCtrl'
   });
 });

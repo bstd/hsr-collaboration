@@ -1,5 +1,7 @@
 ﻿.container {
   margin: 0 auto;
+  padding: 0.5em;
+  // TODO bg fixed img
 
   @include breakpoint(sm) {
     max-width: 960px;
