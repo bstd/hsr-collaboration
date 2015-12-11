@@ -1,4 +1,20 @@
-﻿img {
+﻿body {
+  background: url('/assets/images/bg.png') no-repeat top center;
+
+  // depth to body
+  &::before {
+    content: "";
+    position: fixed;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(0,0,0,.8);
+  }
+}
+
+img {
   max-width: 100%;
   height: auto;
 }

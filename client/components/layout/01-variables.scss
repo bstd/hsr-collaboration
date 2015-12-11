@@ -19,6 +19,10 @@ $icon-height-md: 32px;
 $icon-width-lg: 30px;
 $icon-height-lg: 30px;
 
+// min/max content
+$min-width: 320px;
+$max-width: 960px;
+
 // breakpoint variables for media query mixin (matching angular material layout-breakpoints)
 $screen-sm-min: 600px;
 $screen-md-min: 960px;

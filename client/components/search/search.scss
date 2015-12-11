@@ -1,6 +1,6 @@
 .search__container {
   md-autocomplete {
-    background: none;
+    //background: none;
   }
 
   li {
@@ -25,19 +25,14 @@
 }
 
 .search__button {
-  margin-top: 3px;
-  margin-bottom: 3px;
-  min-width: 2em;
+  margin-top: 1px;
 
-  @include breakpoint(sm) {
-    min-width: 4em;
+  md-icon {
+    margin: 4px;
   }
 
-  @include breakpoint(md) {
-    min-width: 5em;
+  .brew__icon {
+    width: $icon-width-lg;
+    height: $icon-height-lg;
   }
-
-  /*@include breakpoint(lg) {
-    min-width: 8em;
-  }*/
 }

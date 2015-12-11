@@ -1,0 +1,10 @@
+﻿.brew__container {
+  margin: 0 auto;
+  padding: 1em 0.5em;
+  min-width: $min-width;
+  background-color: $white;
+
+  @include breakpoint(sm) {
+    max-width: $max-width;
+  }
+}

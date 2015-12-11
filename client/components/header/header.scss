@@ -1,21 +1,36 @@
-﻿.header {
+﻿.brew-header {
+
+}
+
+.header {
   &__nav {
-    .active {
-      md-icon {
-        color: $red;
-      }
+    padding-top: 0;
+
+    @include breakpoint(sm) {
+      padding-top: 10px;
     }
 
     md-icon {
-      margin: 0.5em;
-    }
-
-    &__link {
-
+      margin: 4px;
     }
   }
 
-  &__logo img {
-    //max-width: 150px;
+  &__logo {
+    a {
+      display: block;
+    }
+    img {
+      max-width: 88px;
+
+      @include breakpoint(sm) {
+        max-width: 104px;
+      }
+      @include breakpoint(md) {
+        max-width: 124px;
+      }
+      @include breakpoint(lg) {
+        max-width: 150px;
+      }
+    }
   }
 }

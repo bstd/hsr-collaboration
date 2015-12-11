@@ -4,37 +4,37 @@
 - var txtMyAccount = 'MyAccount';
 
 div(layout='row', layout-wrap, flex)
-  div(layout='row', flex-order-sm='1', flex-order-md='1')
+  div(layout='row', flex-order-xs='1', flex-order-sm='1')
     // LOGO
     div(class='header__logo')
       a(href='/', title='Startseite')
         img(src='/assets/images/logo.png')
 
-  div(flex, flex-sm='100', flex-order-sm='3', flex-md='100', flex-order-md='3')
+  div(flex, flex-xs='100', flex-order-xs='3', flex-sm='100', flex-order-sm='3')
     // SEARCH
     div(flex='auto', class='header__search')
       include ../search/search.jade
 
-  div(flex-sm, flex-md, flex-order-sm='2', flex-order-md='2')
+  div(flex, flex-gt-sm='35', flex-order-xs='2', flex-order-sm='2')
     // NAV
-    div(layout='row', layout-align='end', class='header__nav')
-      a(ng-if='isAdmin()', href='admin/orders', title='#{txtOrders}', ng-class='{active: isActive("/admin/orders")}', class='header__nav__link')
+    div(layout='row', layout-align='start', layout-align-gt-xs='end', class='header__nav')
+      md-button(ng-if='isAdmin()', href='admin/orders', ng-class='{"md-raised": isActive("/admin/orders")}')
         md-tooltip
           | #{txtOrders}
         md-icon(md-svg-icon='move_to_inbox', class='brew__icon md-primary')
-      a(href='basket', title='#{txtBasket}', ng-class='{active: isActive("/basket")}', class='header__nav__link')
+      md-button(href='basket', ng-class='{"md-raised": isActive("/basket")}')
         md-tooltip
           | #{txtBasket}
         md-icon(md-svg-icon='shopping_cart', class='brew__icon md-primary')
 
       // show login if not authed
-      a(ng-if='!isLoggedIn()', href='login', title='#{txtLogin}', ng-class='{active: isActive("/login")}', class='header__nav__link')
+      md-button(ng-if='!isLoggedIn()', href='login', ng-class='{"md-raised": isActive("/login")}')
         md-tooltip
           | #{txtLogin}
         md-icon(md-svg-icon='person', class='brew__icon md-primary')
 
       // show my account if authed
-      a(ng-if='isLoggedIn()', href='settings', title='#{txtMyAccount}', ng-class='{active: isActive("/settings")}', class='header__nav__link')
+      md-button(ng-if='isLoggedIn()', href='settings', ng-class='{"md-raised": isActive("/settings")}')
         md-tooltip
           | #{txtMyAccount}
         md-icon(md-svg-icon='account_box', class='brew__icon md-primary')
