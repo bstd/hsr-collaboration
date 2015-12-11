@@ -9,7 +9,7 @@ var multer = require('multer');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/'); // Absolute path. Folder must exist, will not be created for you.
+    cb(null, __dirname + '../../../uploads/'); // Absolute path. Folder must exist, will not be created for you.
   }/*,
   filename: function (req, file, cb) {
     cb(null, file.originalname);

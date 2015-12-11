@@ -37,7 +37,7 @@ module.exports = function(app) {
 	app.use(passport.initialize());
   app.use(bodyParser.json({limit: '5mb'}));
 
-  app.use('/public',express.static('public/'));
+  //app.use('/public',express.static('public/'));
 
   /*app.use(multer({dest:'uploads/'}).single('file'));
   app.get('/resources/:resid', Pictoose.RouteController);*/

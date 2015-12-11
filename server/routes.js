@@ -6,6 +6,8 @@
 
 var errors = require('./components/errors');
 var path = require('path');
+var express = require('express');
+var multer = require('multer');
 
 
 module.exports = function(app) {
@@ -13,6 +15,9 @@ module.exports = function(app) {
   app.use('/api/products', require('./api/product'));
   app.use('/api/users', require('./api/user'));
   app.use('/api/orders', require('./api/order'));
+
+  // Public static file folder
+  app.use('/uploads', express.static( __dirname + '/uploads/'));
 
   // auth (passport)
   app.use('/auth', require('./auth'));

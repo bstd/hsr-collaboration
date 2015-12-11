@@ -42,6 +42,7 @@ angular.module('brewApp')
           url: 'api/products',
           data: {
             file: $scope.product.file,
+            ean: $scope.product.ean,
             active: $scope.product.active,
             name: $scope.product.name,
             price: $scope.product.price,
