@@ -34,7 +34,7 @@ md-content
                 md-input-container(flex='', ng-class='{ "has-success": form.price.$valid && submitted, "has-error": form.price.$invalid && submitted }')
                   label
                     | Preis
-                  input(type='text', name='price', class='form-control', ng-model='product.price', required)
+                  input(type='text', name='price', class='form-control', ng-model='product.price', valid-price required)
                   p(class='help-block', ng-show='form.price.$error.required && submitted')
                     | Bitte geben Sie einen Preis ein
             section.section(layout='column')
@@ -42,15 +42,15 @@ md-content
                 md-input-container(flex='', ng-class='{ "has-success": form.info.$valid && submitted, "has-error": form.info.$invalid && submitted }')
                   label
                     | Info
-                  input(type='textarea', name='info', class='form-control', ng-model='product.info', required)
+                  textarea(columns='1', md-maxlength='700', rows='12', name='info', class='form-control', ng-model='product.info', required)
                   p(class='help-block', ng-show='form.info.$error.required && submitted')
                     | Bitte geben Sie eine Info ein
             section.section(layout='column')
               span(layout='row', layout-sm='column')
                 md-input-container(flex='', ng-class='{ "has-success": form.stock.$valid && submitted, "has-error": form.stock.$invalid && submitted }')
                   label
-                    | Stück (Harass oder Pack)
-                  input(type="number", name='stock', class='form-control', ng-model='product.stock', required)
+                    | Einheiten
+                  input(type="text", name='stock', class='form-control', ng-model='product.stock', valid-number required)
                   p(class='help-block', ng-show='form.stock.$error.required && submitted')
                     | Bitte geben Sie die Stückzahl(Number) im Lager ein
             section.section(layout='column')
@@ -75,10 +75,10 @@ md-content
             section.section(layout='column')
               span(layout='row', layout-sm='column')
                 md-input-container(flex='', ng-class='{ "has-success": form.file.$valid && submitted }')
-                  h3
-                    | Bild Upload
+                  h3 Bild Upload
+                  label.no-label Bild Upload
                   md-button.md-fab(choose-file-button='file-input', aria-label='Add Photo', ng-click='', class='md-icon-button md-raised md-primary')
-                    md-icon(md-svg-icon='add_photo', class='brew__icon')
+                    md-icon(md-svg-icon='add_photo')
                   input#file-input(type='file', ngf-select='', ng-model='product.file', name='file', accept='image/*', ngf-max-size='2MB')
                   p(class='help-block',ng-show='form.file.$error.maxSize')
                     | File zu gross
