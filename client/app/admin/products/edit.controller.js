@@ -27,6 +27,7 @@ angular.module('brewApp')
           method: 'PUT',
           data: {
             file: $scope.product.file,
+            ean: $scope.product.ean,
             active: $scope.product.active,
             name: $scope.product.name,
             price: $scope.product.price,

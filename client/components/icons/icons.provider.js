@@ -6,6 +6,7 @@ angular.module('brewApp')
   $mdIconProvider
   .icon('account_box', CONSTANTS.icons.account_box)
   .icon('add_shopping_cart', CONSTANTS.icons.add_shopping_cart)
+  .icon('add_photo', CONSTANTS.icons.add_photo)
   .icon('arrow_back', CONSTANTS.icons.arrow_back)
   .icon('arrow_forward', CONSTANTS.icons.arrow_forward)
   .icon('check_box', CONSTANTS.icons.check_box)

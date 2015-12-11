@@ -5,90 +5,95 @@ md-content
     p
       | Create a new product for your application.
     form(ng-submit='update(form)', name='form', class='form', novalidate)
-      section.section.slim(layout='column')
-        span(layout='row', layout-align='start center')
-          span(flex='33') Produkt aktivieren
-          md-switch(name='active', ng-model='product.active') Aktivierung:&nbsp;
-            span.md-warn(ng-if='product.active') Aktiv
-            span.md-warn(ng-if='!product.active ') Inaktiv
-      section.section(layout='column')
-        span(layout='row', layout-sm='column')
-          md-input-container(flex='', ng-class='{ "has-success": form.ean.$valid && submitted, "has-error": form.ean.$invalid && submitted }')
-            label
-              | Produktnummer (z.B. 1234567890123)
-            input(type='text', name='ean', class='form-control', ng-model='product.ean', required)
-            p(class='help-block', ng-show='form.ean.$error.required && submitted')
-              | Bitte geben Sie eine Produktnummer ein
-      section.section(layout='column')
-        span(layout='row', layout-sm='column')
-          md-input-container(flex='', ng-class='{ "has-success": form.name.$valid && submitted, "has-error": form.name.$invalid && submitted }')
-            label
-              | Name
-            input(type='text', name='name', class='form-control', ng-model='product.name', required)
-            p(class='help-block', ng-show='form.name.$error.required && submitted')
-              | Bitte geben Sie einen Namen ein
-      section.section(layout='column')
-        span(layout='row', layout-sm='column')
-          md-input-container(flex='', ng-class='{ "has-success": form.price.$valid && submitted, "has-error": form.price.$invalid && submitted }')
-            label
-              | Preis
-            input(type='text', name='price', class='form-control', ng-model='product.price', required)
-            p(class='help-block', ng-show='form.price.$error.required && submitted')
-              | Bitte geben Sie einen Preis ein
-      section.section(layout='column')
-        span(layout='row', layout-sm='column')
-          md-input-container(flex='', ng-class='{ "has-success": form.info.$valid && submitted, "has-error": form.info.$invalid && submitted }')
-            label
-              | Info
-            input(type='text', name='info', class='form-control', ng-model='product.info', required)
-            p(class='help-block', ng-show='form.info.$error.required && submitted')
-              | Bitte geben Sie eine Info ein
-      section.section(layout='column')
-        span(layout='row', layout-sm='column')
-          md-input-container(flex='', ng-class='{ "has-success": form.stock.$valid && submitted, "has-error": form.stock.$invalid && submitted }')
-            label
-              | Stück (Harass oder Pack)
-            input(type="number", name='stock', class='form-control', ng-model='product.stock', required)
-            p(class='help-block', ng-show='form.stock.$error.required && submitted')
-              | Bitte geben Sie die Stückzahl(Number) im Lager ein
-      section.section(layout='column')
-        span(layout='row', layout-sm='column')
-          md-input-container(flex='', ng-class='{ "has-success": form.country.$valid && submitted, "has-error": form.country.$invalid && submitted }')
-            label Brau-Land
-            md-select(ng-model='product.country')
-              md-option(ng-repeat='state in states', value='{{state}}')
-                | {{state}}
-            p(class='help-block', ng-show='form.country.$error.required && submitted')
-              | Bitte geben Sie ein Land an
-      section.section(layout='column')
-        span(layout='row', layout-sm='column')
-          md-input-container(flex='', ng-class='{ "has-success": form.vanity.$valid && submitted, "has-error": form.vanity.$invalid && submitted }')
-            label Biersorte
-            md-select(ng-model='product.vanity')
-              md-option(ng-repeat='van in vanities', value='{{van}}')
-                | {{van}}
-            p(class='help-block', ng-show='form.vanity.$error.required && submitted')
-              | Bitte geben Sie eine Biersorte an
-      section.section(layout='column')
-        span(layout='row', layout-sm='column')
-          md-input-container(flex='', ng-class='{ "has-success": form.file.$valid && submitted }')
-            label
-              | Image Upload
-            input(type='file', ngf-select='', ng-model='product.file', name='file', accept='image/*', ngf-max-size='2MB')
-            p(class='help-block', ng-show='form.file.$error.required') *required
-            br
-            p(class='help-block',ng-show='form.file.$error.maxSize')
-              | File too large
-              | {{product.file.size / 1000000|number:1}}MB: max 2M
-            img.thumb(ng-show='form.file.$valid', ngf-thumbnail='product.file')
-            img.thumb(ng-src="/uploads/{{product.image}}", ng-if="product.image")
-            img.thumb(src='/uploads/default/beer_bottle.png', ng-if="!product.image")
-            md-button(ng-click='product.file = null', ng-show='product.file', class='md-raised',) Remove
+        div(layout="row")
+          div(flex='50')
+            section.section.slim(layout='column')
+              span(layout='row', layout-align='start center')
+                span(flex='33') Produkt aktivieren
+                md-switch(name='active', ng-model='product.active') Aktivierung:&nbsp;
+                  span.md-warn(ng-if='product.active') Aktiv
+                  span.md-warn(ng-if='!product.active ') Inaktiv
+            section.section(layout='column')
+              span(layout='row', layout-sm='column')
+                md-input-container(flex='', ng-class='{ "has-success": form.ean.$valid && submitted, "has-error": form.ean.$invalid && submitted }')
+                  label
+                    | Produktnummer (z.B. 1234567890123)
+                  input(type='text', name='ean', class='form-control', ng-model='product.ean', required)
+                  p(class='help-block', ng-show='form.ean.$error.required && submitted')
+                    | Bitte geben Sie eine Produktnummer ein
+            section.section(layout='column')
+              span(layout='row', layout-sm='column')
+                md-input-container(flex='', ng-class='{ "has-success": form.name.$valid && submitted, "has-error": form.name.$invalid && submitted }')
+                  label
+                    | Name
+                  input(type='text', name='name', class='form-control', ng-model='product.name', required)
+                  p(class='help-block', ng-show='form.name.$error.required && submitted')
+                    | Bitte geben Sie einen Namen ein
+            section.section(layout='column')
+              span(layout='row', layout-sm='column')
+                md-input-container(flex='', ng-class='{ "has-success": form.price.$valid && submitted, "has-error": form.price.$invalid && submitted }')
+                  label
+                    | Preis
+                  input(type='text', name='price', class='form-control', ng-model='product.price', required)
+                  p(class='help-block', ng-show='form.price.$error.required && submitted')
+                    | Bitte geben Sie einen Preis ein
+            section.section(layout='column')
+              span(layout='row', layout-sm='column')
+                md-input-container(flex='', ng-class='{ "has-success": form.info.$valid && submitted, "has-error": form.info.$invalid && submitted }')
+                  label
+                    | Info
+                  input(type='textarea', name='info', class='form-control', ng-model='product.info', required)
+                  p(class='help-block', ng-show='form.info.$error.required && submitted')
+                    | Bitte geben Sie eine Info ein
+            section.section(layout='column')
+              span(layout='row', layout-sm='column')
+                md-input-container(flex='', ng-class='{ "has-success": form.stock.$valid && submitted, "has-error": form.stock.$invalid && submitted }')
+                  label
+                    | Stück (Harass oder Pack)
+                  input(type="number", name='stock', class='form-control', ng-model='product.stock', required)
+                  p(class='help-block', ng-show='form.stock.$error.required && submitted')
+                    | Bitte geben Sie die Stückzahl(Number) im Lager ein
+            section.section(layout='column')
+              span(layout='row', layout-sm='column')
+                md-input-container(flex='', ng-class='{ "has-success": form.country.$valid && submitted, "has-error": form.country.$invalid && submitted }')
+                  label Brau-Land
+                  md-select(ng-model='product.country')
+                    md-option(ng-repeat='state in states', value='{{state}}')
+                      | {{state}}
+                  p(class='help-block', ng-show='form.country.$error.required && submitted')
+                    | Bitte geben Sie ein Land an
+            section.section(layout='column')
+              span(layout='row', layout-sm='column')
+                md-input-container(flex='', ng-class='{ "has-success": form.vanity.$valid && submitted, "has-error": form.vanity.$invalid && submitted }')
+                  label Biersorte
+                  md-select(ng-model='product.vanity')
+                    md-option(ng-repeat='van in vanities', value='{{van}}')
+                      | {{van}}
+                  p(class='help-block', ng-show='form.vanity.$error.required && submitted')
+                    | Bitte geben Sie eine Biersorte an
+          div(flex='50')
+            section.section(layout='column')
+              span(layout='row', layout-sm='column')
+                md-input-container(flex='', ng-class='{ "has-success": form.file.$valid && submitted }')
+                  h3
+                    | Bild Upload
+                  md-button.md-fab(choose-file-button='file-input', aria-label='Add Photo', ng-click='', class='md-icon-button md-raised md-primary')
+                    md-icon(md-svg-icon='add_photo', class='brew__icon')
+                  input#file-input(type='file', ngf-select='', ng-model='product.file', name='file', accept='image/*', ngf-max-size='2MB')
+                  p(class='help-block',ng-show='form.file.$error.maxSize')
+                    | File zu gross
+                    | {{product.file.size / 1000000|number:1}}MB: max 2M
+                  div(layout='row', layout-align='start center')
+                    img.thumb(ng-show='form.file.$valid', ngf-thumbnail='product.file')
+                    img.thumb(ng-src="/uploads/{{product.image}}", ng-if="product.image && !product.file")
+                    img.thumb(src='/uploads/default/beer_bottle.png', ng-if="!product.image && !product.file" )
+                    md-button(ng-click='product.file = null', ng-show='product.file', class='md-raised md-primary',) Entfernen
 
-      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
-        | Speichern
+    div(layout='row', layout-align='start center')
       md-button(ui-sref='admin.product-list', class='md-raised')
         | Abbrechen
+      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
+        | Speichern
 
       span(ng-show='product.file.result') Upload Successful
       span.err(ng-show='errorMsg') {{errorMsg}}
