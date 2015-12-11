@@ -1,52 +1,65 @@
 include ../partials/header.jade
 
-section(layout='row', flex)
+section
   h1
-    | Startseite
-section(layout='row', flex)
-  h2
-    | Produkte
-section.section(layout='column')
+    | Willkommen bei brew
+
+// FILTER
+section
   md-content(layout='row', layout-wrap, class='md-padding')
-    md-input-container(flex='')
+    md-input-container(flex)
       label Filter
       input(ng-model='search')
-    md-input-container(flex='')
+    md-input-container(flex)
       label Sortierung
       md-select(ng-model='order')
-        md-option(value="name")
+        md-option(value='name')
           | Name Alphabet
-        md-option(value="price")
+        md-option(value='price')
           | Preis
-    md-input-container(flex='')
+    md-input-container(flex)
       label Brau-Land
       md-select(ng-model='countryFilter')
-        md-option(ng-repeat="state in states" value="{{state}}")
+        md-option(ng-repeat='state in states' value='{{state}}')
           | {{state}}
-    md-input-container(flex='')
+    md-input-container(flex)
       label Biersorte
       md-select(ng-model='vanityFilter')
-        md-option(ng-repeat="vanity in vanities" value="{{vanity}}")
+        md-option(ng-repeat='vanity in vanities' value='{{vanity}}')
           | {{vanity}}
-section.section(layout='column')
-    md-content(layout='row', layout-wrap, class='md-padding')
-      md-card(ng-repeat='product in products | filter:search | filter:countryFilter | filter:vanityFilter |orderBy:order', flex='25', flex-md='33', flex-sm='100' ng-if="product.active")
-        img(src='/public/{{product.image}}', alt='Washed Out' ng-if="product.image")
-        img(src='/public/default/beer_bottle.png', alt='Washed Out' ng-if="!product.image")
-        md-card-title
-          md-card-title-text
-            a(ui-sref="productdetail({ id: product._id })")
-              span.md-headline {{product.name}}
-        md-card-content
+
+// PRODUCTS
+section
+  md-content(layout='row', layout-wrap)
+    md-card(ng-if='product.active', ng-repeat='product in products | filter:search | filter:countryFilter | filter:vanityFilter | orderBy:order track by product._id', flex='30', flex-md='45', flex-sm='100')
+      img(ng-if='product.image', src='/public/{{product.image}}', alt='')
+      img(ng-if='!product.image', src='/public/default/beer_bottle.png', alt='')
+
+      md-card-title
+        md-card-title-text
+          a(ui-sref='productdetail({ id: product._id })')
+            span.md-headline {{product.name}}
+
+      md-card-content
+        p
+          | {{product.name}} (EAN: {{product.ean}})
+        p
+          | {{product.price | number: 2}}
+        p
+          | {{product.info | limitTo: 50 }}..
+        div(layout='row')
+            div(flex)
+              | {{product.country}}
+            div(flex)
+              | {{product.vanity}}
+
+      md-card-footer
+        div(layout='row', layout-align='end end', class='md-actions')
           md-chips
             md-chip
               | {{product.price}}
-          p {{product.info | limitTo: 50 }}..
-          div(layout='row')
-            div(flex='')
-              | {{product.country}}
-            div(flex='')
-              | {{product.vanity}}
-          div(layout='row', layout-align='end center', class='md-actions')
-            md-button(ng-click='addToBasket(product)', class='md-button md-raised md-primary')
-              | Kaufen
+          md-button(ng-click='addToBasket(product)', class='md-icon-button md-raised md-primary')
+            md-tooltip
+              | In den Warenkorb
+            md-icon(md-svg-icon='add_shopping_cart', class='brew__icon')
+
