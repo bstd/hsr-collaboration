@@ -7,8 +7,18 @@ md-content
     form(ng-submit='create(form)', name='form', class='form', enctype="multipart/form-data", novalidate)
       section.section.slim(layout='column')
         span(layout='row', layout-align='start center')
-          span(flex='33') Product is active
-          md-switch.no-label(name='active', aria-label='product active', ng-model='product.active')
+          span(flex='33') Produkt aktivieren
+          md-switch(name='active', ng-model='product.active') Aktivierung:&nbsp;
+            span.md-warn(ng-if='product.active') Aktiv
+            span.md-warn(ng-if='!product.active ') Inaktiv
+      section.section(layout='column')
+        span(layout='row', layout-sm='column')
+          md-input-container(flex='', ng-class='{ "has-success": form.ean.$valid && submitted, "has-error": form.ean.$invalid && submitted }')
+            label
+              | Produktnummer (z.B. 1234567890123)
+            input(type='text', name='ean', class='form-control', ng-model='product.ean', required)
+            p(class='help-block', ng-show='form.ean.$error.required && submitted')
+              | Bitte geben Sie eine Produktnummer ein
       section.section(layout='column')
         span(layout='row', layout-sm='column')
           md-input-container(flex='', ng-class='{ "has-success": form.name.$valid && submitted, "has-error": form.name.$invalid && submitted }')
