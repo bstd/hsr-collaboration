@@ -34,13 +34,13 @@ exports.create = function(req, res) {
     if (req.file.filename) {
       newProduct.image = req.file.filename; // (data:image/png;base64,...)
       newProduct.save(function (err, product) {
-        if (err) return validationError(res, err);
+        if (err) return handleError(res, err);
       });
       res.send('ok');
     }
   } catch(err) {
     newProduct.save(function (err, product) {
-      if (err) return validationError(res, err);
+      if (err) return handleError(res, err);
     });
     res.send('ok')
   }
