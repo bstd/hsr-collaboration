@@ -45,13 +45,6 @@ navigation(ng-controller='SidenavCtrl', layout='row', class='brew__sidenav')
               md-button(href='admin/users/create', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/users/create')}")
                 | Benutzer erfassen
 
-        li
-          md-button(href='product', ng-class="{active: isActive('/product')}")
-            | Produkte
-        li
-          md-button(href='test', ng-class="{active: isActive('/test')}")
-            | Testseiten
-
   md-content
     div(layout='column', layout-align='top center')
       div

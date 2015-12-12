@@ -28,37 +28,37 @@ section
           | {{vanity}}
 
 // PRODUCTS
-section
+section(class='brew__product')
   md-content(layout='row', layout-wrap)
-    md-card(ng-if='product.active', ng-repeat='product in products | filter:search | filter:countryFilter | filter:vanityFilter | orderBy:order track by product._id', flex='30', flex-md='45', flex-sm='100')
-      img(ng-if='product.image', ng-src='/uploads/{{product.image}}', alt='product.name')
-      img(ng-if='!product.image', ng-src='/uploads/default/beer_bottle.png', alt='product.name')
+    md-card(ng-if='product.active', ng-repeat='product in products | filter:search | filter:countryFilter | filter:vanityFilter | orderBy:order track by product._id', flex='30', flex-sm='45', flex-xs='100')
+      div(class='product__img')
+        a(ui-sref='productdetail({ id: product._id })')
+          img(ng-if='product.image', ng-src='/uploads/{{product.image}}', alt='product.name')
+          img(ng-if='!product.image', ng-src='/uploads/default/beer_bottle.png', alt='product.name')
 
       md-card-title
         md-card-title-text
-          a(ui-sref='productdetail({ id: product._id })')
-            span.md-headline {{product.name}}
+          span.md-headline(layout='row')
+            | {{product.name}}
+          span.md-subhead(layout='row')
+            | {{product.vanity}}
 
       md-card-content
         p
-          | {{product.name}} (EAN: {{product.ean}})
-        p
-          | {{product.price | number: 2}}
-        p
-          | {{product.info | limitTo: 50 }}..
+          | {{product.info | limitTo: 50 }}...
         div(layout='row')
-            div(flex)
-              | {{product.country}}
-            div(flex)
-              | {{product.vanity}}
+            div(flex, class='md-body-1')
+              | Land: {{product.country}}
 
       md-card-footer
         div(layout='row', layout-align='end end', class='md-actions')
           md-chips
-            md-chip
+            md-chip.md-title
               | {{product.price}}
-          md-button(ng-click='addToBasket(product)', class='md-icon-button md-raised md-primary')
+
+          span(flex='10')
+
+          md-button(ng-click='addToBasket(product)', class='md-fab md-primary')
             md-tooltip
               | In den Warenkorb
             md-icon(md-svg-icon='add_shopping_cart', class='brew__icon')
-

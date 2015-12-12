@@ -14,4 +14,9 @@
     width: $icon-width-lg;
     height: $icon-height-lg;
   }
+
+  .md-fab & {
+    width: $icon-width-sm;
+    height: $icon-height-sm;
+  }
 }

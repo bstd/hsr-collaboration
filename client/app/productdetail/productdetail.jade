@@ -2,25 +2,41 @@ include ../partials/header.jade
 
 section
   h1
-    | ProductDetail
-section.section(layout='column')
-  md-content(layout='row', layout-wrap, class='md-padding')
-    md-card(flex='')
-      img(src='/public/{{product.image}}', class="md-card-image", alt='Washed Out' ng-if="product.image")
-      img(src='/public/default/beer_bottle.png', class="md-card-image", alt='Washed Out' ng-if="!product.image")
-      md-card-title
-        md-card-title-text
-          span.md-headline {{product.name}}
-      md-card-content
-        md-chips
-          md-chip
-            | {{product.price}}
-        p {{product.info}}
-        div(layout='row')
-          div(flex='')
-            | {{product.country}}
-          div(flex='')
+    | Produktdetail
+section(class='brew__product')
+  md-content(layout='row', layout-wrap)
+    md-card
+      md-card-content(layout='row', layout-xs='column')
+        div(flex='50', flex-xs='100')
+          // DETAILS
+          span.md-display-2(layout='row')
+            | {{product.name}}
+          span.md-subhead(layout='row')
             | {{product.vanity}}
-        div(layout='row', layout-align='end center', class='md-actions')
-          md-button(ng-click='addToBasket(product)', class='md-button md-raised md-primary')
-            | Kaufen
+
+          p
+            | {{product.info }}
+          div(layout='row')
+              div(flex, class='md-body-1')
+                | Land: {{product.country}}
+          p
+            | Artikelnummer: {{product.ean}}
+
+        div(flex='50', flex-xs='100', class='brew__maxheight')
+          // ACTIONS
+          div(layout='row', layout-align='end end', class='md-actions')
+            md-chips
+              md-chip.md-title
+                | {{product.price}}
+
+            span(flex='10')
+
+            md-button(ng-click='addToBasket(product)', class='md-fab md-primary')
+              md-tooltip
+                | In den Warenkorb
+              md-icon(md-svg-icon='add_shopping_cart', class='brew__icon')
+
+          // IMAGE (TODO shrink and ratio problem)
+          div
+            img(ng-if='product.image', ng-src='/uploads/{{product.image}}', alt='product.name')
+            img(ng-if='!product.image', ng-src='/uploads/default/beer_bottle.png', alt='product.name')
