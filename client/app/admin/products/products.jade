@@ -2,7 +2,7 @@ h2.debug-restricted
   | Produktliste
 section
   md-content(layout='row', layout-wrap, class='md-padding')
-    md-card(ng-repeat='product in products track by product._id', flex='25', flex-md='33', flex-sm='100')
+    md-card(ng-repeat='product in products track by product._id', flex='25', flex-md='30', flex-sm='100')
       img(ng-src='/uploads/{{product.image}}', alt='Washed Out' ng-if="product.image")
       img(ng-src='/uploads/default/beer_bottle.png', alt='Washed Out' ng-if="!product.image")
       md-card-content
@@ -13,8 +13,8 @@ section
         p {{product.country}}
         p {{product.vanity}}
         md-checkbox(ng-checked="product.active" ng-disabled="true" ) Veröffentlicht
-        div(layout='row', layout-align='end center', class='md-actions')
-          md-button(ng-click='confirmDelete(product)', class='md-button md-raised md-warn')
+        div(layout='row', layout-align='start right')
+          md-button(ng-click='confirmDelete(product)', class='md-raised md-warn')
             | Löschen
           md-button(ui-sref='admin.product-edit({ id: product._id })', class='md-raised md-primary')
             | Bearbeiten

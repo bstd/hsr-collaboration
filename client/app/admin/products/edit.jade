@@ -89,11 +89,11 @@ md-content
                     img.thumb(ng-src='/uploads/default/beer_bottle.png', ng-if="!product.image && !product.file" )
                     md-button(ng-click='product.file = null', ng-show='product.file', class='md-raised md-primary',) Entfernen
 
-    div(layout='row', layout-align='start center')
-      md-button(ui-sref='admin.product-list', class='md-raised')
-        | Abbrechen
-      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
-        | Speichern
+        div(layout='row', layout-align='start center')
+          md-button(ui-sref='admin.product-list', class='md-raised')
+            | Abbrechen
+          md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
+            | Speichern
 
-      span(ng-show='product.file.result') Upload Successful
-      span.err(ng-show='errorMsg') {{errorMsg}}
+          span(ng-show='product.file.result') Upload Successful
+          span.err(ng-show='errorMsg') {{errorMsg}}

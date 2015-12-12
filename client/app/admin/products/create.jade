@@ -77,7 +77,7 @@ md-content
               md-input-container(flex='', ng-class='{ "has-success": form.file.$valid && submitted }')
                 h3
                   | Bild Upload
-                md-button.md-fab(choose-file-button='file-input', aria-label='Add Photo', ng-click='', class='md-icon-button md-raised md-primary')
+                md-button.md-fab(choose-file-button='file-input', aria-label='Add Photo', ng-click='', class='md-fab md-primary md-button md-ink-ripple md-focused')
                   md-icon(md-svg-icon='add_photo', class='brew__icon')
                 input#file-input(type='file', ngf-select='', ng-model='product.file', name='file', accept='image/*', ngf-max-size='2MB')
                 p(class='help-block',ng-show='form.file.$error.maxSize')
