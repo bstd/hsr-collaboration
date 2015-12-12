@@ -1,6 +1,6 @@
 include ../partials/header.jade
 
-section
+section.admin-menu
   h1.debug-restricted
     | Administration
   ul
@@ -8,22 +8,22 @@ section
       | Produkte
       ul
         li
-          a(ui-sref='.product-list')
+          md-button(ui-sref='.product-list', ui-sref-active="md-primary")
             | Produktliste
         li
-          a(ui-sref='.product-create')
+          md-button(ui-sref='.product-create', ui-sref-active="md-primary")
             | Neues Produkt erfassen
     li
-      a(ui-sref='.order-list')
+      md-button(ui-sref='.order-list', ui-sref-active="md-primary")
         | Bestellungen
     li
       | Benutzer
       ul
         li
-          a(ui-sref='.user-list')
+          md-button(ui-sref='.user-list', ui-sref-active="md-primary")
             | Benutzerliste
         li
-          a(ui-sref='.user-create')
+          md-button(ui-sref='.user-create', ui-sref-active="md-primary")
             | Neuen Benutzer erfassen
 
 section

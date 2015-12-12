@@ -3,7 +3,7 @@ h2.debug-restricted
 md-content
   section.section.slim(layout='column')
     p
-      | Create a new product for your application.
+      | Editieren Sie ein Produkt
     form(ng-submit='update(form)', name='form', class='form', novalidate)
         div(layout="row")
           div(flex='50')
@@ -17,7 +17,7 @@ md-content
               span(layout='row', layout-sm='column')
                 md-input-container(flex='', ng-class='{ "has-success": form.ean.$valid && submitted, "has-error": form.ean.$invalid && submitted }')
                   label
-                    | Produktnummer (z.B. 1234567890123)
+                    | Produktnummer (z.B. A1234567890123)
                   input(type='text', name='ean', class='form-control', ng-model='product.ean', required)
                   p(class='help-block', ng-show='form.ean.$error.required && submitted')
                     | Bitte geben Sie eine Produktnummer ein
@@ -86,7 +86,7 @@ md-content
                   div(layout='row', layout-align='start center')
                     img.thumb(ng-show='form.file.$valid', ngf-thumbnail='product.file')
                     img.thumb(ng-src="/uploads/{{product.image}}", ng-if="product.image && !product.file")
-                    img.thumb(src='/uploads/default/beer_bottle.png', ng-if="!product.image && !product.file" )
+                    img.thumb(ng-src='/uploads/default/beer_bottle.png', ng-if="!product.image && !product.file" )
                     md-button(ng-click='product.file = null', ng-show='product.file', class='md-raised md-primary',) Entfernen
 
     div(layout='row', layout-align='start center')

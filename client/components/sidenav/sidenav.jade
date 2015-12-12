@@ -11,45 +11,45 @@ navigation(ng-controller='SidenavCtrl', layout='row', class='brew__sidenav')
         md-icon(md-svg-icon='arrow_forward', class='brew__icon')
       ul
         li
-          a(href='home', ng-class="{active: isActive('/')}")
+          md-button(href='home', ng-class="{active: isActive('/')}")
             | Startseite
         li
-          a(href='login', ng-hide='isLoggedIn()', ng-class="{active: isActive('/login')}")
+          md-button(href='login', ng-hide='isLoggedIn()', ng-class="{active: isActive('/login')}")
             | Login
         li
-          a(href='#', ng-click='logout()', ng-show='isLoggedIn()')
+          md-button(href='#', ng-click='logout()', ng-show='isLoggedIn()')
             | Logout
         li
-          a(href='settings', ng-show='isLoggedIn()', ng-class="{active: isActive('/settings')}")
+          md-button(href='settings', ng-show='isLoggedIn()', ng-class="{active: isActive('/settings')}")
             | Persönlicher Bereich
         li
-          a(href='registration', ng-hide='isLoggedIn()', ng-class="{active: isActive('/registration')}")
+          md-button(href='registration', ng-hide='isLoggedIn()', ng-class="{active: isActive('/registration')}")
             | Registrierung
         li
-          a(href='admin', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin')}")
+          md-button(href='admin', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin')}")
             | Adminbereich
           ul
             li
-              a(href='admin/products', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/products')}")
+              md-button(href='admin/products', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/products')}")
                 | Produktliste
             li
-              a(href='admin/products/create', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/products/create')}")
+              md-button(href='admin/products/create', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/products/create')}")
                 | Produkt erfassen
             li
-              a(href='admin/orders', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/orders')}")
+              md-button(href='admin/orders', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/orders')}")
                 | Bestellungen
             li
-              a(href='admin/users', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/users')}")
+              md-button(href='admin/users', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/users')}")
                 | Benutzerliste
             li
-              a(href='admin/users/create', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/users/create')}")
+              md-button(href='admin/users/create', ng-click="toggleSidenav('right')", ng-if='isAdmin()', ng-class="{active: isActive('/admin/users/create')}")
                 | Benutzer erfassen
 
         li
-          a(href='product', ng-class="{active: isActive('/product')}")
+          md-button(href='product', ng-class="{active: isActive('/product')}")
             | Produkte
         li
-          a(href='test', ng-class="{active: isActive('/test')}")
+          md-button(href='test', ng-class="{active: isActive('/test')}")
             | Testseiten
 
   md-content

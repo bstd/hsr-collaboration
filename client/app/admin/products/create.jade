@@ -3,7 +3,7 @@ h2.debug-restricted
 md-content
   section.section.slim(layout='column')
     p
-      | Create a new product for your application.
+      | Legen Sie ein neues Produkt an
     form(ng-submit='create(form)', name='form', class='form', enctype="multipart/form-data", novalidate)
       div(layout="row")
         div(flex='50')
@@ -17,7 +17,7 @@ md-content
             span(layout='row', layout-sm='column')
               md-input-container(flex='', ng-class='{ "has-success": form.ean.$valid && submitted, "has-error": form.ean.$invalid && submitted }')
                 label
-                  | Produktnummer (z.B. 1234567890123)
+                  | Produktnummer (z.B.: A1234567890123)
                 input(type='text', name='ean', class='form-control', ng-model='product.ean', required)
                 p(class='help-block', ng-show='form.ean.$error.required && submitted')
                   | Bitte geben Sie eine Produktnummer ein

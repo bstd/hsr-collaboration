@@ -11,7 +11,7 @@ var ProductSchema = new Schema({
   name: String,
   price: String,
   info: String,
-  stock: Number,
+  stock: String,
   vanity: String,
   country: String,
   image: {
@@ -46,7 +46,7 @@ ProductSchema
 }, 'Name cannot be blank');// TODO message
 
 // Validate EAN is not taken
-ProductSchema
+/*ProductSchema
 .path('ean')
 .validate(function(value, respond) {
   var self = this;
@@ -60,7 +60,8 @@ ProductSchema
     }
     respond(true);
   });
-}, 'The specified EAN is already in use.');// TODO message
+}, 'The specified EAN is already in use.');*/
+// TODO message
 
 
 /**

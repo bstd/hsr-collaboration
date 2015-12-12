@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 var Product = require('./product.model');
-
+var path = require('path');
 var fs = require('fs');
 
 // Get list of products
@@ -60,7 +60,8 @@ exports.update = function(req, res) {
     // Check for file and save
     try {
       if (req.file.filename) {
-        var filePath = "./public/" + product.image;
+        var rootPath = path.resolve(__dirname + '../../../uploads/');
+        var filePath =  rootPath + '/' + product.image;
         console.log(filePath);
         fs.unlink(filePath, function (err) {
           if (err) throw err;
@@ -94,13 +95,16 @@ exports.destroy = function(req, res) {
     if (!product) { return res.status(404).send('Not Found'); }
 
     product.remove(function(err) {
-      var filePath = "./public/" + product.image;
-      console.log(filePath);
+
+      var rootPath = path.resolve(__dirname + '../../../uploads/');
+      var filePath = rootPath + '/' + product.image;
+      //console.log(fs.statSync(filePath).isFile());
+      if(fs.statSync(filePath).isFile() === true) {
       fs.unlink(filePath, function (err) {
         if (err) throw err;
-        console.log('successfully deleted:' +filePath);
+        console.log('successfully deleted:' + filePath);
       });
-
+      }
       if (err) { return handleError(res, err); }
 
       return res.status(204).send('No Content');
@@ -108,8 +112,6 @@ exports.destroy = function(req, res) {
   });
 };
 
-/* images */
-// CREATE
 
 function handleError(res, err) {
   return res.status(500).send(err);

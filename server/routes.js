@@ -7,7 +7,7 @@
 var errors = require('./components/errors');
 var path = require('path');
 var express = require('express');
-var multer = require('multer');
+
 
 
 module.exports = function(app) {

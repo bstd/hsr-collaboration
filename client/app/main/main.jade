@@ -31,8 +31,8 @@ section
 section
   md-content(layout='row', layout-wrap)
     md-card(ng-if='product.active', ng-repeat='product in products | filter:search | filter:countryFilter | filter:vanityFilter | orderBy:order track by product._id', flex='30', flex-md='45', flex-sm='100')
-      img(ng-if='product.image', src='/uploads/{{product.image}}', alt='')
-      img(ng-if='!product.image', src='/uploads/default/beer_bottle.png', alt='')
+      img(ng-if='product.image', ng-src='/uploads/{{product.image}}', alt='product.name')
+      img(ng-if='!product.image', ng-src='/uploads/default/beer_bottle.png', alt='product.name')
 
       md-card-title
         md-card-title-text
