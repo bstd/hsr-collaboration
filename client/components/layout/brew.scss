@@ -7,4 +7,17 @@
   @include breakpoint(sm) {
     max-width: $max-width;
   }
+
+  // any md-chips
+  md-chips,
+  & .md-chips {
+    box-shadow: none;
+  }
+  md-chips {
+    .md-title {
+      padding: 0 16px;
+      text-shadow: rgb(224, 224, 224) 1px 1px 0;
+      background-color: rgb(186, 186, 186);
+    }
+  }
 }

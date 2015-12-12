@@ -22,7 +22,7 @@ div(layout='row', layout-wrap, flex)
         md-tooltip
           | #{txtOrders}
         md-icon(md-svg-icon='move_to_inbox', class='brew__icon md-primary')
-      md-button(href='basket', ng-class='{"md-raised": isActive("/basket")}')
+      md-button(ng-if='!isAdmin()', href='basket', ng-class='{"md-raised": isActive("/basket")}')
         md-tooltip
           | #{txtBasket}
         md-icon(md-svg-icon='shopping_cart', class='brew__icon md-primary')

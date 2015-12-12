@@ -26,6 +26,7 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.show);
+router.get('/search/:id', controller.search);
 router.post('/', auth.hasRole('admin'), cpUpload, controller.create);
 router.put('/:id', auth.hasRole('admin'), cpUpload, controller.update);
 router.patch('/:id', auth.hasRole('admin'), controller.update);

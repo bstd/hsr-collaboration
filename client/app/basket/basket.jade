@@ -8,8 +8,8 @@ section
     div(ng-show='empty')
       p
         | Warenkorb ist leer.
-      md-button(href='/product', class='md-raised md-primary')
-        | Produkte kaufen
+      md-button(href='/', class='md-primary')
+        | zur Startseite
 
     md-card(ng-hide='empty', ng-repeat='basketItem in basketItems track by basketItem._id', flex='30', flex-md='45', flex-sm='100')
       md-card-content

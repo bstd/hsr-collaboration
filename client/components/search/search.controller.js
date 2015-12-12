@@ -1,13 +1,14 @@
 ﻿'use strict';
-// TODO submit and refactoring
+
 angular.module('brewApp')
-.controller('HeaderSearchCtrl', ['$scope', '$state', '$location', '$log', 'ProductService', function($scope, $state, $location, $log, ProductService) {
+.controller('HeaderSearchCtrl', ['$scope', '$state', '$log', '$mdUtil', 'ProductService', function($scope, $state, $log, $mdUtil, ProductService) {
   var self = this;
 
-    self.repos              = ProductService.query();
-    self.querySearch        = querySearch;
-    self.selectedItemChange = selectedItemChange;
-    self.searchTextChange   = searchTextChange;
+  // md-autocomplete
+  self.repos              = ProductService.query();
+  self.querySearch        = querySearch;
+  self.selectedItemChange = selectedItemChange;
+  self.searchTextChange   = searchTextChange;
 
   // search query
   function querySearch(query) {
@@ -33,11 +34,11 @@ angular.module('brewApp')
 
   // debug helper
   function searchTextChange(text) {
-    $log.info('Text changed to ' + text);
+    $log.debug('Text changed to ' + text);
   }
 
   function selectedItemChange(item) {
-    $log.info('Item changed to ' + JSON.stringify(item));
+    $log.debug('Item changed to ' + JSON.stringify(item));
   }
 
 
@@ -48,6 +49,9 @@ angular.module('brewApp')
     $log.debug('scope searchForm:',form);
     $log.debug('form.q:',form.q);
     $log.debug('form.q.$modelValue:',form.q.$modelValue);
+
+    // https://github.com/angular/material/issues/3287
+    $mdUtil.enableScrolling();
 
     $state.go('result', { query: form.q.$modelValue });
   };

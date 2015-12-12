@@ -1,0 +1,21 @@
+﻿md-content(layout='row', layout-wrap, class='md-padding')
+  md-input-container(flex)
+    label Filter
+    input(ng-model='search')
+  md-input-container(flex)
+    label Sortierung
+    md-select(ng-model='order')
+      md-option(value='name')
+        | Name Alphabet
+      md-option(value='price')
+        | Preis
+  md-input-container(flex)
+    label Brau-Land
+    md-select(ng-model='countryFilter')
+      md-option(ng-repeat='state in states' value='{{state}}')
+        | {{state}}
+  md-input-container(flex)
+    label Biersorte
+    md-select(ng-model='vanityFilter')
+      md-option(ng-repeat='vanity in vanities' value='{{vanity}}')
+        | {{vanity}}
