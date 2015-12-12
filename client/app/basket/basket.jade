@@ -5,32 +5,52 @@ section
     | Warenkorb
 section
   md-content(layout='row', layout-wrap)
+    // EMPTY BASKET
     div(ng-show='empty')
       p
         | Warenkorb ist leer.
       md-button(href='/', class='md-primary')
         | zur Startseite
 
-    md-card(ng-hide='empty', ng-repeat='basketItem in basketItems track by basketItem._id', flex='30', flex-md='45', flex-sm='100')
+    // BASKET ITEMS
+    md-card(ng-hide='empty', ng-repeat='basketItem in basketItems track by basketItem._id', flex='30', flex-sm='45', flex-xs='100')
+      md-card-title
+        md-card-title-text
+          span.md-headline(layout='row')
+            | {{basketItem._name}}
+
       md-card-content
         p
-          | {{basketItem._name}} (EAN: {{basketItem._ean}})
-        p
-          | {{basketItem._price | number:2}}
+          | Stückpreis: {{basketItem._price | number:2}}
         p
           | Anzahl: {{basketItem._qty}}
 
       md-card-footer
         div(layout='row', layout-align='end end', class='md-actions')
-          md-tooltip
-            | Entfernen
-          md-button(ng-click='removeItem(basketItem)', class='md-icon-button md-raised md-warn')
-            md-icon(md-svg-icon='delete')
+          md-chips
+            md-chip.md-title
+              | {{basketItem._price * basketItem._qty | number:2}}
 
+          span(flex='10')
+
+          md-button(ng-click='removeItem(basketItem)', class='md-fab md-warn')
+            md-tooltip
+              | Entfernen
+            md-icon(md-svg-icon='delete', class='brew__icon')
+
+
+// TOTAL
 section(ng-hide='empty', flex)
+  p
+  md-divider
+
   md-content(layout='row', layout-wrap, class='md-padding')
-    p(class='md-title')
+    p(class='md-headline')
       | Total: {{basketTotal | number:2}}
+
+  md-divider
+  p
+  md-divider
 
   md-content(layout='row', layout-wrap, class='md-padding')
     md-button(ng-click='checkout()', class='md-button md-raised md-primary')
