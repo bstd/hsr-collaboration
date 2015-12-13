@@ -1,22 +1,22 @@
 // FILTERS
 section
   md-content(layout='row', layout-wrap)
-    md-input-container(flex='25', flex-sm='45', flex-xs='100')
+    md-input-container(flex='45', flex-sm='45', flex-xs='100')
       label Filter
       input(ng-model='search')
-    md-input-container(flex='25', flex-sm='45', flex-xs='100')
+    md-input-container(flex='45', flex-sm='45', flex-xs='100')
       label Sortierung
       md-select(ng-model='order')
         md-option(value='name')
           | Name Alphabet
         md-option(value='price')
           | Preis
-    md-input-container(flex='25', flex-sm='45', flex-xs='100')
+    md-input-container(flex='45', flex-sm='45', flex-xs='100')
       label Brau-Land
       md-select(ng-model='countryFilter')
         md-option(ng-repeat='state in states' value='{{state}}')
           | {{state}}
-    md-input-container(flex='25', flex-sm='45', flex-xs='100')
+    md-input-container(flex='45', flex-sm='45', flex-xs='100')
       label Biersorte
       md-select(ng-model='vanityFilter')
         md-option(ng-repeat='vanity in vanities' value='{{vanity}}')
