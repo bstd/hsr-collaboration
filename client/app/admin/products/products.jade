@@ -7,11 +7,22 @@ section
       img(ng-src='/uploads/default/beer_bottle.png', alt='Washed Out' ng-if="!product.image")
       md-card-content
         h3 {{product.name}} {{product.vol}}
-        p {{product.price}}
-        p {{product.info}}
-        p {{product.stock}}
-        p {{product.country}}
-        p {{product.vanity}}
+        p
+          b Preis:
+          |   {{product.price}}
+        p
+          b Info:
+          br
+          |{{product.info}}
+        p
+          b Lager:
+          |   {{product.stock}}
+        p
+          b Land:
+          |   {{product.country}}
+        p
+          b Biersorte:
+          |   {{product.vanity}}
         md-checkbox(ng-checked="product.active" ng-disabled="true" ) Veröffentlicht
         div(layout='row', layout-align='start right')
           md-button(ng-click='confirmDelete(product)', class='md-raised md-warn')

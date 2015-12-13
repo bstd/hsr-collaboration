@@ -11,7 +11,7 @@ var User = require('../api/user/user.model');
 Product.find({}).remove(function () {
   Product.create({
       ean: 'A1234567890123',
-      name: 'St.Galler Klosterbräu',
+      name: 'St.Galler Klosterbräu (33cl)',
       vol: '5%',
       active: true,
       price: '16.00',
@@ -22,7 +22,7 @@ Product.find({}).remove(function () {
       image: 'Klosterbraeu_Fl-Glas.jpg'
     }, {
       ean: 'A2345678901234',
-      name: 'Gallus 612',
+      name: 'Gallus 612 (50cl)',
       vol: '5%',
       active: true,
       price: '22.50',
@@ -33,7 +33,7 @@ Product.find({}).remove(function () {
       image: 'gallusbier_web.jpg'
     }, {
       ean: 'A3456789012345',
-      name: 'Edelspez Premium',
+      name: 'Edelspez Premium (33cl)',
       active: true,
       price: '14.00',
       info: 'Ein schmackhaftes Bier, das seinen Namen verdient. Das Edelspez Premium wird von unserem Braumeister aus hochwertiger, zweizeiliger Sommergerste und Hopfen der allerbesten Aromasorten gebraut. Das traditionelle und sorgfältige Brauverfahren sorgt für ein herrlich frisches Genusserlebnis. Ohne Frage, das Edelspez Premium ist das Bier für Geniesser – und die besonderen Momente im Leben.',
@@ -43,7 +43,7 @@ Product.find({}).remove(function () {
       image: 'edelspez_web.jpg'
     }, {
       ean: 'A4567890123456',
-      name: 'Weisse Engel',
+      name: 'Weisse Engel (50cl)',
       vol: '5%',
       active: true,
       price: '22.50',
@@ -54,7 +54,7 @@ Product.find({}).remove(function () {
       image: 'WeisserEngel.jpg'
     }, {
       ean: 'A5678901234567',
-      name: 'Heineken Flasche',
+      name: 'Heineken Flasche (33cl)',
       vol: '5%',
       active: true,
       price: '10.50',
@@ -65,7 +65,7 @@ Product.find({}).remove(function () {
       image: 'heineken.jpg'
     }, {
       ean: 'A6789012345678',
-      name: 'Becks',
+      name: 'Becks (33cl)',
       vol: '5%',
       active: true,
       price: '18.00',
@@ -99,7 +99,7 @@ Product.find({}).remove(function () {
     },{
       "ean":"A341897952398798","active":true,"name":"Bridgeroad","vol":"4.5%","price":"4.50","info":"Das bernsteinfarbene Bier für den Hopfen-Fan. Der exklusive australische Galaxy-Hopfen verleiht ihm seine einzigartige und fruchtig-feinherbe Aromatik.","stock":"20","vanity":"Altbier","country":"Andere","modificationDate":{"$date":1450002649977},"image":"7cf4c1a2ba2f642c3131f02bf3d7c682"
     },{
-      "ean":"A4578993425z798","active":true,"name":"FAXE Premium Lager (100cl)","vol":"5%","price":"13432","info":"FAXE Premium is a classic premium lager with a soft and distinctive flavour. The combination of the finest malt, hops and our own water results in a beer with a rich, yet mild and smooth taste. An attractive, balanced lager.","stock":"20","vanity":"Holzfassgereifte Biere","country":"Dänemark","modificationDate":{"$date":1450002812941},"image":"014cc9fcc3c88c2448b7191c6a907e56"
+      "ean":"A4578993425z798","active":true,"name":"FAXE Premium Lager (100cl)","vol":"5%","price":"45","info":"FAXE Premium is a classic premium lager with a soft and distinctive flavour. The combination of the finest malt, hops and our own water results in a beer with a rich, yet mild and smooth taste. An attractive, balanced lager.","stock":"20","vanity":"Holzfassgereifte Biere","country":"Dänemark","modificationDate":{"$date":1450002812941},"image":"014cc9fcc3c88c2448b7191c6a907e56"
     },{
       "ean":"A89752398475","active":true,"name":"INDIO Bier (35cl)","vol":"4.5%","price":"18.50","info":"A Lager-type beer with an amber hue and a distinctive light caramel-malt taste. ","stock":"20","vanity":"Biermischgetränke","country":"Mexico","modificationDate":{"$date":1450003097083},"image":"594d0063f66231c30f6ecf7fee5dc292"
     },{
