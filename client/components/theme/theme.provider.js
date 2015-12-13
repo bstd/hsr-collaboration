@@ -12,10 +12,7 @@ angular.module('brewApp')
   $mdThemingProvider.definePalette('customBlue', customBlueMap);
 
   $mdThemingProvider.theme('default')
-    .primaryPalette('customBlue', {
-      'default': '500',
-      'hue-1': '50'
-    })
+      .primaryPalette('amber')
     .accentPalette('pink');
 
   $mdThemingProvider.theme('input', 'default')

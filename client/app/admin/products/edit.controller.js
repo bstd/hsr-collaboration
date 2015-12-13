@@ -63,12 +63,6 @@ angular.module('brewApp')
           // Math.min is to fix IE which reports 200% sometimes
           form.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
         });
-
-        /*$log.debug('AdminProductService.update with id:',$id);
-
-        AdminProductService.update({ id: $id }, $scope.product, function() {
-          $state.go('admin.product-list');
-        });*/
       }
     };
   }]);

@@ -11,7 +11,7 @@ angular.module('brewApp', [
   'components.constants'
 ])
 
-.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $logProvider, $compileProvider) {
+.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $logProvider, $compileProvider, $mdThemingProvider) {
   $urlRouterProvider.otherwise('/');
   $locationProvider.html5Mode(true);
   $httpProvider.interceptors.push('authInterceptor');// using passport example implementation
