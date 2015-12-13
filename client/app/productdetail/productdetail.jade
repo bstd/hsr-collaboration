@@ -42,13 +42,13 @@ section(class='brew__product')
             img(ng-if='!product.image', ng-src='/uploads/default/beer_bottle.png', alt='product.name')
 
 section(class='brew__product')
-  h2 Diese Biere könnten Ihnen auch schmecken:
+  h2(ng-if='related') Diese Biere könnten Ihnen auch schmecken:
   md-content(layout='row', layout-wrap)
-    md-card(ng-if='rel.active', ng-repeat='rel in related|limitTo:3', flex='30', flex-sm='45', flex-xs='100')
+    md-card(ng-if='rel.active', ng-repeat='rel in related | limitTo:3', flex='30', flex-sm='45', flex-xs='100')
       div(class='product__img')
         a(ui-sref='productdetail({ id: rel._id })')
-          img.md-card-image(ng-if='rel.image', ng-src='/uploads/{{rel.image}}', alt='rel.name')
-          img.md-card-image(ng-if='!rel.image', ng-src='/uploads/default/beer_bottle.png', alt='rel.name')
+          img.md-card-image(ng-if='rel.image', ng-src='/uploads/{{rel.image}}', alt='{{rel.name}}')
+          img.md-card-image(ng-if='!rel.image', ng-src='/uploads/default/beer_bottle.png', alt='{{rel.name}}')
 
       md-card-title
         md-card-title-text

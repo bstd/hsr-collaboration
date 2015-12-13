@@ -11,9 +11,10 @@ angular.module('brewApp')
   $scope.product = ProductService.get({ id: $scope.id }, function(data) {
     //console.log(data.vanity);
     $log.debug('queried:',data);
+
     //Related Products Beer taste
     $scope.related = ProductService.query(function(loadedProducts){
-      $scope.related = $filter('filter')(loadedProducts, data.vanity);
+      $scope.related = $filter('filter')(loadedProducts, data.vanity && '!'+data.name);
     });
 
   });
