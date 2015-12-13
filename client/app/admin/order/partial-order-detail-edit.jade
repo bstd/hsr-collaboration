@@ -16,16 +16,33 @@ p
     span(ng-switch-when='done') abgeschlossen
 p
   | Adresse: {{order.addressLastName}} {{order.addressFirstName}} {{order.addressStreet}} {{order.addressZip}} {{order.addressCity}}
-p(class='md-title')
+
+p.md-title
   | Produkte:
 
-ul(ng-repeat='items in order.products track by $index')
-  li
-    | {{order.products[$index]._name}} (ean: {{order.products[$index]._ean}})
-  li
-    | Einzelpreis: {{order.products[$index]._price | number:2}}
-  li
-    | Bestellmenge: {{order.products[$index]._qty}}
+div(ng-repeat='items in order.products track by $index', ng-init='orderIdx = $index')
+  p
+    | Artikelnummer: {{order.products[orderIdx]._ean}}
+  p
+    | Artikelbezeichnung: {{order.products[orderIdx]._name}}
+  p
+    | Einzelpreis: {{order.products[orderIdx]._price | number:2}}
 
-p
+  div
+    div(layout='row')
+      div(flex='50')
+        p
+          | Bestellmenge: {{order.products[orderIdx]._qty}}
+      div(flex='50')
+        p(ng-repeat='items in productsWithOrders track by $index', ng-init='productIdx = $index')
+          span(ng-if='productsWithOrders[productIdx]._id === order.products[orderIdx]._id', ng-class="{'warn': order.products[orderIdx]._qty > productsWithOrders[productIdx].stock}")
+            | Lagerbestand: {{productsWithOrders[productIdx].stock}}
+
+  p
+    | Summe dieser Bestellposition: {{order.products[orderIdx]._qty * order.products[orderIdx]._price | number:2}}
+
+  md-divider
+
+
+p.md-title
   | Bestellsumme: {{order.total | number:2}}

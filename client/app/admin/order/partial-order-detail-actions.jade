@@ -1,5 +1,6 @@
-﻿div(layout='row', layout-align='end center', class='md-actions')
+﻿div(layout='row', layout-align='end center')
   md-button(ui-sref='admin.order-edit({ id: order._id })', class='md-raised md-primary')
     | Bearbeiten
+
   md-button(ng-click='confirmDelete(order)', class='md-raised md-warn')
     | Löschen

@@ -7,7 +7,7 @@ section
       | Keine Bestellungen vorhanden
 
 
-    md-tabs(md-dynamic-height, md-border-bottom)
+    md-tabs(ng-show='orders.length > 0', md-dynamic-height, md-border-bottom)
       // TAB: NEW orders
       md-tab(label='Neu')
         md-card(ng-repeat='order in orders | orderBy: "-dateCreated" | filter: { state: "new" }:true track by order._id', class='brew__orders')

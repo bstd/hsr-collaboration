@@ -5,14 +5,14 @@ angular.module('brewApp')
   $scope.basketTotal = 0;
   $scope.basketItems = [];
   $scope.basketItems = BasketService.items();
-console.log('BasketCtrl basketItems:',$scope.basketItems);
+//console.log('BasketCtrl basketItems:',$scope.basketItems);
   // track empty basket
   $scope.empty = BasketService.isEmpty($scope.basketItems.length);
-console.log('BasketCtrl $scope.empty:',$scope.empty);
+//console.log('BasketCtrl $scope.empty:',$scope.empty);
 
   // calculate basket total via service
   $scope.basketTotal = BasketService.total();
-console.log('BasketCtrl basketTotal:',$scope.basketTotal);
+//console.log('BasketCtrl basketTotal:',$scope.basketTotal);
 
 
   // remove from basket via service, show toast
