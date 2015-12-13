@@ -6,7 +6,7 @@ section
       img(ng-src='/uploads/{{product.image}}', alt='Washed Out' ng-if="product.image")
       img(ng-src='/uploads/default/beer_bottle.png', alt='Washed Out' ng-if="!product.image")
       md-card-content
-        h3 {{product.name}}
+        h3 {{product.name}} {{product.vol}}
         p {{product.price}}
         p {{product.info}}
         p {{product.stock}}

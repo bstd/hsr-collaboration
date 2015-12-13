@@ -30,6 +30,12 @@ md-content
                   p(class='help-block', ng-show='form.name.$error.required && submitted')
                     | Bitte geben Sie einen Namen ein
             section.section(layout='column')
+            span(layout='row', layout-sm='column')
+              md-input-container(flex='', ng-class='{ "has-success": form.vol.$valid && submitted, "has-error": form.vol.$invalid && submitted }')
+                label
+                  | Alkoholgehalt in % Vol.
+                input(type='text', name='vol', class='form-control', ng-model='product.vol')
+            section.section(layout='column')
               span(layout='row', layout-sm='column')
                 md-input-container(flex='', ng-class='{ "has-success": form.price.$valid && submitted, "has-error": form.price.$invalid && submitted }')
                   label

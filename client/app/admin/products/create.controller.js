@@ -9,11 +9,10 @@ angular.module('brewApp')
 
     $scope.tastes = ['leicht', 'schlank', 'weich', 'süffig', 'abgerundet', 'sortentypisch', 'vollmundig', 'malzaromatisch',
       'röstmalzaromatisch', 'schwer', 'würzeartig', 'ausgewogen', 'harmonisch ausklingend', 'rund', 'kräftig betont', 'trocken', 'nicht anhängend', 'feinherb', 'feinbitter'];
-    $scope.vanities = ['', 'Lagerbier', 'Spezialbier', 'Dunkles Bier', 'Naturtrübes Bier', 'Alkoholfreies Bier', 'Altbier',
+    $scope.vanities = ['', 'Lagerbier', 'Spezialbier', 'Craft', 'Dunkles Bier', 'Naturtrübes Bier', 'Alkoholfreies Bier', 'Altbier',
       'Pale Ale', 'Festbier (Bockbier)', 'Porter', 'Schwarzbier', 'Stout', 'Kohlenhydratarmes Bier', 'Leichtbier (alkoholarm)',
       'Mais-, Reisbier', 'Mehrkornbier', 'Starkbier', 'Holzfassgereifte Biere', 'Weizenbier (Weissbier)', 'Biermischgetränke'];
-    $scope.states = ['', 'Schweiz', 'Deutschland', 'Tschechien', 'Britannien', 'Irland', 'Belgien', 'Holland', 'Dänemark',
-      'Frankreich', 'Österreich', 'USA', 'Kanada', 'Mexico'];
+    $scope.states = ['', 'Schweiz', 'Deutschland', 'Tschechien', 'Britannien', 'Irland', 'Belgien', 'Holland', 'Dänemark', 'USA', 'Kanada', 'Mexico', 'Asien', 'Andere'];
 
 
 
@@ -44,6 +43,7 @@ angular.module('brewApp')
             ean: $scope.product.ean,
             active: $scope.product.active,
             name: $scope.product.name,
+            vol: $scope.product.vol,
             price: $scope.product.price,
             info: $scope.product.info,
             stock: $scope.product.stock,

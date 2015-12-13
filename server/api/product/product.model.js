@@ -9,6 +9,7 @@ var ProductSchema = new Schema({
   ean: String,
   active: Boolean,
   name: String,
+  vol: String,
   price: String,
   info: String,
   stock: String,

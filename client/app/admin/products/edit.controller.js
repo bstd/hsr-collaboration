@@ -38,6 +38,7 @@ angular.module('brewApp')
             ean: $scope.product.ean,
             active: $scope.product.active,
             name: $scope.product.name,
+            vol: $scope.product.vol,
             price: $scope.product.price,
             info: $scope.product.info,
             stock: $scope.product.stock,
