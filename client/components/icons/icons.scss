@@ -15,6 +15,14 @@
     height: $icon-height-lg;
   }
 
+  &--align {
+    margin-top: -0.25em;
+  }
+
+  &--txt {
+    padding-left: 1em;
+  }
+
   .md-fab & {
     width: $icon-width-sm;
     height: $icon-height-sm;

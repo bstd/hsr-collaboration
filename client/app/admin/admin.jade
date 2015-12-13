@@ -1,30 +1,54 @@
 include ../partials/header.jade
 
 section.admin-menu
-  h1.debug-restricted
+  h1
     | Administration
-  ul
-    li
-      | Produkte
-      ul
-        li
-          md-button(ui-sref='.product-list', ui-sref-active="md-primary")
-            | Produktliste
-        li
-          md-button(ui-sref='.product-create', ui-sref-active="md-primary")
+
+  md-content(layout='row', layout-wrap)
+    // PRODUCTS
+    md-card(flex='30', flex-sm='45', flex-xs='100')
+      md-card-title
+        md-card-title-text
+          span.md-headline(layout='row')
+            | Produkte
+      md-card-content
+        md-button(ui-sref='.product-create', ui-sref-active="md-primary")
+          md-icon(md-svg-icon='add', class='brew__icon--align')
+          span(class='brew__icon--txt')
             | Neues Produkt erfassen
-    li
-      md-button(ui-sref='.order-list', ui-sref-active="md-primary")
-        | Bestellungen
-    li
-      | Benutzer
-      ul
-        li
-          md-button(ui-sref='.user-list', ui-sref-active="md-primary")
-            | Benutzerliste
-        li
-          md-button(ui-sref='.user-create', ui-sref-active="md-primary")
-            | Neuen Benutzer erfassen
+        md-button(ui-sref='.product-list', ui-sref-active="md-primary")
+          md-icon(md-svg-icon='list', class='brew__icon--align')
+          span(class='brew__icon--txt')
+            | Alle Produkte
+
+    // ORDERS
+    md-card(flex='30', flex-sm='45', flex-xs='100')
+      md-card-title
+        md-card-title-text
+          span.md-headline(layout='row')
+            | Bestellungen
+      md-card-content
+        md-button(ui-sref='.order-list', ui-sref-active="md-primary")
+          md-icon(md-svg-icon='list', class='brew__icon--align')
+          span(class='brew__icon--txt')
+            | Alle Bestellungen
+
+    // USERS
+    md-card(fflex='30', flex-sm='45', flex-xs='100')
+      md-card-title
+        md-card-title-text
+          span.md-headline(layout='row')
+            | Benutzer
+      md-card-content
+        md-button(ui-sref='.user-create', ui-sref-active="md-primary")
+          md-icon(md-svg-icon='add', class='brew__icon--align')
+          span(class='brew__icon--txt')
+          | Neuen Benutzer erfassen
+        md-button(ui-sref='.user-list', ui-sref-active="md-primary")
+          md-icon(md-svg-icon='list', class='brew__icon--align')
+          span(class='brew__icon--txt')
+            | Benutzer anzeigen
+
 
 section
   div(ui-view='')
