@@ -20,4 +20,43 @@
       background-color: rgb(186, 186, 186);
     }
   }
+
+  // bottom sticky filter
+  .sticky {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 80;
+    background-color: $white;
+
+    md-toolbar {
+      cursor: pointer;
+    }
+
+    &.state- {
+      &closed {
+         height: 56px;// md-toolbar
+
+        .icon-open {
+          display: none;
+        }
+        .icon-close {
+          display: inline-block;
+        }
+      }
+
+      &open {
+        //height: 400px;
+        height: 50%;
+
+        .icon-open {
+          display: inline-block;
+        }
+        .icon-close {
+          display: none;
+        }
+      }
+    }
+  }
 }
