@@ -3,27 +3,29 @@ include ../../partials/header.jade
 section
   h1
     | Hier registrieren Sie sich als neuer Benutzer
-  form(name='form', ng-submit='register(form)', novalidate)
-    md-input-container(class='md-block')
-      label
-        | E-Mail Adresse
-      input(type='email', name='email', ng-model='user.email', required, mongoose-error)
 
-      div(class='help-block', ng-messages='form.email.$error', ng-show='(form.email.$touched && form.email.$invalid) || form.email.$error.mongoose')
-        include ../../partials/form.messages.email.jade
+  div(flex-gt-sm='50')
+    form(name='form', ng-submit='register(form)', novalidate)
+      md-input-container(class='md-block')
+        label
+          | E-Mail Adresse
+        input(type='email', name='email', ng-model='user.email', required, mongoose-error)
+
+        div(class='help-block', ng-messages='form.email.$error', ng-show='(form.email.$touched && form.email.$invalid) || form.email.$error.mongoose')
+          include ../../partials/form.messages.email.jade
 
 
-    md-input-container(class='md-block')
-      label
-        | Passwort
-      input(type='password', name='password', ng-model='user.password', required)
+      md-input-container(class='md-block')
+        label
+          | Passwort
+        input(type='password', name='password', ng-model='user.password', required)
 
-      div(class='help-block', ng-messages='form.password.$error', ng-show='form.password.$touched && form.password.$invalid')
-        include ../../partials/form.messages.password.jade
+        div(class='help-block', ng-messages='form.password.$error', ng-show='form.password.$touched && form.password.$invalid')
+          include ../../partials/form.messages.password.jade
 
-    div(layout='row', layout-align='start center')
-      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
-        | Registrieren
+      div(layout='row', layout-align='start center')
+        md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
+          | Registrieren
 
-      md-button(href='/login', class='md-primary')
-        | zum Login
+        md-button(href='/login', class='md-primary')
+          | zum Login

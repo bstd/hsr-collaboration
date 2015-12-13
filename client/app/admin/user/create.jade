@@ -1,27 +1,29 @@
 section
-  h2.debug-restricted
+  h2
     | Neuen Benutzer erfassen
-  form(ng-submit='create(form)', name='form', novalidate)
-    md-input-container(class='md-block')
-      label
-        | E-Mail Adresse
-      input(type='email', name='email', ng-model='user.email', required, mongoose-error)
 
-      div(class='help-block', ng-messages='form.email.$error', ng-show='form.email.$touched && form.email.$invalid')
-        include ../../partials/form.messages.email.jade
+  div(flex-gt-sm='50')
+    form(ng-submit='create(form)', name='form', novalidate)
+      md-input-container(class='md-block')
+        label
+          | E-Mail Adresse
+        input(type='email', name='email', ng-model='user.email', required, mongoose-error)
 
-
-    md-input-container(md-is-error='(form.password.$touched && form.password.$invalid) || form.password.$error.mongoose', class='md-block')
-      label
-        | Passwort
-      input(type='password', name='password', ng-model='user.password', required, mongoose-error)
-
-      div(class='help-block', ng-messages='form.password.$error', ng-show='(form.password.$touched && form.password.$invalid) || form.password.$error.mongoose')
-        include ../../partials/form.messages.password.jade
+        div(class='help-block', ng-messages='form.email.$error', ng-show='form.email.$touched && form.email.$invalid')
+          include ../../partials/form.messages.email.jade
 
 
-    div(layout='row', layout-align='start center')
-      md-button(ui-sref='admin.user-list', class='md-raised')
-        | Abbrechen
-      md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
-        | Benutzer erstellen
+      md-input-container(md-is-error='(form.password.$touched && form.password.$invalid) || form.password.$error.mongoose', class='md-block')
+        label
+          | Passwort
+        input(type='password', name='password', ng-model='user.password', required, mongoose-error)
+
+        div(class='help-block', ng-messages='form.password.$error', ng-show='(form.password.$touched && form.password.$invalid) || form.password.$error.mongoose')
+          include ../../partials/form.messages.password.jade
+
+
+      div(layout='row', layout-align='start center')
+        md-button(ui-sref='admin.user-list', class='md-raised')
+          | Abbrechen
+        md-button(type='submit', class='md-raised md-primary', ng-disabled='form.$invalid')
+          | Benutzer erstellen
