@@ -40,3 +40,39 @@ section(class='brew__product')
           div
             img(ng-if='product.image', ng-src='/uploads/{{product.image}}', alt='product.name')
             img(ng-if='!product.image', ng-src='/uploads/default/beer_bottle.png', alt='product.name')
+
+section(class='brew__product')
+  h2 Diese Biere könnten Ihnen auch schmecken:
+  md-content(layout='row', layout-wrap)
+    md-card(ng-if='rel.active', ng-repeat='rel in related|limitTo:3', flex='30', flex-sm='45', flex-xs='100')
+      div(class='product__img')
+        a(ui-sref='productdetail({ id: rel._id })')
+          img.md-card-image(ng-if='rel.image', ng-src='/uploads/{{rel.image}}', alt='rel.name')
+          img.md-card-image(ng-if='!rel.image', ng-src='/uploads/default/beer_bottle.png', alt='rel.name')
+
+      md-card-title
+        md-card-title-text
+          span.md-headline(layout='row')
+            | {{rel.name}}
+          span.md-subhead(layout='row')
+            | {{rel.vanity}}
+
+      md-card-content
+        p
+          | {{rel.info | limitTo: 50 }}...
+        div(layout='row')
+          div(flex, class='md-body-1')
+            | Land: {{rel.country}}
+
+      md-card-footer
+        div(layout='row', layout-align='end end', class='md-actions')
+          md-chips
+            md-chip.md-title
+              | {{rel.price | currency:"CHF"}}
+
+          span(flex='10')
+
+          md-button(ng-click='addToBasket(rel)', class='md-fab md-primary')
+            md-tooltip
+              | In den Warenkorb
+            md-icon(md-svg-icon='add_shopping_cart', class='brew__icon')

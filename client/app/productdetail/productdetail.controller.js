@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('ProductDetailCtrl', ['$scope', '$state', '$mdDialog', '$log', 'ProductService', 'BasketService', function($scope, $state, $mdDialog, $log, ProductService, BasketService) {
+.controller('ProductDetailCtrl', ['$scope', '$state', '$mdDialog', '$log', '$filter', 'ProductService', 'BasketService', function($scope, $state, $mdDialog, $log, $filter, ProductService, BasketService) {
   $scope.product = [];
   $scope.id = $state.params.id;
   $scope.basketItems = [];
@@ -9,7 +9,13 @@ angular.module('brewApp')
 
   // get detail
   $scope.product = ProductService.get({ id: $scope.id }, function(data) {
+    //console.log(data.vanity);
     $log.debug('queried:',data);
+    //Related Products Beer taste
+    $scope.related = ProductService.query(function(loadedProducts){
+      $scope.related = $filter('filter')(loadedProducts, data.vanity);
+    });
+
   });
 
 
