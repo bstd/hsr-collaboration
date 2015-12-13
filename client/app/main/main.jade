@@ -44,17 +44,5 @@ section(class='brew__product')
               | In den Warenkorb
             md-icon(md-svg-icon='add_shopping_cart', class='brew__icon')
 
-
-div(hide, show-xs)
-  div(class='sticky', ng-class="{ 'state-open': showChildren, 'state-closed': !showChildren }")
-    div(layout='column', layout-fill)
-      md-toolbar(ng-click='showChildren = !showChildren')
-        div(class='md-toolbar-tools')
-          span Filtern & Sortieren
-          span(flex)
-          md-button(class='md-icon-button', aria-label='Auf-/zuklappen')
-            md-icon(md-svg-icon='expand_more', class='icon-open')
-            md-icon(md-svg-icon='expand_less', class='icon-close')
-
-      div(ng-show='showChildren')
-        include ../product/partial-filter-bottom.jade
+// BOTTOM FILTER
+include ../product/partial-filter-bottom.jade

@@ -4,8 +4,9 @@ section
   h1
     | Suchresultate: {{query}}
 
-section
-  //include ../product/partial-filter.jade
+// FILTER
+div(hide, show-gt-xs)
+  include ../product/partial-filter.jade
 
 
 // NO RESULTS
@@ -51,3 +52,7 @@ md-content(ng-if='!empty', layout='row', layout-wrap, class='md-padding')
           md-tooltip
             | In den Warenkorb
           md-icon(md-svg-icon='add_shopping_cart', class='brew__icon')
+
+
+// BOTTOM FILTER
+include ../product/partial-filter-bottom.jade
