@@ -1,5 +1,6 @@
 ﻿body {
-  background: url('/assets/images/bg.png') no-repeat top center;
+  background: url('/assets/images/bg3.png') no-repeat top center;
+  //@include linear-gradient(180deg,  rgba(0,0,0,0), $white);
 
   // depth to body
   &::before {
@@ -10,7 +11,7 @@
     width: 100%;
     height: 10px;
     z-index: 100;
-    box-shadow: 0 0 10px rgba(0,0,0,.8);
+    box-shadow: $shadow-box;
   }
 }
 
