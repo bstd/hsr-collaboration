@@ -37,14 +37,14 @@ ProductSchema
 .path('ean')
 .validate(function(ean) {
   return ean.length;
-}, 'EAN cannot be blank');// TODO message
+}, 'EAN cannot be blank');
 
 // Validate empty name
 ProductSchema
 .path('name')
 .validate(function(name) {
   return name.length;
-}, 'Name cannot be blank');// TODO message
+}, 'Name cannot be blank');
 
 // Validate EAN is not taken
 /*ProductSchema
@@ -62,7 +62,6 @@ ProductSchema
     respond(true);
   });
 }, 'The specified EAN is already in use.');*/
-// TODO message
 
 
 /**

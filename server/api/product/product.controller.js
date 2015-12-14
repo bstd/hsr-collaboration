@@ -77,13 +77,19 @@ exports.update = function(req, res) {
     // Check for file and save
     try {
       if (req.file.filename) {
-        var rootPath = path.resolve(__dirname + '../../../uploads/');
-        var filePath =  rootPath + '/' + product.image;
-        console.log(filePath);
-        fs.unlink(filePath, function (err) {
-          if (err) throw err;
-          console.log('old File successfully deleted:' + filePath);
-        });
+        try {
+          if (product.image) {
+            var rootPath = path.resolve(__dirname + '../../../uploads/');
+            var filePath = rootPath + '/' + product.image;
+            console.log(filePath);
+            fs.unlink(filePath, function (err) {
+              if (err) throw err;
+              console.log('old File successfully deleted:' + filePath);
+            });
+          }
+        }catch(err) {
+          //if (err) throw err;
+        }
         updated.image = req.file.filename;
         updated.save(function (err) {
           if (err) {
