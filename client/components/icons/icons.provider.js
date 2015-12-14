@@ -10,6 +10,9 @@ angular.module('brewApp')
   .icon('add_photo', CONSTANTS.icons.add_photo)
   .icon('arrow_back', CONSTANTS.icons.arrow_back)
   .icon('arrow_forward', CONSTANTS.icons.arrow_forward)
+  .icon('assignment', CONSTANTS.icons.assignment)
+  .icon('assignment_ind', CONSTANTS.icons.assignment_ind)
+  .icon('attach_money', CONSTANTS.icons.attach_money)
   .icon('check_box', CONSTANTS.icons.check_box)
   .icon('check_box_outline_blank', CONSTANTS.icons.check_box_outline_blank)
   .icon('chevron_left', CONSTANTS.icons.chevron_left)
@@ -31,7 +34,8 @@ angular.module('brewApp')
   .icon('shopping_cart', CONSTANTS.icons.shopping_cart)
   .icon('star', CONSTANTS.icons.star)
   .icon('star_border', CONSTANTS.icons.star_border)
-  .icon('supervisor_account', CONSTANTS.icons.supervisor_account);
+  .icon('supervisor_account', CONSTANTS.icons.supervisor_account)
+  .icon('today', CONSTANTS.icons.today);
 })
 .run(function($http, $templateCache, CONSTANTS) {
   // prefetch and cache icon urls using $templateCache

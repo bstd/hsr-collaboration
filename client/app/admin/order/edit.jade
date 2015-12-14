@@ -1,9 +1,7 @@
-h2.debug-restricted
+h2
   | Bestellung bearbeiten
-md-content(flex, class='md-padding')
-  // unchangeable information
-  include partial-order-detail-edit.jade
 
+// STATUS CHANGEABLE
 md-content(flex, class='md-padding')
   form(name='form', ng-submit='update(form)', novalidate)
     md-input-container(class='md-block')
@@ -20,3 +18,7 @@ md-content(flex, class='md-padding')
         | Speichern
       md-button(ui-sref='admin.order-list', class='md-raised')
         | Abbrechen
+
+// REST READ-ONLY
+md-content(flex, class='md-padding')
+  include partial-order-detail-edit.jade

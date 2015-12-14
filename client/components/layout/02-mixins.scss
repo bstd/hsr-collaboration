@@ -54,3 +54,10 @@
   background: -o-linear-gradient($dir, $start-color 0%, $end-color 100%);
   background: linear-gradient($dir, $start-color 0%, $end-color 100%);
 }
+
+// ellipsis
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

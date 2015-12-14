@@ -10,6 +10,9 @@ angular.module('components.constants', [])
     add_photo: '/assets/svg/ic_add_a_photo_24px.svg',
     arrow_back: '/assets/svg/ic_arrow_back_24px.svg',
     arrow_forward: '/assets/svg/ic_arrow_forward_24px.svg',
+    assignment: '/assets/svg/ic_assignment_24px.svg',
+    assignment_ind: '/assets/svg/ic_assignment_ind_24px.svg',
+    attach_money: '/assets/svg/ic_attach_money_24px.svg',
     check_box: '/assets/svg/ic_check_box_24px.svg',
     check_box_outline_blank: '/assets/svg/ic_check_box_outline_blank_24px.svg',
     chevron_left: '/assets/svg/ic_chevron_left_24px.svg',
@@ -31,7 +34,8 @@ angular.module('components.constants', [])
     shopping_cart: '/assets/svg/ic_shopping_cart_24px.svg',
     star: '/assets/svg/ic_star_24px.svg',
     star_border: '/assets/svg/ic_star_border_24px.svg',
-    supervisor_account: '/assets/svg/ic_supervisor_account_24px.svg'
+    supervisor_account: '/assets/svg/ic_supervisor_account_24px.svg',
+    today: '/assets/svg/ic_today_24px.svg'
   },
   enums: {
     order: {

@@ -3,17 +3,25 @@
     div(class='md-toolbar-tools')
       md-chips
         md-chip
-          | {{order.orderId}}
-        md-chip
-          | {{order.dateCreated | date: 'dd.MM.yyyy HH:mm'}}
-        md-chip
-          | {{order.addressLastName}}
-        md-chip
-          | {{order.total | number:2}}
+          md-icon(md-svg-icon='today', class='brew__icon--align')
+          span
+            | {{order.dateCreated | date: 'dd.MM.yyyy HH:mm'}}
+        md-chip(hide, show-gt-xs)
+          md-icon(md-svg-icon='assignment', class='brew__icon--align')
+          span
+            | {{order.orderId}}
+        md-chip(hide, show-gt-sm)
+          md-icon(md-svg-icon='assignment_ind', class='brew__icon--align')
+          span
+            | {{order.addressLastName | limitTo: 30}}
+        md-chip(hide, show-gt-sm)
+          md-icon(md-svg-icon='attach_money', class='brew__icon--align')
+          span
+            | {{order.total | number:2}}
       span(flex)
-      md-button(class='md-icon-button', aria-label='Auf-/zuklappen')
-        md-icon(md-svg-icon='expand_more', class='icon-open brew__icon')
-        md-icon(md-svg-icon='expand_less', class='icon-close brew__icon')
+      md-button(class='md-icon-button brew__icon--fixed', aria-label='Auf-/zuklappen')
+        md-icon(md-svg-icon='expand_more', class='icon-open')
+        md-icon(md-svg-icon='expand_less', class='icon-close')
 
   div(ng-show='showChildren')
     include partial-order-detail-edit.jade

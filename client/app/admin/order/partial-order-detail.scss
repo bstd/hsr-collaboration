@@ -3,19 +3,19 @@
     cursor: pointer;
 
     &.new {
-      background-color: $order-state-bgColor-new;
+      //background-color: $order-state-bgColor-new;
     }
 
     &.open {
-      background-color: $order-state-bgColor-open;
+      //background-color: $order-state-bgColor-open;
     }
 
     &.paid {
-      background-color: $order-state-bgColor-paid;
+      //background-color: $order-state-bgColor-paid;
     }
 
     &.done {
-      background-color: $order-state-bgColor-done;
+      //background-color: $order-state-bgColor-done;
     }
   }
 
@@ -33,6 +33,13 @@
         height: $icon-height-md;
       }
       @include breakpoint(lg) {
+        width: $icon-width-lg;
+        height: $icon-height-lg;
+      }
+    }
+
+    &.brew__icon--fixed {
+      md-icon {
         width: $icon-width-lg;
         height: $icon-height-lg;
       }

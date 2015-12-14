@@ -1,45 +1,78 @@
-﻿p(ng-show='order.userEmail')
-  | Registrierte Benutzer E-Mail: {{order.userEmail}}
+﻿p(ng-show='order.userEmail', layout='row')
+  span(flex='50', flex-gt-sm='30', class='md-body-2')
+    | Registrierte Benutzer E-Mail:
+  span(flex='50', flex-gt-sm='70')
+    | {{order.userEmail}}
 
-p
-  | Bestellnummer: {{order.orderId}}
-p
-  | bestellt am: {{order.dateCreated | date: 'dd.MM.yyyy HH:mm'}}
-p
-  | letzte Statusänderung am: {{order.dateUpdated | date: 'dd.MM.yyyy HH:mm'}}
-p
-  span Status:&#160;
-  span(ng-switch='order.state')
+p(layout='row')
+  span(flex='50', flex-gt-sm='30', class='md-body-2')
+    | Bestellnummer:
+  span(flex='50', flex-gt-sm='70')
+    | {{order.orderId}}
+p(layout='row')
+  span(flex='50', flex-gt-sm='30', class='md-body-2')
+    | bestellt am:
+  span(flex='50', flex-gt-sm='70')
+    | {{order.dateCreated | date: 'dd.MM.yyyy HH:mm'}}
+p(layout='row')
+  span(flex='50', flex-gt-sm='30', class='md-body-2')
+    | letzte Statusänderung am:
+  span(flex='50', flex-gt-sm='70')
+    | {{order.dateUpdated | date: 'dd.MM.yyyy HH:mm'}}
+p(layout='row')
+  span(flex='50', flex-gt-sm='30', class='md-body-2')
+    | Status:
+  span(ng-switch='order.state', flex='50', flex-gt-sm='70')
     span(ng-switch-when='new') neu
     span(ng-switch-when='open') Rechnung offen
     span(ng-switch-when='paid') bezahlt
     span(ng-switch-when='done') abgeschlossen
-p
-  | Adresse: {{order.addressLastName}} {{order.addressFirstName}} {{order.addressStreet}} {{order.addressZip}} {{order.addressCity}}
+p(layout='row')
+  span(flex='50', flex-gt-sm='30', class='md-body-2')
+    | Adresse:
+  span(flex='50', flex-gt-sm='70')
+    | {{order.addressLastName}} {{order.addressFirstName}}, {{order.addressStreet}}, {{order.addressZip}} {{order.addressCity}}
 
 p.md-title
   | Produkte:
 
 div(ng-repeat='items in order.products track by $index', ng-init='orderIdx = $index')
-  p
-    | Artikelnummer: {{order.products[orderIdx]._ean}}
-  p
-    | Artikelbezeichnung: {{order.products[orderIdx]._name}}
-  p
-    | Einzelpreis: {{order.products[orderIdx]._price | number:2}}
+  p(layout='row')
+    span(flex='50', flex-gt-sm='30', class='md-body-2')
+      | Artikelnummer:
+    span(flex='50', flex-gt-sm='70')
+      | {{order.products[orderIdx]._ean}}
+  p(layout='row')
+    span(flex='50', flex-gt-sm='30', class='md-body-2')
+      | Artikelbezeichnung:
+    span(flex='50', flex-gt-sm='70')
+      | {{order.products[orderIdx]._name}}
+  p(layout='row')
+    span(flex='50', flex-gt-sm='30', class='md-body-2')
+      | Einzelpreis:
+    span(flex='50', flex-gt-sm='70')
+      | {{order.products[orderIdx]._price | number:2}}
 
-  div
-    div(layout='row')
-      div(flex='50')
-        p
-          | Bestellmenge: {{order.products[orderIdx]._qty}}
-      div(flex='50')
-        p(ng-repeat='items in productsWithOrders track by $index', ng-init='productIdx = $index')
-          span(ng-if='productsWithOrders[productIdx]._id === order.products[orderIdx]._id', ng-class="{'warn': order.products[orderIdx]._qty > productsWithOrders[productIdx].stock}")
-            | Lagerbestand: {{productsWithOrders[productIdx].stock}}
 
-  p
-    | Summe dieser Bestellposition: {{order.products[orderIdx]._qty * order.products[orderIdx]._price | number:2}}
+  p(layout='row')
+    span(flex='50', flex-gt-sm='30', class='md-body-2')
+      | Bestellmenge:
+    span(flex='50', flex-gt-sm='70')
+      | {{order.products[orderIdx]._qty}}
+
+  div(ng-repeat='items in productsWithOrders track by $index', ng-init='productIdx = $index')
+    p(ng-if='productsWithOrders[productIdx]._id === order.products[orderIdx]._id', ng-class="{'warn': order.products[orderIdx]._qty > productsWithOrders[productIdx].stock}", layout='row')
+      span(flex='50', flex-gt-sm='30', class='md-body-2')
+        | Lagerbestand:
+      span(flex='50', flex-gt-sm='70')
+        | {{productsWithOrders[productIdx].stock}}
+
+
+  p(layout='row')
+    span(flex='50', flex-gt-sm='30', class='md-body-2')
+      | Summe dieser Bestellposition:
+    span(flex='50', flex-gt-sm='70')
+      | {{order.products[orderIdx]._qty * order.products[orderIdx]._price | number:2}}
 
   md-divider
 
