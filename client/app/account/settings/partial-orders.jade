@@ -4,33 +4,65 @@
     | Keine Bestellungen vorhanden
 
 md-content(layout-wrap, class='md-padding')
-  md-card(ng-repeat='myorder in myOrders | orderBy: "-dateCreated" | filter: { state: "new" }:true track by myorder._id')
+  md-card(ng-repeat='myorder in myOrders | orderBy: "-dateCreated" track by myorder._id', class='brew__orders-card')
     md-card-content
-      p
-        | Bestellnummer: {{myorder.orderId}}
-      p
-        | bestellt am: {{myorder.dateCreated | date: 'dd.MM.yyyy HH:mm'}}
-      p
-        | letzte Statusänderung am: {{myorder.dateUpdated | date: 'dd.MM.yyyy HH:mm'}}
-      p
-        span Status:&#160;
-        span(ng-switch='myorder.state')
+      p(layout='row')
+        span(flex='50', flex-gt-sm='30', class='md-body-2')
+          | Bestellnummer:
+        span(flex='50', flex-gt-sm='70')
+          | {{myorder.orderId}}
+      p(layout='row')
+        span(flex='50', flex-gt-sm='30', class='md-body-2')
+          | bestellt am:
+        span(flex='50', flex-gt-sm='70')
+          | {{myorder.dateCreated | date: 'dd.MM.yyyy HH:mm'}}
+      p(layout='row')
+        span(flex='50', flex-gt-sm='30', class='md-body-2')
+          | letzte Statusänderung am:
+        span(flex='50', flex-gt-sm='70')
+          | {{myorder.dateUpdated | date: 'dd.MM.yyyy HH:mm'}}
+      p(layout='row', class='brew__orders-state')
+        span(flex='50', flex-gt-sm='30', class='md-body-2')
+          | Status:
+        span(ng-switch='myorder.state', flex='50', flex-gt-sm='70')
           span(ng-switch-when='new') neu
           span(ng-switch-when='open') Rechnung offen
           span(ng-switch-when='paid') bezahlt
           span(ng-switch-when='done') abgeschlossen
-      p
-        | Adresse: {{myorder.addressLastName}} {{myorder.addressFirstName}} {{myorder.addressStreet}} {{myorder.addressZip}} {{myorder.addressCity}}
-      p(class='md-title')
+      p(layout='row')
+        span(flex='50', flex-gt-sm='30', class='md-body-2')
+          | Adresse:
+        span(flex='50', flex-gt-sm='70')
+          | {{myorder.addressLastName}} {{myorder.addressFirstName}}, {{myorder.addressStreet}}, {{myorder.addressZip}} {{myorder.addressCity}}
+
+      p.md-title
         | Produkte:
 
-      ul(ng-repeat='items in myorder.products track by $index')
-        li
-          | {{myorder.products[$index]._name}} (ean: {{myorder.products[$index]._ean}})
-        li
-          | Einzelpreis: {{myorder.products[$index]._price | number:2}}
-        li
-          | Bestellmenge: {{myorder.products[$index]._qty}}
+      div(ng-repeat='items in myorder.products track by $index')
+        p(layout='row')
+          span(flex='50', flex-gt-sm='30', class='md-body-2')
+            | Artikelnummer:
+          span(flex='50', flex-gt-sm='70')
+            | {{myorder.products[$index]._ean}}
+        p(layout='row')
+          span(flex='50', flex-gt-sm='30', class='md-body-2')
+            | Artikelbezeichnung:
+          span(flex='50', flex-gt-sm='70')
+            | {{myorder.products[$index]._name}}
+        p(layout='row')
+          span(flex='50', flex-gt-sm='30', class='md-body-2')
+            | Einzelpreis:
+          span(flex='50', flex-gt-sm='70')
+            | {{myorder.products[$index]._price | number:2}}
 
-      p
+        p(layout='row')
+          span(flex='50', flex-gt-sm='30', class='md-body-2')
+            | Bestellmenge:
+          span(flex='50', flex-gt-sm='70')
+            | {{myorder.products[$index]._qty}}
+
+      md-divider
+
+      p.md-title
         | Bestellsumme: {{myorder.total | number:2}}
+

@@ -1,25 +1,39 @@
-﻿.brew__orders--client {
-  md-toolbar {
-    cursor: pointer;
+﻿.brew__orders {
+  &--client {
+    md-toolbar {
+      cursor: pointer;
+    }
+
+    .state- {
+      &closed {
+        .icon-open {
+          display: inline-block;
+        }
+        .icon-close {
+          display: none;
+        }
+      }
+
+      &open {
+        .icon-open {
+          display: none;
+        }
+        .icon-close {
+          display: inline-block;
+        }
+      }
+    }
   }
 
-  .state- {
-    &closed {
-      .icon-open {
-        display: inline-block;
-      }
-      .icon-close {
-        display: none;
-      }
-    }
+  &-card {
+    margin-top: 2em;
 
-    &open {
-      .icon-open {
-        display: none;
-      }
-      .icon-close {
-        display: inline-block;
-      }
+    &:first-child {
+      margin-top: 0;
     }
+  }
+
+  &-state {
+    background-color: $blue;
   }
 }
