@@ -377,7 +377,8 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>',
           src: [
             'package.json',
-            'server/**/*'
+            'server/**/*',
+            '!server/test.util.js'
           ]
         }]
       },

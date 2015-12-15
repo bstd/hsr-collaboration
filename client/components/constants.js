@@ -5,7 +5,6 @@ angular.module('components.constants', [])
 .constant('CONSTANTS', {
   icons: {
     account_box: '/assets/svg/ic_account_box_24px.svg',
-    add: 'assets/svg/ic_add_24px.svg',
     add_shopping_cart: '/assets/svg/ic_add_shopping_cart_24px.svg',
     add_photo: '/assets/svg/ic_add_a_photo_24px.svg',
     arrow_back: '/assets/svg/ic_arrow_back_24px.svg',
@@ -28,6 +27,7 @@ angular.module('components.constants', [])
     move_to_inbox: '/assets/svg/ic_move_to_inbox_24px.svg',
     people: '/assets/svg/ic_people_24px.svg',
     person: '/assets/svg/ic_person_24px.svg',
+    plus: '/assets/svg/ic_plus_24px.svg',
     radio_button_checked: '/assets/svg/ic_radio_button_checked_24px.svg',
     radio_button_unchecked: '/assets/svg/ic_radio_button_unchecked_24px.svg',
     search: '/assets/svg/ic_search_24px.svg',
