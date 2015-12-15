@@ -21,7 +21,7 @@ md-content(ng-if='empty', layout-wrap, class='md-padding')
 md-content(ng-if='!empty', layout='row', layout-wrap, class='md-padding')
   md-card(ng-if='result.active', ng-repeat='result in results | filter:search | filter:countryFilter | filter:vanityFilter | orderBy:order track by result._id', flex='30', flex-sm='45', flex-xs='100')
     div(class='product__img')
-      a(ui-sref='productdetail({ id: product._id })')
+      a(ui-sref='productdetail({ id: result._id })')
         img(ng-if='result.image', ng-src='/uploads/{{result.image}}', alt='result.name')
         img(ng-if='!result.image', ng-src='/uploads/default/beer_bottle.png', alt='result.name')
 
