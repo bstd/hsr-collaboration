@@ -14,9 +14,14 @@ angular.module('brewApp')
 
     //Related Products Beer taste
     $scope.related = ProductService.query(function(loadedProducts){
-      $scope.related = $filter('filter')(loadedProducts, data.vanity && '!'+data.name);
+      //Get related Products with same Tastes
+      $scope.related = $filter('filter')(loadedProducts, function(relation){
+        return relation.vanity === data.vanity &&
+            relation.name !== data.name;
+      });
     });
-
+    var isEmpty = $scope.related;
+    console.log(isEmpty);
   });
 
 

@@ -62,7 +62,7 @@ Product.find({}).remove(function () {
       stock: '12',
       vanity: 'Lagerbier',
       country: 'Holland',
-      image: 'heineken.jpg'
+      image: '8114d62aa01b476a66a59bc805c0b95c'
     }, {
       ean: 'A6789012345678',
       name: 'Becks 33cl',
@@ -73,7 +73,7 @@ Product.find({}).remove(function () {
       stock: '22',
       vanity: 'Lagerbier',
       country: 'Deutschland',
-      image: 'becks.jpg'
+      image: '41067f9885cf87fda65d30a4f1ee39cf'
     }, {
       "ean":"A854239865098",
       "active":true,
@@ -91,13 +91,13 @@ Product.find({}).remove(function () {
     },{
       "ean":"A39832741987","active":true,"name":"Feldschlösschen Alkoholfrei 33cl","vol":"0.1%","price":"3.50","info":"Feldschlösschen Alkoholfrei - der Klassiker ohne Alkohol. Mit seinem bierigen, harmonischen Geschmack garantiert Feldschlösschen Alkoholfrei immer und überall vollen Biergenuss ganz ohne Alkohol. Eine Erfrischung nach Mass.","stock":"44","vanity":"Alkoholfreies Bier","country":"Schweiz","modificationDate":{"$date":1450001730059},"image":"91057379bbeff3daafc9e8fe4e5aea34"
     },{
-      "ean":"A08546098787","active":true,"name":"Brew Dog PUNK IPA 33cl","vol":"5.7","price":"6.50","info":"Wie der Name bereits sagt handelt es sich bei dem Brewdog Punk IPA um ein India Pale Ale. Die Entstehung der IPAs ist schon fast legendär. Um das Bier im 19. Jahrhundert haltbar zu machen für die lange Reise von England und Schottland in die indischen Kolonien musste Bier mit einem möglichst hohen Alkohol- und Hopfengehalt gebraut werden, sonst wäre es während der Überfahrt verdorben. Aus dieser Tradition heraus ist auch das Brewdog Punk IPA entstanden.","stock":"10","vanity":"Pale Ale","country":"Britannien","modificationDate":{"$date":1450002131269},"image":"1e54442c94d4c35cba0240dfb46a2c6a"
+      "ean":"A08546098787","active":true,"name":"Brew Dog PUNK IPA 33cl","vol":"5.7","price":"6.50","info":"Wie der Name bereits sagt handelt es sich bei dem Brewdog Punk IPA um ein India Pale Ale. Die Entstehung der IPAs ist schon fast legendär. Um das Bier im 19. Jahrhundert haltbar zu machen für die lange Reise von England und Schottland in die indischen Kolonien musste Bier mit einem möglichst hohen Alkohol- und Hopfengehalt gebraut werden, sonst wäre es während der Überfahrt verdorben. Aus dieser Tradition heraus ist auch das Brewdog Punk IPA entstanden.","stock":"10","vanity":"Pale Ale","country":"Britannien","modificationDate":{"$date":1450002131269},"image":"15e52c389b700aa4185c31831c224a0a"
     },{
-      "ean":"A0973425770977","active":true,"name":"Brew Dog Hardcore 33cl","vol":"9.2%","price":"8.00","info":"Die Steigerung eines IPAs präsentieren wir euch hier mit dem Brewdog Hardcore IPA. Für dieses Bier wird noch einmal wesentlich mehr Hopfen verwendet als bei einem normalen IPA. Daher ist das Brewdog Hardcore IPA auch vom Hopfenanteil und den Bittereinheiten her das stärkste Bier in Großbritannien. Sagenhafte 150 Bittereinheiten (IBU) kann das Hardcore IPA vorweisen. Zum Vergleich ein normales Pils hat etwa 20-30 Bittereinheiten (IBU).","stock":"15","vanity":"Craft","country":"Britannien","modificationDate":{"$date":1450002303006},"image":"ce9fa8ef746109c193668e6e4f2f2a4e"
+      "ean":"A0973425770977","active":true,"name":"Brew Dog Hardcore 33cl","vol":"9.2%","price":"8.00","info":"Die Steigerung eines IPAs präsentieren wir euch hier mit dem Brewdog Hardcore IPA. Für dieses Bier wird noch einmal wesentlich mehr Hopfen verwendet als bei einem normalen IPA. Daher ist das Brewdog Hardcore IPA auch vom Hopfenanteil und den Bittereinheiten her das stärkste Bier in Großbritannien. Sagenhafte 150 Bittereinheiten (IBU) kann das Hardcore IPA vorweisen. Zum Vergleich ein normales Pils hat etwa 20-30 Bittereinheiten (IBU).","stock":"15","vanity":"Craft","country":"Britannien","modificationDate":{"$date":1450002303006},"image":"e7b26593350662a7bf70e1381cfe7a6a"
     },{
-      "ean":"A89980709342579","active":true,"name":"Insite Oast 50cl","vol":"5.2%","price":"8.50","info":"Im Glas besticht das Insite Oast zunächst durch seine klare bernsteinartige Farbe. Auch der weiße cremige Schaum des Bieres hält sich lange im Glas. In der Nase lassen sich dann Zitronenaromen und auch leicht süßliche Hopfenaromen erkennen. Geschmacklich wird das Bier dann besonders durch die sehr starken Hopfennoten dominiert. Daher lässt sich kaum noch Malzgeschmack wahrnehmen. Neben der süßlichen Trockenheit besticht das Bier vor allem durch eine milde Bitterheit.","stock":"5","vanity":"Stout","country":"Kanada","modificationDate":{"$date":1450002475753},"image":"a4c5720bc43abbfb9d77baf98ba28a2d"
+      "ean":"A89980709342579","active":true,"name":"Insite Oast 50cl","vol":"5.2%","price":"8.50","info":"Im Glas besticht das Insite Oast zunächst durch seine klare bernsteinartige Farbe. Auch der weiße cremige Schaum des Bieres hält sich lange im Glas. In der Nase lassen sich dann Zitronenaromen und auch leicht süßliche Hopfenaromen erkennen. Geschmacklich wird das Bier dann besonders durch die sehr starken Hopfennoten dominiert. Daher lässt sich kaum noch Malzgeschmack wahrnehmen. Neben der süßlichen Trockenheit besticht das Bier vor allem durch eine milde Bitterheit.","stock":"5","vanity":"Stout","country":"Kanada","modificationDate":{"$date":1450002475753},"image":"334cb6e757cf82d5536596fb1dd0d289"
     },{
-      "ean":"A341897952398798","active":true,"name":"Bridgeroad 33cl","vol":"4.5%","price":"4.50","info":"Das bernsteinfarbene Bier für den Hopfen-Fan. Der exklusive australische Galaxy-Hopfen verleiht ihm seine einzigartige und fruchtig-feinherbe Aromatik.","stock":"20","vanity":"Altbier","country":"Andere","modificationDate":{"$date":1450002649977},"image":"7cf4c1a2ba2f642c3131f02bf3d7c682"
+      "ean":"A341897952398798","active":true,"name":"Bridgeroad 33cl","vol":"4.5%","price":"4.50","info":"Das bernsteinfarbene Bier für den Hopfen-Fan. Der exklusive australische Galaxy-Hopfen verleiht ihm seine einzigartige und fruchtig-feinherbe Aromatik.","stock":"20","vanity":"Altbier","country":"Andere","modificationDate":{"$date":1450002649977},"image":"e62bb4396a89ec251ba822d0573b60a9"
     },{
       "ean":"A4578993425z798","active":true,"name":"FAXE Premium Lager 100cl","vol":"5%","price":"6.00","info":"FAXE Premium is a classic premium lager with a soft and distinctive flavour. The combination of the finest malt, hops and our own water results in a beer with a rich, yet mild and smooth taste. An attractive, balanced lager.","stock":"20","vanity":"Holzfassgereifte Biere","country":"Dänemark","modificationDate":{"$date":1450002812941},"image":"014cc9fcc3c88c2448b7191c6a907e56"
     },{
@@ -118,11 +118,11 @@ Product.find({}).remove(function () {
     },{
       "ean":"A87542387963452","active":true,"name":"Quöllfrisch naturtrüb 50cl","vol":"4.8%","price":"3.40","info":"Aus Pilsenermalz und drei verschiedenen Hopfensorten aus Stammheim und der Hallertau gebraut, entsteht ein aussergewöhnlich fruchtiges Bier mit hefigem Charakter.","stock":"70","vanity":"Naturtrübes Bier","country":"Schweiz","modificationDate":{"$date":1450004355558},"image":"4a8e6f199c98b8e45295aa25547c64c0"
     },{
-      "ean":"A897452498375342","active":true,"name":"Vollmond Bier hell 33cl","vol":"5.2%","price":"7.60","info":" Ebenfalls in der Vollmondnacht gebraut, aber filtriert. Die aromatische Hopfenblume wirkt im Abgang leicht zitronig.","stock":"35","vanity":"Lagerbier","country":"Schweiz","modificationDate":{"$date":1450004479217},"image":"7ce83f65423ceb809f3747451ec68a7c"
+      "ean":"A897452498375342","active":true,"name":"Vollmond Bier hell 33cl","vol":"5.2%","price":"7.60","info":" Ebenfalls in der Vollmondnacht gebraut, aber filtriert. Die aromatische Hopfenblume wirkt im Abgang leicht zitronig.","stock":"35","vanity":"Lagerbier","country":"Schweiz","modificationDate":{"$date":1450004479217},"image":"f3b2313b1df8dfc9c025e69777dd6b9b"
     },{
       "ean":"A897523409587432","active":true,"name":"Hopster Hopfenlimo 25cl","vol":"0.1%","price":"5.00","info":"HOPSTER ist die weltweit erste alkoholfreie Hopfenlimo – mit dem Besten aus dem Hopfen, nur ohne Bitterstoffe und auch nicht so süss. Eben ganz einfach ein gutes Getränk mit dem vollen, blumig-fruchtigen Hopfengeschmack … Da hopfst di nieder!","stock":"3","vanity":"Alkoholfreies Bier","country":"Deutschland","modificationDate":{"$date":1450004720805},"image":"ceae243a67decea161d2714fa20030fb"
     },{
-      "ean":"A9908743527980","active":true,"name":"Brew Dog Jack Hammer 33cl","vol":"6.5%","price":"6.50","info":"Gebraut wird das Brewdog Jack Hammer aus den Hopfensorten Centennial und Columbus. Erstmals eingebraut wurde das Bier im Jahr 2012. Damals allerdings noch als Prototyp. Da es aber beim Brewdog Personal so gut ankam wird es jetzt regelmäßig eingebraut.","stock":"12","vanity":"Porter","country":"Andere","modificationDate":{"$date":1450006419016},"image":"540e32cf9c82ceeaa99128c1ba4cb98d",
+      "ean":"A9908743527980","active":true,"name":"Brew Dog Jack Hammer 33cl","vol":"6.5%","price":"6.50","info":"Gebraut wird das Brewdog Jack Hammer aus den Hopfensorten Centennial und Columbus. Erstmals eingebraut wurde das Bier im Jahr 2012. Damals allerdings noch als Prototyp. Da es aber beim Brewdog Personal so gut ankam wird es jetzt regelmäßig eingebraut.","stock":"12","vanity":"Porter","country":"Andere","modificationDate":{"$date":1450006419016},"image":"9c1e6e4f7e7471c6511af6432368acd9"
     },{
       "ean":"A8754329869876","active":true,"name":"Grolsch Bügelflasche 45cl","vol":"5%","price":"6.00","info":"Bierstil: German-Style Helles / Lager\r\nStrohgelb, schön gehopft, herb, Meeresbrise, sehr erfrischend","stock":"13","vanity":"Lagerbier","country":"Holland","modificationDate":{"$date":1450006695314},"image":"a6aaca72ad6e78229b57a9b498d182fb"
     },

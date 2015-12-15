@@ -7,10 +7,16 @@ section(class='brew__product')
     md-input-container(flex='45', flex-sm='45', flex-xs='100')
       label Sortierung
       md-select(ng-model='order')
+        md-option(value='')
+          | Keine
         md-option(value='name')
-          | Name Alphabet
+          | Name Alphabet ABC
+        md-option(value='-name')
+          | Name Alphabet ZYX
+        md-option(value='-price')
+          | Preis Absteigeng
         md-option(value='price')
-          | Preis
+          | Preis Aufsteigend
     md-input-container(flex='45', flex-sm='45', flex-xs='100')
       label Brau-Land
       md-select(ng-model='countryFilter')
