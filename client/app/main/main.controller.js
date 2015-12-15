@@ -8,12 +8,11 @@ angular.module('brewApp')
 
 
   // get all products from ProductService
-  $scope.products = ProductService.query();
-
-
-  //Price convert string to number
-  angular.forEach($scope.products, function (product) {
-    product.price = parseFloat(product.price);
+  $scope.products = ProductService.query(function() {
+    angular.forEach($scope.products, function (product) {
+      //Price convert string to number
+      product.price = parseFloat(product.price);
+    });
   });
 
 
