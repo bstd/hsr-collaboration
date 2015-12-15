@@ -20,9 +20,17 @@ $ bower install
 $ grunt serve:dist
 ```
 
+## Benutzer
+* bestehender Testbenutzer
+  * E-Mail: test@test.com
+  * Passwort: test
+* bestehender Administrator
+  * E-Mail: admin@admin.com
+  * Passwort: admin
+
 ## Hinweise
 * nicht geeignet für den Produktiveinsatz (Zertifikate und Verschlüsselung sind out of scope)
-* pro environment (dev|test|prod) wird in separate DB geschrieben, und je nach config geseeded
+* pro environment (dev|test|prod) wird in eine separate DB geschrieben, und je nach config geseeded
 * TODO was passiert mit neu erfassten Daten? seeded collections (users, products)-> überschrieben (check details for product case)
 * `grunt serve` für Starten der develop Version (env=development)
 * `grunt serve:debug` für Starten eines "debugging-friendly environment"
