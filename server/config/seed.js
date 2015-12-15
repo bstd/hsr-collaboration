@@ -69,7 +69,7 @@ Product.find({}).remove(function () {
       vol: '5%',
       active: true,
       price: '3.00',
-      info: 'Der unnachahmliche Charakter und die herbe Frische von Beck’s sind Resultate einer Unternehmenskultur, die stets innovativ und nach vorne denkt. Diese Innovationen haben zum Erfolg der Marke Beck’s beigetragen.',
+      info: 'Der unnachahmliche Charakter und die herbe Frische von Beck\'s sind Resultate einer Unternehmenskultur, die stets innovativ und nach vorne denkt. Diese Innovationen haben zum Erfolg der Marke Beck\'s beigetragen.',
       stock: '22',
       vanity: 'Lagerbier',
       country: 'Deutschland',
@@ -128,6 +128,24 @@ Product.find({}).remove(function () {
     },
     {
       "ean":"A665637736","active":true,"name":"KILKENNY Beer 33cl","vol":"4.7%","price":"3.50","info":"Kilkenny Irish Beer schmeckt angenehm nach geröstetem Malz, ein wenig wie Röstbrot. Die vollmundige Weichheit des Biers macht es einfach zu trinken. Die Süsse wird von einer abschliessenden Bitterkeit hervorragend abgewogen.","stock":"24","vanity":"Schwarzbier","country":"Irland","modificationDate":{"$date":1450006555405},"image":"65220f86563635c25d167660c93b06c6"
+    },
+    {
+      "ean":"A897523409587433","active":true,"name":"Alesmith Speedway Stout","vol":"12%","price":"20.50","info":"A huge Imperial Stout that weighs in at an impressive 12% ABV! As if that\'s not enough, Alesmith added pounds of coffee for a little extra kick! Speedway Stout is jet black, with an off-white head. Starts with a strong coffee and dark chocolate sensation, then fades to a multitude of toasty, roasted and caramel malt flavours. Clean and crisp, full- bodied. Warmth from the high alcohol content lightens up the feel. You won't fool your taste buds - this beer is HUGE! Ingredients: water, barley, hops, yeast.","stock":"6","vanity":"Stout","country":"USA","modificationDate":{"$date":1450006555405},"image":"alesmith-speedway.png"
+    },
+    {
+      "ean":"A897523409587434","active":true,"name":"Stone IPA","vol":"6.9%","price":"9.00","info":"By definition, an India pale ale is hoppier and higher in alcohol than its little brother, pale ale—and we deliver in spades. Now one of the most well-respected and best-selling IPAs in the country, this golden beauty explodes with citrusy, piney hop flavors and aromas, all perfectly balanced by a subtle malt character. This crisp, extra hoppy brew is hugely refreshing on a hot day, but will always deliver no matter when you choose to drink it.","stock":"6","vanity":"Pale Ale","country":"USA","modificationDate":{"$date":1450006555405},"image":"stone-ipa.png"
+    },
+    {
+      "ean":"A897523409587435","active":true,"name":"Stone Ruination DIPA","vol":"8.5%","price":"12.50","info":"Stone Ruination IPA was the first full-time brewed and bottled West Coast double IPA on the planet. As craft beer has evolved over the years, so too have techniques for maximizing hop flavors and aromas. For the second incarnation of our groundbreaking India pale ale, we employed dry hopping and hop bursting to squeeze every last drop of piney, citrusy, tropical essence from the hops that give this beer its incredible character. We\'ve also updated the name to Stone Ruination Double IPA 2.0 to reflect the imperial-level intensity that\'s evident in every sip. Join us in cheering this, the second stanza in our 'Liquid Poem to the Glory of the Hop.'","stock":"6","vanity":"Pale Ale","country":"USA","modificationDate":{"$date":1450006555405},"image":"stone-ruination.png"
+    },
+    {
+      "ean":"A897523409587436","active":true,"name":"Stone Imperial Russian Stout","vol":"10.6%","price":"14.50","info":"Stone Imperial Russian Stout is so thick, rich and, well, sinful, you might worry that you'll be doomed to the fiery pits just for thinking about a sip. Rest assured, however, that even though this seemingly pernicious brew is indeed as black as sin, we guarantee that no actual sin was committed in making it...you\'ll have to add that on your own. This massive and intensely aromatic beer abounds with notes of chocolate, coffee, black currants, anise and roastiness, and its heavy palate is nothing to be trifled with.","stock":"6","vanity":"Stout","country":"USA","modificationDate":{"$date":1450006555405},"image":"stone-irs.png"
+    },
+    {
+      "ean":"A897523409587437","active":true,"name":"Lost Abbey Angels Share","vol":"12.50%","price":"30.00","info":"Down in Kentucky and across the pond in Scotland, distillers who age their whiskeys for many years refer to the evaporation of the spirits from their barrels as \'The Angel\'s Share.\' We couldn\'t agree more. Each time a barrel is filled, a measure of liquid seeps into the oak and is lost for good. This striking Strong Ale is brewed with copious amounts of Caramel malt to emphasize the vanilla and oak flavors found in freshly emptied bourbon or brandy barrels. The beer spends a year in oak before it is packaged for release.","stock":"6","vanity":"Holzfassgereifte Biere","country":"USA","modificationDate":{"$date":1450006555405},"image":"la-angelshare.png"
+    },
+    {
+      "ean":"A897523409587438","active":true,"name":"Lost Abbey Red Poppy Ale","vol":"5%","price":"29.00","info":"Perhaps no country embraces the use of fruit in beers more so than Belgium. Numerous traditional as well as regional specialty ales are infused with every sort of fruit imaginable. In this way, the flavor of the fruit becomes especially prominent. Red Poppy Ale is a veritable celebration of Sour Cherries in an explosion of aromas and tastes. Brewed from a brown ale base and aged in our oak barrels for over 6 months, this beer is not for the faint of heart. The Golden Poppy is the state flower of California and the Red Poppy is found in Flanders Fields where our inspiration for this beer comes from.","stock":"6","vanity":"Spezialbier","country":"USA","modificationDate":{"$date":1450006555405},"image":"la-poppy.png"
     },
 
     function () {
