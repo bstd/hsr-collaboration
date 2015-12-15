@@ -17,6 +17,10 @@
 
   &--align {
     margin-top: -0.25em;
+
+    &.brew__icon--onchip {
+      color: $darkgrey;
+    }
   }
 
   &--txt {
