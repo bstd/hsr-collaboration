@@ -43,7 +43,7 @@ md-content(ng-if='!empty', layout='row', layout-wrap, class='md-padding')
       div(layout='row', layout-align='end end', class='md-actions')
         md-chips
           md-chip.md-title
-            | {{result.price}}
+            | {{result.price | currency:"CHF"}}
 
         span(flex='10')
 
