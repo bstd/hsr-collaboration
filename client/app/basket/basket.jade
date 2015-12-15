@@ -21,7 +21,7 @@ section
 
       md-card-content
         p
-          | Stückpreis: {{basketItem._price | number:2}}
+          | Stückpreis: {{basketItem._price | currency:"CHF"}}
         p
           | Anzahl: {{basketItem._qty}}
 
@@ -29,7 +29,7 @@ section
         div(layout='row', layout-align='end end', class='md-actions')
           md-chips
             md-chip.md-title
-              | {{basketItem._price * basketItem._qty | number:2}}
+              | {{basketItem._price * basketItem._qty | currency:"CHF"}}
 
           span(flex='10')
 
