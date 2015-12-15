@@ -46,7 +46,7 @@ section(ng-hide='empty', flex)
 
   md-content(layout='row', layout-wrap, class='md-padding')
     p(class='md-headline')
-      | Total: {{basketTotal | number:2}}
+      | Total: {{basketTotal | currency:"CHF"}}
 
   md-divider
   p

@@ -6,17 +6,19 @@
           | Warenkorb
         span(flex)
         md-button(class='md-icon-button', ng-click='close()')
-          md-icon(md-svg-icon='close', aria-label='Schliessen', class='brew__icon')
+          md-icon(md-svg-icon='close', aria-label='Schliessen')
     md-dialog-content
       div(class='md-dialog-content')
         md-list
-          md-list-item(ng-repeat='item in previewItems')
-            p
+          md-list-item(ng-repeat='item in previewItems', layout-align)
+            p.md-subhead
               | {{item._name}}
-            p
+            p.md-body-2
               | {{item._price | number: 2}}
-            p
+            p.md-body-2
               | Anzahl: {{item._qty}}
+
+            md-divider
 
     md-dialog-actions(layout='row')
       md-button(ng-click='answer("edit")')
