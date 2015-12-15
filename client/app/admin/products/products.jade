@@ -2,9 +2,11 @@ h2
   | Produktliste
 section
   md-content(layout='row', layout-wrap, class='md-padding')
-    md-card(ng-repeat='product in products track by product._id', flex='25', flex-md='30', flex-sm='100')
-      img(ng-src='/uploads/{{product.image}}', alt='Washed Out' ng-if="product.image")
-      img(ng-src='/uploads/default/beer_bottle.png', alt='Washed Out' ng-if="!product.image")
+    md-card(ng-repeat='product in products track by product._id', flex='30', flex-sm='45', flex-xs='100')
+      div(class='product__img')
+        img(ng-src='/uploads/{{product.image}}', alt='Washed Out' ng-if="product.image")
+        img(ng-src='/uploads/default/beer_bottle.png', alt='Washed Out' ng-if="!product.image")
+
       md-card-content
         h3 {{product.name}} {{product.vol}}
         p
