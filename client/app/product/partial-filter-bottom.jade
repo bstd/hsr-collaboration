@@ -1,19 +1,19 @@
 ﻿div(hide, show-xs)
-  div(class='sticky', ng-class="{ 'state-open': showChildren, 'state-closed': !showChildren }")
-    div(layout='column', layout-fill)
-      md-toolbar(ng-click='showChildren = !showChildren')
-        div(class='md-toolbar-tools')
-          span Filtern & Sortieren
-          span(flex)
-          md-button(class='md-icon-button', aria-label='Auf-/zuklappen')
-            md-icon(md-svg-icon='expand_more', class='icon-open')
-            md-icon(md-svg-icon='expand_less', class='icon-close')
+	div(class='sticky', ng-class="{ 'state-open': showChildren, 'state-closed': !showChildren }")
+		div(layout='column', layout-fill)
+			md-toolbar(ng-click='showChildren = !showChildren')
+				div(class='md-toolbar-tools')
+					span Filtern & Sortieren
+					span(flex)
+					md-button(class='md-icon-button', aria-label='Auf-/zuklappen')
+						md-icon(md-svg-icon='expand_more', class='icon-open')
+						md-icon(md-svg-icon='expand_less', class='icon-close')
 
-      div(ng-show='showChildren')
-        md-content(layout='column', class='md-padding')
-          md-input-container(flex)
-            label Filter
-            input(ng-model='search')
+			div(ng-show='showChildren')
+				md-content(layout='column', class='md-padding')
+					md-input-container(flex)
+						label Filter
+						input(ng-model='search')
 					md-input-container(flex)
 						label Sortierung
 						md-select(ng-model='order')
@@ -27,14 +27,14 @@
 								| Preis Absteigeng
 							md-option(value='price')
 								| Preis Aufsteigend
-          md-input-container(flex)
+					md-input-container(flex)
 						label Brau-Land
 						md-select(ng-model='countryFilter')
 							md-option(ng-value='')
 								| Bitte auswählen
 							md-option(ng-repeat='state in states' value='{{state}}')
 								| {{state}}
-          md-input-container(flex)
+					md-input-container(flex)
 						label Biersorte
 						md-select(ng-model='vanityFilter')
 							md-option(ng-value='')
