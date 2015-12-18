@@ -1,5 +1,5 @@
 'use strict';
-
+// directive valid number for stock
 angular.module('brewApp')
   .directive('validNumber', function() {
     return {

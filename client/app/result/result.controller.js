@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('brewApp')
-.controller('ResultCtrl', ['$scope', '$state', '$mdDialog', '$log', 'ProductSearchService', 'BasketService', function($scope, $state, $mdDialog, $log, ProductSearchService, BasketService) {
+.controller('ResultCtrl', ['$scope', '$state', '$mdDialog', '$log', 'ProductSearchService', 'BasketService', 'STATES', 'VANITIES', function($scope, $state, $mdDialog, $log, ProductSearchService, BasketService, STATES, VANITIES) {
   $scope.results = [];
   $scope.empty = true;
   $scope.query = $state.params.query;
@@ -12,13 +12,9 @@ angular.module('brewApp')
     $log.debug('$scope.empty:',$scope.empty);
   });
 
-  // TODO solution CONSTANTS?
-  $scope.vanities = [ '', 'Lagerbier', 'Spezialbier', 'Dunkles Bier', 'Naturtrübes Bier', 'Alkoholfreies Bier', 'Altbier',
-      'Pale Ale', 'Festbier (Bockbier)', 'Porter', 'Schwarzbier', 'Stout', 'Kohlenhydratarmes Bier', 'Leichtbier (alkoholarm)',
-      'Mais-, Reisbier', 'Mehrkornbier', 'Starkbier', 'Holzfassgereifte Biere', 'Weizenbier (Weissbier)', 'Biermischgetränke' ];
-
-  $scope.states = [ '', 'Schweiz', 'Deutschland', 'Tschechien', 'Britannien', 'Irland', 'Belgien', 'Holland', 'Dänemark',
-      'Frankreich', 'Österreich', 'USA', 'Kanada', 'Mexico' ];
+  //categories
+  $scope.vanities = VANITIES;
+  $scope.states = STATES;
 
 
   // add product to basket:

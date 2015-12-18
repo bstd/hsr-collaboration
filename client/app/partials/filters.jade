@@ -20,11 +20,15 @@ section(class='brew__product')
     md-input-container(flex='45', flex-sm='45', flex-xs='100')
       label Brau-Land
       md-select(ng-model='countryFilter')
+        md-option(ng-value='')
+          | Bitte auswählen
         md-option(ng-repeat='state in states' value='{{state}}')
           | {{state}}
     md-input-container(flex='45', flex-sm='45', flex-xs='100')
       label Biersorte
       md-select(ng-model='vanityFilter')
+        md-option(ng-value='')
+          | Bitte auswählen
         md-option(ng-repeat='vanity in vanities' value='{{vanity}}')
           | {{vanity}}
 

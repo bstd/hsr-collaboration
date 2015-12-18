@@ -1,5 +1,5 @@
 'use strict';
-
+// directive valid price for products
 angular.module('brewApp')
   .directive('validPrice', function() {
     return {

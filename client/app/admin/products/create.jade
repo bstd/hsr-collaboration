@@ -57,7 +57,7 @@ md-content
             span(layout='row', layout-sm='column')
               md-input-container(flex='', ng-class='{ "has-success": form.stock.$valid && submitted, "has-error": form.stock.$invalid && submitted }')
                 label
-                  | Einheiten
+                  | Stück (im Lager)
                 input(type="text", name='stock', class='form-control', ng-model='product.stock', valid-number required)
                 p(class='help-block', ng-show='form.stock.$error.required && submitted')
                   | Bitte geben Sie die Stückzahl(Number) im Lager ein
@@ -66,6 +66,8 @@ md-content
               md-input-container(flex='', ng-class='{ "has-success": form.country.$valid && submitted, "has-error": form.country.$invalid && submitted }')
                 label Brau-Land
                 md-select(ng-model='product.country')
+                  md-option(ng-value='')
+                    | Bitte auswählen
                   md-option(ng-repeat='state in states', value='{{state}}')
                     | {{state}}
                 p(class='help-block', ng-show='form.country.$error.required && submitted')
@@ -75,6 +77,8 @@ md-content
               md-input-container(flex='', ng-class='{ "has-success": form.vanity.$valid && submitted, "has-error": form.vanity.$invalid && submitted }')
                 label Biersorte
                 md-select(ng-model='product.vanity')
+                  md-option(ng-value='')
+                    | Bitte auswählen
                   md-option(ng-repeat='van in vanities', value='{{van}}')
                     | {{van}}
                 p(class='help-block', ng-show='form.vanity.$error.required && submitted')

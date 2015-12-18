@@ -14,20 +14,30 @@
           md-input-container(flex)
             label Filter
             input(ng-model='search')
+					md-input-container(flex)
+						label Sortierung
+						md-select(ng-model='order')
+							md-option(value='')
+								| Keine
+							md-option(value='name')
+								| Name Alphabet ABC
+							md-option(value='-name')
+								| Name Alphabet ZYX
+							md-option(value='-price')
+								| Preis Absteigeng
+							md-option(value='price')
+								| Preis Aufsteigend
           md-input-container(flex)
-            label Sortierung
-            md-select(ng-model='order')
-              md-option(value='name')
-                | Name Alphabet
-              md-option(value='price')
-                | Preis
+						label Brau-Land
+						md-select(ng-model='countryFilter')
+							md-option(ng-value='')
+								| Bitte auswählen
+							md-option(ng-repeat='state in states' value='{{state}}')
+								| {{state}}
           md-input-container(flex)
-            label Brau-Land
-            md-select(ng-model='countryFilter')
-              md-option(ng-repeat='state in states' value='{{state}}')
-                | {{state}}
-          md-input-container(flex)
-            label Biersorte
-            md-select(ng-model='vanityFilter')
-              md-option(ng-repeat='vanity in vanities' value='{{vanity}}')
-                | {{vanity}}
+						label Biersorte
+						md-select(ng-model='vanityFilter')
+							md-option(ng-value='')
+								| Bitte auswählen
+							md-option(ng-repeat='vanity in vanities' value='{{vanity}}')
+								| {{vanity}}

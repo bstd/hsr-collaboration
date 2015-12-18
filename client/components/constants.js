@@ -59,43 +59,13 @@ angular.module('components.constants', [])
   }
 })
 .constant("STATES", [
-	{name: ''},
-	{name: 'Schweiz'},
-	{name: 'Deutschland'},
-	{name: 'Tschechien'},
-	{name: 'Britannien'},
-	{name: 'Irland'},
-	{name: 'Belgien'},
-	{name: 'Holland'},
-	{name: 'Dänemark'},
-	{name: 'USA'},
-	{name: 'Kanada'},
-	{name: 'Mexico'},
-	{name: 'Asien'},
-	{name: 'Andere'}
+      'Schweiz', 'Deutschland', 'Tschechien', 'Britannien', 'Irland', 'Belgien', 'Holland', 'Dänemark',
+      'Frankreich', 'Österreich', 'USA', 'Kanada', 'Mexico'
 	])
 .constant("VANITIES", [
-		{vanity: ''},
-		{vanity: 'Lagerbier'},
-		{vanity: 'Spezialbier'},
-		{vanity: 'Craft'},
-		{vanity: 'Dunkles Bier'},
-		{vanity: 'Naturtrübes Bier'},
-		{vanity: 'Alkoholfreies Bier'},
-		{vanity: 'Altbier'},
-		{vanity: 'Pale Ale'},
-		{vanity: 'Festbier (Bockbier)'},
-		{vanity: 'Porter'},
-		{vanity: 'Schwarzbier'},
-		{vanity: 'Stout'},
-		{vanity: 'Kohlenhydratarmes Bier'},
-		{vanity: 'Leichtbier (alkoholarm)'},
-		{vanity:' Mais-, Reisbier'},
-		{vanity: 'Mehrkornbier'},
-		{vanity: 'Starkbier'},
-		{vanity: 'Holzfassgereifte Biere'},
-		{vanity: 'Weizenbier (Weissbier)'},
-		{vanity: 'Biermischgetränke'}
+      'Lagerbier', 'Spezialbier', 'Dunkles Bier', 'Naturtrübes Bier', 'Alkoholfreies Bier', 'Altbier',
+      'Pale Ale', 'Festbier (Bockbier)', 'Porter', 'Schwarzbier', 'Stout', 'Kohlenhydratarmes Bier', 'Leichtbier (alkoholarm)',
+      'Mais-, Reisbier', 'Mehrkornbier', 'Starkbier', 'Holzfassgereifte Biere', 'Weizenbier (Weissbier)', 'Biermischgetränke'
     ])	 //vanities List
 .config(function(CONSTANTS) {
   //console.log('constants:',CONSTANTS);

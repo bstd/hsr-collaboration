@@ -8,6 +8,6 @@ angular.module('brewApp')
         $state.go('admin.product-destroy', { id: product._id });
       });
     };
-
+    // get productslist
     $scope.products = AdminProductService.query();
   }]);
