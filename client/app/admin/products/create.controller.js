@@ -1,22 +1,16 @@
 'use strict';
 
 angular.module('brewApp')
-  .controller('ProductsCreateCtrl', ['$scope', '$http', '$state', '$timeout', 'Upload', 'AdminProductService', 'ToastSimpleService', function ($scope, $http, $state, $timeout, Upload, AdminProductService, ToastSimpleService) {
+  .controller('ProductsCreateCtrl', ['$scope', '$http', '$state', '$timeout', 'Upload', 'AdminProductService', 'ToastSimpleService', 'STATES', 'VANITIES', function ($scope, $http, $state, $timeout, Upload, AdminProductService, ToastSimpleService, STATES, VANITIES) {
     $scope.product = {
       active: true
     };
     $scope.errors = {};
 
-    $scope.tastes = ['leicht', 'schlank', 'weich', 'süffig', 'abgerundet', 'sortentypisch', 'vollmundig', 'malzaromatisch',
-      'röstmalzaromatisch', 'schwer', 'würzeartig', 'ausgewogen', 'harmonisch ausklingend', 'rund', 'kräftig betont', 'trocken', 'nicht anhängend', 'feinherb', 'feinbitter'];
-    $scope.vanities = ['', 'Lagerbier', 'Spezialbier', 'Craft', 'Dunkles Bier', 'Naturtrübes Bier', 'Alkoholfreies Bier', 'Altbier',
-      'Pale Ale', 'Festbier (Bockbier)', 'Porter', 'Schwarzbier', 'Stout', 'Kohlenhydratarmes Bier', 'Leichtbier (alkoholarm)',
-      'Mais-, Reisbier', 'Mehrkornbier', 'Starkbier', 'Holzfassgereifte Biere', 'Weizenbier (Weissbier)', 'Biermischgetränke'];
-    $scope.states = ['', 'Schweiz', 'Deutschland', 'Tschechien', 'Britannien', 'Irland', 'Belgien', 'Holland', 'Dänemark', 'USA', 'Kanada', 'Mexico', 'Asien', 'Andere'];
+    $scope.vanities = VANITIES;
+    $scope.states = STATES;
 
 
-
-    //ToDo Pic Upload
     // submit
     $scope.create = function (form) {
       $scope.submitted = true;
