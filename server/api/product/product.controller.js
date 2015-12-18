@@ -74,11 +74,12 @@ exports.update = function(req, res) {
     if (!product) { return res.status(404).send('Not Found'); }
 
     var updated = _.merge(product, req.body);
-    // Check for file and save
+    // Check for file and update
     try {
       if (req.file.filename) {
         try {
           if (product.image) {
+            //get path
             var rootPath = path.resolve(__dirname + '../../../uploads/');
             var filePath = rootPath + '/' + product.image;
             console.log(filePath);
@@ -118,10 +119,12 @@ exports.destroy = function(req, res) {
     if (!product) { return res.status(404).send('Not Found'); }
 
     product.remove(function(err) {
-
+      //get path
       var rootPath = path.resolve(__dirname + '../../../uploads/');
       var filePath = rootPath + '/' + product.image;
       //console.log(fs.statSync(filePath).isFile());
+
+      // Delete file
       if(fs.statSync(filePath).isFile() === true) {
       fs.unlink(filePath, function (err) {
         if (err) throw err;

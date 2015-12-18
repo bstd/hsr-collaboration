@@ -32,6 +32,8 @@ $ grunt serve:dist
 * nicht geeignet für den Produktiveinsatz (Zertifikate und Verschlüsselung sind out of scope)
 * pro environment (dev|test|prod) wird in eine separate DB geschrieben, und je nach config geseeded
 * TODO was passiert mit neu erfassten Daten? seeded collections (users, products)-> überschrieben (check details for product case)
+* Wenn aus versehen Bilder im "uploads" gelöscht werden, sind Ersatz im "backup" Ordner vorgesehen. Default Ordner ist für den Produkte bild Platzhalter
+* Projekt Dokumente wie Wireframes und Usability Tests sind im Ordner "project-documents" abgelegt
 * `grunt serve` für Starten der develop Version (env=development)
 * `grunt serve:debug` für Starten eines "debugging-friendly environment"
 

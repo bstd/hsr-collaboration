@@ -15,14 +15,7 @@ var errorHandler = require('errorhandler');
 var path = require('path');
 var config = require('./environment');
 var passport = require('passport');
-var multer = require('multer');
 
-//ToDo Cleanup
-/*var Pictoose    = require('pictoose');
-
-Pictoose.Config('RESOURCE_STORAGE_ROOT', 'public/');
-Pictoose.Config('RESOURCE_STORAGE_URL', 'http://localhost:9000/public/');
-Pictoose.Config('RESOURCE_MAIN_URL', 'http://localhost:9000/resources/');*/
 
 module.exports = function(app) {
 	var env = app.get('env');
@@ -36,11 +29,6 @@ module.exports = function(app) {
 	app.use(cookieParser());
 	app.use(passport.initialize());
   app.use(bodyParser.json({limit: '5mb'}));
-
-  //app.use('/public',express.static('public/'));
-
-  /*app.use(multer({dest:'uploads/'}).single('file'));
-  app.get('/resources/:resid', Pictoose.RouteController);*/
 
   if ('production' === env) {
 		app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));

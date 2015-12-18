@@ -22,12 +22,6 @@ var ProductSchema = new Schema({
   modificationDate: {type: Date, "default": Date.now}
 });
 
-
-/**
- * Virtuals
- */
-
-
 /**
  * Validations
  */
@@ -46,6 +40,7 @@ ProductSchema
   return name.length;
 }, 'Name cannot be blank');
 
+// out of date, we not validate token anymore
 // Validate EAN is not taken
 /*ProductSchema
 .path('ean')
