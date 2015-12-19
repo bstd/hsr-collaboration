@@ -1,13 +1,9 @@
-/**
- * This file uses the Page Object pattern to define the main page for tests
- * https://docs.google.com/presentation/d/1B6manhG0zEXkC-H-tPo2vwU06JhL8w9-XCF9oehXzAQ
- */
-
 'use strict';
 
 var MainPage = function() {
   this.headerSearch = element(by.model('$mdAutocompleteCtrl.scope.searchText'));
-  // more elements here
+  this.productCtx = $('.brew__product');
+  this.productCard = $('.brew__product .layout-wrap .flex-xs-100');
 };
 
 module.exports = new MainPage();

@@ -9,18 +9,11 @@ describe('Startseite', function() {
   });
 
 
-  it('should have title "Startseite"', function() {
+  it('should have title "Startseite" and the following elements: headerSearch, product container, product element', function() {
     expect(browser.getTitle()).toEqual('Startseite');
-  });
-
-  it('should have headerSearch', function() {
     expect(page.headerSearch.isPresent()).toBe(true);
+    expect(page.productCtx.isPresent()).toBe(true);
+    expect(page.productCard.isPresent()).toBe(true);
   });
 
-
-/*
-  // __
-  it('should __', function() {
-  });
-*/
 });
