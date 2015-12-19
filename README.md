@@ -34,6 +34,7 @@ $ grunt serve:dist
 * TODO was passiert mit neu erfassten Daten? seeded collections (users, products)-> überschrieben (check details for product case)
 * Wenn aus versehen Bilder im "uploads" gelöscht werden, sind Ersatz im "backup" Ordner vorgesehen. Default Ordner ist für den Produkte bild Platzhalter
 * Projekt Dokumente wie Wireframes und Usability Tests sind im Ordner "project-documents" abgelegt
+* Produkt Bilder müssen vom Admin vorher komprimiert und in einem quadratischem Format uploaded werden
 * `grunt serve` für Starten der develop Version (env=development)
 * `grunt serve:debug` für Starten eines "debugging-friendly environment"
 

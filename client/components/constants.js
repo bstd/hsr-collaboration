@@ -59,8 +59,7 @@ angular.module('components.constants', [])
   }
 })
 .constant("STATES", [
-      'Schweiz', 'Deutschland', 'Tschechien', 'Britannien', 'Irland', 'Belgien', 'Holland', 'Dänemark',
-      'Frankreich', 'Österreich', 'USA', 'Kanada', 'Mexico'
+      'Schweiz', 'Deutschland', 'Tschechien', 'Britannien', 'Irland', 'Belgien', 'Holland', 'Dänemark', 'USA', 'Kanada', 'Mexico'
 	])
 .constant("VANITIES", [
       'Lagerbier', 'Spezialbier', 'Dunkles Bier', 'Naturtrübes Bier', 'Alkoholfreies Bier', 'Altbier',
