@@ -2,16 +2,20 @@
 
 ## Voraussetzungen
 
-* Node.js - [Node.js](https://nodejs.org/) - empfohlene Version (Windows): v0.12.x
+* Node.js - [Node.js](https://nodejs.org/) - empfohlene Version (Windows): [v0.12.x](https://nodejs.org/dist/latest-v0.12.x/)
   * unter Windows gibt es noch zusätzliche Abhängigkeiten, siehe [Node.js Installation](https://github.com/nodejs/node-v0.x-archive/wiki/Installation) oder [node-gyp Problematik](https://github.com/nodejs/node-gyp/issues/629)
 * MongoDB - [MongoDB](http://www.mongodb.org/downloads) (getestet mit v3.0)
 * `mongod` gestartet
+* SASS - [sass-lang](http://sass-lang.com/install)
+  * unter Windows gibt es noch zusätzliche Abhängigkeiten, sind unter obigem Link dokumentiert
 
-## Installation
+## Installation (-g installs ignorieren, falls bereits installiert)
 
 ```bash
 $ npm i
+$ npm i -g bower
 $ bower install
+$ npm i -g grunt-cli
 ```
 
 ## Start
