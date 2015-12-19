@@ -9,7 +9,6 @@ angular.module('brewApp')
 
   // get detail
   $scope.product = ProductService.get({ id: $scope.id }, function(data) {
-    //console.log(data.vanity);
     $log.debug('queried:',data);
 
     //Related Products Beer taste
@@ -21,7 +20,6 @@ angular.module('brewApp')
       });
     });
     var isEmpty = $scope.related;
-    console.log(isEmpty);
   });
 
 

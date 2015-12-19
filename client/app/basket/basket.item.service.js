@@ -1,9 +1,8 @@
 ﻿'use strict';
-// TODO cleanup factory, match product properties
+
 angular.module('brewApp')
 .factory('BasketItem', ['$log', function($log) {
   var item = function(id, ean, name, price, qty) {
-//console.log('BasketItem item:',id,ean,name,price,qty);
     this.setId(id);
     this.setEan(ean);
     this.setName(name);
@@ -65,9 +64,8 @@ angular.module('brewApp')
   };
 
   item.prototype.setQuantity = function(qty, relative) {
-//console.log('BasketItem setqty:',qty,relative);
     var qtyInt = parseInt(qty, 10);
-//console.log('qtyInt',qtyInt);
+
     if (qtyInt % 1 === 0) {
       if (relative === true) {
         this._qty  += qtyInt;
@@ -90,8 +88,6 @@ angular.module('brewApp')
   };
 
   item.prototype.getTotal = function() {
-//console.log('item.prototype.getTotal:');
-//console.log(+parseFloat(this.getQuantity() * this.getPrice()).toFixed(2));
     return +parseFloat(this.getQuantity() * this.getPrice()).toFixed(2);
   };
 

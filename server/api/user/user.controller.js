@@ -128,19 +128,19 @@ exports.me = function(req, res, next) {
  */
 exports.getMyOrders = function(req, res, next) {
   var userId = req.user._id;
-//console.log('server api - user - getMyOrders - userID:',userId);
+
   User.findOne({ _id: userId }, 'email', function(err, user) {// select only email
     if (err) return next(err);
-//console.log('server api - user - findOne - email:',user);
+
     if (!user) {
       return res.status(401).send('Unauthorized');
     }
     else {
       var _email = user.email;
-//console.log('_email:',_email);
+
       Order.find({ userEmail: _email }, function(err, orders) {
         if (err) return next(err);
-//console.log('server api - user - Order.find - _email, returns orders:',orders);
+
         res.json(orders);
       });
     }

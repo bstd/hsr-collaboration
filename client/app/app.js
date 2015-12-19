@@ -15,7 +15,8 @@ angular.module('brewApp', [
   $urlRouterProvider.otherwise('/');
   $locationProvider.html5Mode(true);
   $httpProvider.interceptors.push('authInterceptor');// using passport example implementation
-  $compileProvider.debugInfoEnabled(false);
+  $compileProvider.debugInfoEnabled(false);// disable debug info
+  $logProvider.debugEnabled(false);// disable logging
 })
 
 .factory('authInterceptor', function($rootScope, $q, $cookieStore, $location) {
@@ -31,7 +32,6 @@ angular.module('brewApp', [
 
     // Intercept 401s and redirect you to login
     responseError: function(response) {
-//console.log('client app - authinterceptor, responseerror:',response);
       if (response.status === 401) {// || response.status === 403
         $location.path('/login');
         // remove any stale tokens
@@ -47,16 +47,9 @@ angular.module('brewApp', [
 
 .run(function($rootScope, $location, Auth, ToastSimpleService) {
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-    /*console.log('event:', event);
-    console.log('toState:', toState);
-    console.log('toParams:', toParams);
-    console.log('fromState:', fromState);
-    console.log('fromParams:',fromParams);*/
-
     // Redirect to login if route requires auth and you're not logged in
     Auth.isLoggedInAsync(function(loggedIn) {
       if (toState.authenticate && !loggedIn) {
-//console.log('AUTH REDIRECT');
         $location.path('/login');
         ToastSimpleService('Zugriffsfehler: Sie müssen angemeldet sein', 'error');
       }
@@ -66,7 +59,6 @@ angular.module('brewApp', [
         var isAdmin = Auth.isAdmin();
 
         if (!isAdmin) {
-//console.log('ROLE REDIRECT');
           $location.path('/');
           ToastSimpleService('Zugriffsfehler: Keine Rechte', 'error');
         }

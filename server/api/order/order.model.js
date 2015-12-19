@@ -51,7 +51,6 @@ var OrderSchema = new Schema({
  */
 OrderSchema
 .pre('save', function(next) {
-//console.log('pre save - this.isNew:',this.isNew);
   // new entries: index new entries with orderId
   this.orderId = this._id.toString().replace(/\D/g,'');
 

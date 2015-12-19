@@ -20,14 +20,14 @@ angular.module('brewApp')
     login: function(user, callback) {
       var cb = callback || angular.noop;
       var deferred = $q.defer();
-//console.log('client auth service - login:',cb);
+
       $http.post('/auth/local', {
         email: user.email,
         password: user.password
       }).
       success(function(data) {
         $cookieStore.put('token', data.token);
-//console.log('success data:',data);
+
         currentUser = User.get();
         deferred.resolve(data);
         return cb();
@@ -47,7 +47,6 @@ angular.module('brewApp')
       * @param  {Function}
       */
     logout: function() {
-//console.log('client auth service - logout');
       $cookieStore.remove('token');
       currentUser = {};
     },
@@ -101,7 +100,6 @@ angular.module('brewApp')
       * @return {Object} user
       */
     getCurrentUser: function() {
-//console.log('client auth service - getCurrentUser:',currentUser);
       return currentUser;
     },
 
@@ -111,7 +109,6 @@ angular.module('brewApp')
       * @return {Boolean}
       */
     isLoggedIn: function() {
-//console.log('client auth service - isLoggedIn:',currentUser.hasOwnProperty('role'));
       return currentUser.hasOwnProperty('role');
     },
 
@@ -119,10 +116,7 @@ angular.module('brewApp')
       * Waits for currentUser to resolve before checking if user is logged in
       */
     isLoggedInAsync: function(cb) {
-//console.log('client auth service - isLoggedInAsync');
-//console.log('currentUser:',currentUser);
       if (currentUser.hasOwnProperty('$promise')) {
-//console.log('has promise:',cb);
         currentUser.$promise.then(function() {
           cb(true);
         }).catch(function() {
@@ -141,8 +135,6 @@ angular.module('brewApp')
       * @return {Boolean}
       */
     isAdmin: function() {
-//console.log('client auth service - isAdmin - role:', currentUser.role);
-//console.log('client auth service - isAdmin:',currentUser.role === 'admin');
       return currentUser.role === 'admin';
     },
 

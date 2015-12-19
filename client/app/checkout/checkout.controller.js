@@ -19,10 +19,8 @@ angular.module('brewApp')
   // basket
   $scope.basketItems = [];
   $scope.basketItems = BasketService.items();
-//console.log('CheckoutCtrl basketItems:',$scope.basketItems);
 
   $scope.empty = BasketService.isEmpty($scope.basketItems.length);
-//console.log('CheckoutCtrl $scope.empty:',$scope.empty);
 
   $scope.basketTotal = BasketService.total();
 
@@ -44,14 +42,13 @@ angular.module('brewApp')
         }
       }
     }, function() {
-//console.log('You cancelled the dialog');
+      $log.debug('You cancelled the dialog');
     });
   };
 
   function BasketDialogCtrl($scope, basketPreview, $mdDialog) {
     $scope.previewItems = basketPreview;
-//console.log('basketPreview:',basketPreview);
-//console.log('$scope.previewItems',$scope.previewItems);
+
     $scope.hide = function() {
       $mdDialog.hide();
     };
@@ -81,7 +78,7 @@ angular.module('brewApp')
         }
       }
     }, function() {
-//console.log('You cancelled the dialog');
+      $log.debug('You cancelled the dialog');
     });
   };
 
@@ -104,15 +101,6 @@ angular.module('brewApp')
 
     if (form.$valid) {
       // create order
-/*console.log('valid submit with basket:',$scope.basketItems);
-console.log('and total:',$scope.basketTotal);
-console.log('for optional user email:',$scope.user.email);
-console.log('addressdata lastName:',$scope.user.lastName);
-console.log('addressdata firstName:',$scope.user.firstName);
-console.log('addressdata street:',$scope.user.street);
-console.log('addressdata zip:',$scope.user.zip);
-console.log('addressdata city:',$scope.user.city);*/
-
       $scope.order = {
         userEmail: $scope.user.email,
         addressLastName: $scope.user.lastName,
@@ -123,8 +111,6 @@ console.log('addressdata city:',$scope.user.city);*/
         total: $scope.basketTotal,
         products: $scope.basketItems
       };
-
-//console.log('order to create:',$scope.order);
 
       CheckoutService.create($scope.order).$promise.then(function() {
         $state.go('confirmation');
