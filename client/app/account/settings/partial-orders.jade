@@ -46,14 +46,14 @@ md-content(layout-wrap, class='md-padding')
             | {{myorder.products[$index]._ean}}
         p(layout='row')
           span(flex='50', flex-gt-sm='30', class='md-body-2')
-            | Artikelbezeichnung:
+            | Artikelname:
           span(flex='50', flex-gt-sm='70')
             | {{myorder.products[$index]._name}}
         p(layout='row')
           span(flex='50', flex-gt-sm='30', class='md-body-2')
             | Einzelpreis:
           span(flex='50', flex-gt-sm='70')
-            | {{myorder.products[$index]._price | number:2}}
+            | {{myorder.products[$index]._price | currency:"CHF "}}
 
         p(layout='row')
           span(flex='50', flex-gt-sm='30', class='md-body-2')
@@ -64,5 +64,5 @@ md-content(layout-wrap, class='md-padding')
       md-divider
 
       p.md-title
-        | Bestellsumme: {{myorder.total | number:2}}
+        | Bestellsumme: {{myorder.total | currency:"CHF "}}
 

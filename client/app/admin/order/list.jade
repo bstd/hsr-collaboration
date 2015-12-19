@@ -1,7 +1,7 @@
-h2
-  | Bestellungen (insgesamt: {{orders.length}})
+h2.md-title
+  | Bestellungen nach Status (insgesamt: {{orders.length}})
 section
-  md-content(layout-wrap, class='md-padding')
+  md-content(layout-wrap)
     // NO ORDERS
     p(ng-show='orders.length === 0')
       | Keine Bestellungen vorhanden

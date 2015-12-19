@@ -1,10 +1,12 @@
-﻿md-toast {
+﻿// idea was to improve toast with colors based on state (red=error, green=success)
+// but due to constant changes in angular-material (and no support for background coloring) this idea was abandoned
+md-toast {
   &.md-toast {
     &-error-theme {
-      background-color: $toast-error;
+      //background-color: $toast-error;
     }
     &-success-theme {
-      background-color: $toast-success;
+      //background-color: $toast-success;
     }
   }
 }

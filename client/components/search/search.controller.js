@@ -2,10 +2,18 @@
 
 angular.module('brewApp')
 .controller('HeaderSearchCtrl', ['$scope', '$state', '$log', '$mdUtil', 'ProductService', function($scope, $state, $log, $mdUtil, ProductService) {
-  var self = this;
+  var self = this,
+      filteredResults = [];
+
+  // exclude inactve products
+  filteredResults = ProductService.query(function(results) {
+    _.remove(results, function(result) {
+      return result.active === false;
+    });
+  });
 
   // md-autocomplete
-  self.repos              = ProductService.query();
+  self.repos              = filteredResults;
   self.querySearch        = querySearch;
   self.selectedItemChange = selectedItemChange;
   self.searchTextChange   = searchTextChange;

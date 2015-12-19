@@ -13,8 +13,8 @@ md-content(class='brew__orders--client')
           | Passwort ändern
         span(flex)
         md-button(class='md-icon-button', aria-label='Auf-/zuklappen')
-          md-icon(md-svg-icon='expand_more', class='icon-open brew__icon')
-          md-icon(md-svg-icon='expand_less', class='icon-close brew__icon')
+          md-icon(md-svg-icon='expand_more', class='icon-open brew__icon--fixed')
+          md-icon(md-svg-icon='expand_less', class='icon-close brew__icon--fixed')
 
     div(ng-show='showPasswordChildren')
       include partial-password.jade
@@ -29,8 +29,8 @@ md-content(class='brew__orders--client')
           | Rechnungsadresse
         span(flex)
         md-button(class='md-icon-button', aria-label='Auf-/zuklappen')
-          md-icon(md-svg-icon='expand_more', class='icon-open brew__icon')
-          md-icon(md-svg-icon='expand_less', class='icon-close brew__icon')
+          md-icon(md-svg-icon='expand_more', class='icon-open brew__icon--fixed')
+          md-icon(md-svg-icon='expand_less', class='icon-close brew__icon--fixed')
 
     div(ng-show='showAddressChildren')
       include partial-address.jade
@@ -47,8 +47,8 @@ md-content(class='brew__orders--client')
           | ({{myOrders.length}})
         span(flex)
         md-button(class='md-icon-button', aria-label='Auf-/zuklappen')
-          md-icon(md-svg-icon='expand_more', class='icon-open brew__icon')
-          md-icon(md-svg-icon='expand_less', class='icon-close brew__icon')
+          md-icon(md-svg-icon='expand_more', class='icon-open brew__icon--fixed')
+          md-icon(md-svg-icon='expand_less', class='icon-close brew__icon--fixed')
 
     div(ng-show='showOrdersChildren')
       include partial-orders.jade

@@ -7,7 +7,7 @@ angular.module('brewApp')
       .title('Bestätigen: ' + strTarget + ' löschen')
       .htmlContent('<p>Wollen Sie ' + strTarget + '</p><p class=\"brew__confirm md-body-2\">' + strInfo + '</p><p>wirklich löschen?</p>')
       .ariaLabel('Bestätigen: ' + strTarget + ' löschen')
-      .ok('Ok')
+      .ok('Löschen')
       .cancel('Abbrechen');
     return $mdDialog.show(confirm);
   };

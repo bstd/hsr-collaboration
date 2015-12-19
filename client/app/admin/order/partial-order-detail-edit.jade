@@ -44,14 +44,14 @@ div(ng-repeat='items in order.products track by $index', ng-init='orderIdx = $in
       | {{order.products[orderIdx]._ean}}
   p(layout='row')
     span(flex='50', flex-gt-sm='30', class='md-body-2')
-      | Artikelbezeichnung:
+      | Artikelname:
     span(flex='50', flex-gt-sm='70')
       | {{order.products[orderIdx]._name}}
   p(layout='row')
     span(flex='50', flex-gt-sm='30', class='md-body-2')
       | Einzelpreis:
     span(flex='50', flex-gt-sm='70')
-      | {{order.products[orderIdx]._price | number:2}}
+      | {{order.products[orderIdx]._price | currency:"CHF "}}
 
 
   p(layout='row')
@@ -72,10 +72,10 @@ div(ng-repeat='items in order.products track by $index', ng-init='orderIdx = $in
     span(flex='50', flex-gt-sm='30', class='md-body-2')
       | Summe dieser Bestellposition:
     span(flex='50', flex-gt-sm='70')
-      | {{order.products[orderIdx]._qty * order.products[orderIdx]._price | number:2}}
+      | {{order.products[orderIdx]._qty * order.products[orderIdx]._price | currency:"CHF "}}
 
   md-divider
 
 
 p.md-title
-  | Bestellsumme: {{order.total | number:2}}
+  | Bestellsumme: {{order.total | currency:"CHF "}}

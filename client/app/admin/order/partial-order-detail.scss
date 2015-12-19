@@ -2,6 +2,7 @@
   md-toolbar {
     cursor: pointer;
 
+    // for quick reference, state specific bgcolor could be used
     &.new {
       //background-color: $order-state-bgColor-new;
     }

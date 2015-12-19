@@ -19,8 +19,8 @@ exports.search = function(req, res) {
   if (typeof req.params.id !== 'undefined') {
     var find = new RegExp(req.params.id, 'i');
 
-    // find via regexp
-    Product.find({'name': find}, function(err, products) {
+    // find via regexp, exclude inactive products
+    Product.find({'name': find, 'active': true}, function(err, products) {
       if (err) { return handleError(res, err); }
 
       return res.status(200).json(products);

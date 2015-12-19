@@ -27,7 +27,7 @@ section(class='brew__product')
           div(layout='row', layout-align='end end', class='md-actions')
             md-chips
               md-chip.md-title
-                | {{product.price | currency:"CHF"}}
+                | {{product.price | currency:"CHF "}}
 
             span(flex='10')
 
@@ -43,7 +43,8 @@ section(class='brew__product')
 
 //related products same vanity
 section(class='brew__product', ng-if="related.length")
-  h2 Diese Biere könnten Ihnen auch schmecken:
+  h2.md-title
+    | Diese Biere könnten Ihnen auch schmecken:
   md-content(layout='row', layout-wrap)
     md-card(ng-if='rel.active', ng-repeat='rel in related | limitTo:3', flex='30', flex-sm='45', flex-xs='100')
       div(class='product__img')
@@ -69,7 +70,7 @@ section(class='brew__product', ng-if="related.length")
         div(layout='row', layout-align='end end', class='md-actions')
           md-chips
             md-chip.md-title
-              | {{rel.price | currency:"CHF"}}
+              | {{rel.price | currency:"CHF "}}
 
           span(flex='10')
 

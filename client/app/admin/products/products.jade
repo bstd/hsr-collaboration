@@ -1,7 +1,7 @@
-h2
+h2.md-title
   | Produktliste
 section
-  md-content(layout='row', layout-wrap, class='md-padding')
+  md-content(layout='row', layout-wrap)
     md-card(ng-repeat='product in products track by product._id', flex='30', flex-sm='45', flex-xs='100')
       div(class='product__img')
         img(ng-src='/uploads/{{product.image}}', alt='Washed Out' ng-if="product.image")
@@ -11,7 +11,7 @@ section
         h3 {{product.name}} {{product.vol}}
         p
           b Preis:
-          |   {{product.price | currency:"CHF"}}
+          |   {{product.price | currency:"CHF "}}
         p
           b Info:
           br

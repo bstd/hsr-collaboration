@@ -7,73 +7,75 @@ section
 
 section(layout='row', flex)
   // if there is a basket to checkout
-  md-content(ng-hide='empty', flex, class='md-padding')
+  md-content(ng-hide='empty', flex)
     form(name='form', ng-submit='order(form)', novalidate)
       // ADDRESS
-      md-content(class='md-padding')
-        h2
-          | Liefer- und Rechnungsadresse
+      div(layout='row', layout-wrap, layout-align='space-between')
+        div(flex='100', flex-gt-sm='45')
+          h2.md-title
+            | Liefer- und Rechnungsadresse
 
-        md-input-container(ng-hide='isLoggedIn()')
-          p
-            | Sie können Sich registrieren, um Adressdaten für weitere Einkäufe zu speichern
-          md-button(href='/registration', class='md-primary')
-            | Jetzt registrieren
+          md-input-container(ng-hide='isLoggedIn()')
+            p
+              | Sie können Sich registrieren, um Adressdaten für weitere Einkäufe zu speichern
+            md-button(href='/registration', class='md-primary')
+              | Jetzt registrieren
 
-        md-input-container(md-is-error='form.lastName.$touched && form.lastName.$invalid', class='md-block')
-          label
-            | Nachname
-          input(type='text', name='lastName', ng-model='user.lastName', required)
+          md-input-container(md-is-error='form.lastName.$touched && form.lastName.$invalid', class='md-block')
+            label
+              | Nachname
+            input(type='text', name='lastName', ng-model='user.lastName', required)
 
-          div(class='help-block', ng-messages='form.lastName.$error', ng-show='form.lastName.$touched && form.lastName.$invalid')
-            include ../partials/form.messages.address.jade
+            div(class='help-block', ng-messages='form.lastName.$error', ng-show='form.lastName.$touched && form.lastName.$invalid')
+              include ../partials/form.messages.address.jade
 
-        md-input-container(md-is-error='form.firstName.$touched && form.firstName.$invalid', class='md-block')
-          label
-            | Vorname
-          input(type='text', name='firstName', ng-model='user.firstName', required)
+          md-input-container(md-is-error='form.firstName.$touched && form.firstName.$invalid', class='md-block')
+            label
+              | Vorname
+            input(type='text', name='firstName', ng-model='user.firstName', required)
 
-          div(class='help-block', ng-messages='form.firstName.$error', ng-show='form.firstName.$touched && form.firstName.$invalid')
-            include ../partials/form.messages.address.jade
+            div(class='help-block', ng-messages='form.firstName.$error', ng-show='form.firstName.$touched && form.firstName.$invalid')
+              include ../partials/form.messages.address.jade
 
-        md-input-container(md-is-error='form.street.$touched && form.street.$invalid', class='md-block')
-          label
-            | Strasse
-          input(type='text', name='street', ng-model='user.street', required)
+          md-input-container(md-is-error='form.street.$touched && form.street.$invalid', class='md-block')
+            label
+              | Strasse
+            input(type='text', name='street', ng-model='user.street', required)
 
-          div(class='help-block', ng-messages='form.street.$error', ng-show='form.street.$touched && form.street.$invalid')
-            include ../partials/form.messages.address.jade
+            div(class='help-block', ng-messages='form.street.$error', ng-show='form.street.$touched && form.street.$invalid')
+              include ../partials/form.messages.address.jade
 
-        md-input-container(md-is-error='form.zip.$touched && form.zip.$invalid', class='md-block')
-          label
-            | Postleitzahl
-          input(type='text', name='zip', ng-pattern="/^\([1-468][0-9]|[57][0-7]|9[0-6])[0-9]{2}$/", ng-model='user.zip', required)
+          md-input-container(md-is-error='form.zip.$touched && form.zip.$invalid', class='md-block')
+            label
+              | Postleitzahl
+            input(type='text', name='zip', ng-pattern="/^\([1-468][0-9]|[57][0-7]|9[0-6])[0-9]{2}$/", ng-model='user.zip', required)
 
-          div(class='help-block', ng-messages='form.zip.$error', ng-show='form.zip.$touched && form.zip.$invalid')
-            include ../partials/form.messages.address.jade
+            div(class='help-block', ng-messages='form.zip.$error', ng-show='form.zip.$touched && form.zip.$invalid')
+              include ../partials/form.messages.address.jade
 
-        md-input-container(md-is-error='form.city.$touched && form.city.$invalid', class='md-block')
-          label
-            | Ort
-          input(type='text', name='city', ng-model='user.city', required)
+          md-input-container(md-is-error='form.city.$touched && form.city.$invalid', class='md-block')
+            label
+              | Ort
+            input(type='text', name='city', ng-model='user.city', required)
 
-          div(class='help-block', ng-messages='form.city.$error', ng-show='form.city.$touched && form.city.$invalid')
-            include ../partials/form.messages.address.jade
+            div(class='help-block', ng-messages='form.city.$error', ng-show='form.city.$touched && form.city.$invalid')
+              include ../partials/form.messages.address.jade
 
+        div(flex='100', flex-gt-sm='45')
+          // TOTAL
+          md-card
+            md-card-content
+              h2.md-title
+                | Gesamtsumme
+              p.md-headline
+                | Total: {{basketTotal | currency:"CHF "}}
 
-      // TOTAL
-      md-content(class='md-padding')
-        h2
-          | Gesamtsumme
-        p(class='md-title')
-          | Total: {{basketTotal | currency:"CHF"}}
-
-        md-button(ng-click='showBasket()', class='md-primary md-button')
-          | Warenkorb zeigen
+              md-button(ng-click='showBasket()', class='md-primary md-button')
+                | Warenkorb zeigen
 
 
       // TERMS
-      md-content(layout='row', layout-wrap, class='md-padding')
+      md-content(layout='row', layout-wrap)
         p
           | Bitte akzeptieren Sie unsere
         a(ng-click='showTerms()', class='md-warn md-button')
@@ -97,7 +99,7 @@ section(layout='row', flex)
 
 
   // no basket found
-  md-content(ng-show='empty', flex, class='md-padding')
+  md-content(ng-show='empty', flex)
     p
       | Warenkorb ist leer, keine Bestellung möglich.
 

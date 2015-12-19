@@ -1,5 +1,5 @@
-﻿div(ng-click='showChildren = !showChildren', ng-class="{ 'state-open': showChildren, 'state-closed': !showChildren }")
-  md-toolbar(ng-class='order.state')
+﻿div(ng-class="{ 'state-open': showChildren, 'state-closed': !showChildren }")
+  md-toolbar(ng-click='showChildren = !showChildren', ng-class='order.state')
     div(class='md-toolbar-tools')
       md-chips
         md-chip
@@ -17,11 +17,12 @@
         md-chip(hide, show-gt-sm)
           md-icon(md-svg-icon='attach_money', class='brew__icon--align brew__icon--onchip')
           span
-            | {{order.total | number:2}}
+            | {{order.total | currency:"CHF "}}
       span(flex)
       md-button(class='md-icon-button brew__icon--fixed', aria-label='Auf-/zuklappen')
         md-icon(md-svg-icon='expand_more', class='icon-open')
         md-icon(md-svg-icon='expand_less', class='icon-close')
 
   div(ng-show='showChildren')
-    include partial-order-detail-edit.jade
+    div(class='md-padding')
+      include partial-order-detail-edit.jade

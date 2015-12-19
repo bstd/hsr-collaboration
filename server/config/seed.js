@@ -7,7 +7,11 @@
 
 var Product = require('../api/product/product.model');
 var User = require('../api/user/user.model');
+var Order = require('../api/order/order.model');
 
+Order.find({}).remove(function () {
+  console.log('finished cleaning orders');
+});
 Product.find({}).remove(function () {
   Product.create({
       ean: 'A1234567890123',

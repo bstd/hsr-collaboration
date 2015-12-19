@@ -1,15 +1,21 @@
-h2
+h2.md-title
   | Benutzerliste
 section
   md-content(layout='row', layout-wrap)
-    md-card(ng-repeat='user in users track by user._id', flex='30', flex-sm='45', flex-xs='100')
+    md-card(ng-repeat='user in users track by user._id', flex='100', flex-gt-sm='45')
       md-card-content
-        p
-          | {{user.email}}
-        p
-          | {{user.password}}
-        p
-          | {{user.role}}
+        p(layout='row')
+          span(flex='30', class='md-body-2')
+            | Benutzer E-Mail:
+          span(flex='70')
+            | {{user.email}}
+
+        p(layout='row')
+          span(flex='30', class='md-body-2')
+            | Benutzer Rolle:
+          span(flex='70')
+            | {{user.role}}
+
         div(layout='row', layout-align='end center', class='md-actions')
           md-button(ng-click='confirmDelete(user)', class='md-button md-raised md-warn')
             | Löschen
